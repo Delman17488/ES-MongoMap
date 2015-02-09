@@ -1,4 +1,4 @@
-package UK.AC.Bham.MongoMap;
+package uk.ac.bham.mongoMap;
 
 public class Main {
 
