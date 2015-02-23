@@ -68,8 +68,8 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	protected MetamodelSwitch<Adapter> modelSwitch =
 		new MetamodelSwitch<Adapter>() {
 			@Override
-			public Adapter caseSchema(Schema object) {
-				return createSchemaAdapter();
+			public Adapter caseDatabase(Database object) {
+				return createDatabaseAdapter();
 			}
 			@Override
 			public Adapter caseTable(Table object) {
@@ -86,6 +86,14 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseSequence(Sequence object) {
 				return createSequenceAdapter();
+			}
+			@Override
+			public Adapter caseRow(Row object) {
+				return createRowAdapter();
+			}
+			@Override
+			public Adapter caseCell(Cell object) {
+				return createCellAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -108,16 +116,16 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link metamodel.Schema <em>Schema</em>}'.
+	 * Creates a new adapter for an object of class '{@link metamodel.Database <em>Database</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see metamodel.Schema
+	 * @see metamodel.Database
 	 * @generated
 	 */
-	public Adapter createSchemaAdapter() {
+	public Adapter createDatabaseAdapter() {
 		return null;
 	}
 
@@ -174,6 +182,34 @@ public class MetamodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSequenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link metamodel.Row <em>Row</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see metamodel.Row
+	 * @generated
+	 */
+	public Adapter createRowAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link metamodel.Cell <em>Cell</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see metamodel.Cell
+	 * @generated
+	 */
+	public Adapter createCellAdapter() {
 		return null;
 	}
 

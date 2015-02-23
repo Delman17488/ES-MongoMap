@@ -58,14 +58,14 @@ public interface MetamodelPackage extends EPackage {
 	MetamodelPackage eINSTANCE = metamodel.impl.MetamodelPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link metamodel.impl.SchemaImpl <em>Schema</em>}' class.
+	 * The meta object id for the '{@link metamodel.impl.DatabaseImpl <em>Database</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see metamodel.impl.SchemaImpl
-	 * @see metamodel.impl.MetamodelPackageImpl#getSchema()
+	 * @see metamodel.impl.DatabaseImpl
+	 * @see metamodel.impl.MetamodelPackageImpl#getDatabase()
 	 * @generated
 	 */
-	int SCHEMA = 0;
+	int DATABASE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,7 +74,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEMA__NAME = 0;
+	int DATABASE__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Table</b></em>' containment reference list.
@@ -83,34 +83,34 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEMA__TABLE = 1;
+	int DATABASE__TABLE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Sequence</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Sequences</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEMA__SEQUENCE = 2;
+	int DATABASE__SEQUENCES = 2;
 
 	/**
-	 * The number of structural features of the '<em>Schema</em>' class.
+	 * The number of structural features of the '<em>Database</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEMA_FEATURE_COUNT = 3;
+	int DATABASE_FEATURE_COUNT = 3;
 
 	/**
-	 * The number of operations of the '<em>Schema</em>' class.
+	 * The number of operations of the '<em>Database</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCHEMA_OPERATION_COUNT = 0;
+	int DATABASE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link metamodel.impl.TableImpl <em>Table</em>}' class.
@@ -132,22 +132,31 @@ public interface MetamodelPackage extends EPackage {
 	int TABLE__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Constraint</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE__CONSTRAINT = 1;
+	int TABLE__CONSTRAINTS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Column</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE__COLUMN = 2;
+	int TABLE__COLUMNS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Rows</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE__ROWS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Table</em>' class.
@@ -156,7 +165,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TABLE_FEATURE_COUNT = 3;
+	int TABLE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Table</em>' class.
@@ -196,13 +205,22 @@ public interface MetamodelPackage extends EPackage {
 	int CONSTRAINT__TYPE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Ref Table</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__REF_TABLE = 2;
+	int CONSTRAINT__COLUMNS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__REFERENCE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -211,7 +229,7 @@ public interface MetamodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = 3;
+	int CONSTRAINT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Constraint</em>' class.
@@ -260,13 +278,13 @@ public interface MetamodelPackage extends EPackage {
 	int COLUMN__NULLABLE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Sequence Column</b></em>' containment reference.
+	 * The feature id for the '<em><b>Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLUMN__SEQUENCE_COLUMN = 3;
+	int COLUMN__SIZE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Column</em>' class.
@@ -324,22 +342,22 @@ public interface MetamodelPackage extends EPackage {
 	int SEQUENCE__MAX_VALUE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Increment</b></em>' attribute.
+	 * The feature id for the '<em><b>Incrementby</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__INCREMENT = 3;
+	int SEQUENCE__INCREMENTBY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Startwith</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE__START = 4;
+	int SEQUENCE__STARTWITH = 4;
 
 	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' attribute.
@@ -351,13 +369,22 @@ public interface MetamodelPackage extends EPackage {
 	int SEQUENCE__CURRENT_VALUE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Cycle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE__CYCLE = 6;
+
+	/**
 	 * The number of structural features of the '<em>Sequence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_FEATURE_COUNT = 6;
+	int SEQUENCE_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Sequence</em>' class.
@@ -369,68 +396,151 @@ public interface MetamodelPackage extends EPackage {
 	int SEQUENCE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link metamodel.ColumnType <em>Column Type</em>}' enum.
+	 * The meta object id for the '{@link metamodel.impl.RowImpl <em>Row</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see metamodel.ColumnType
-	 * @see metamodel.impl.MetamodelPackageImpl#getColumnType()
+	 * @see metamodel.impl.RowImpl
+	 * @see metamodel.impl.MetamodelPackageImpl#getRow()
 	 * @generated
 	 */
-	int COLUMN_TYPE = 5;
+	int ROW = 5;
 
 	/**
-	 * The meta object id for the '{@link metamodel.TypeConstraint <em>Type Constraint</em>}' enum.
+	 * The feature id for the '<em><b>Cells</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see metamodel.TypeConstraint
-	 * @see metamodel.impl.MetamodelPackageImpl#getTypeConstraint()
 	 * @generated
+	 * @ordered
 	 */
-	int TYPE_CONSTRAINT = 6;
-
+	int ROW__CELLS = 0;
 
 	/**
-	 * Returns the meta object for class '{@link metamodel.Schema <em>Schema</em>}'.
+	 * The number of structural features of the '<em>Row</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Schema</em>'.
-	 * @see metamodel.Schema
 	 * @generated
+	 * @ordered
 	 */
-	EClass getSchema();
+	int ROW_FEATURE_COUNT = 1;
 
 	/**
-	 * Returns the meta object for the attribute '{@link metamodel.Schema#getName <em>Name</em>}'.
+	 * The number of operations of the '<em>Row</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link metamodel.impl.CellImpl <em>Cell</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see metamodel.impl.CellImpl
+	 * @see metamodel.impl.MetamodelPackageImpl#getCell()
+	 * @generated
+	 */
+	int CELL = 6;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELL__VALUE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELL__COLUMN = 1;
+
+	/**
+	 * The number of structural features of the '<em>Cell</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELL_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Cell</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CELL_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link metamodel.Datatye <em>Datatye</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see metamodel.Datatye
+	 * @see metamodel.impl.MetamodelPackageImpl#getDatatye()
+	 * @generated
+	 */
+	int DATATYE = 7;
+
+	/**
+	 * The meta object id for the '{@link metamodel.ConstraintType <em>Constraint Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see metamodel.ConstraintType
+	 * @see metamodel.impl.MetamodelPackageImpl#getConstraintType()
+	 * @generated
+	 */
+	int CONSTRAINT_TYPE = 8;
+
+
+	/**
+	 * Returns the meta object for class '{@link metamodel.Database <em>Database</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Database</em>'.
+	 * @see metamodel.Database
+	 * @generated
+	 */
+	EClass getDatabase();
+
+	/**
+	 * Returns the meta object for the attribute '{@link metamodel.Database#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see metamodel.Schema#getName()
-	 * @see #getSchema()
+	 * @see metamodel.Database#getName()
+	 * @see #getDatabase()
 	 * @generated
 	 */
-	EAttribute getSchema_Name();
+	EAttribute getDatabase_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link metamodel.Schema#getTable <em>Table</em>}'.
+	 * Returns the meta object for the containment reference list '{@link metamodel.Database#getTable <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Table</em>'.
-	 * @see metamodel.Schema#getTable()
-	 * @see #getSchema()
+	 * @see metamodel.Database#getTable()
+	 * @see #getDatabase()
 	 * @generated
 	 */
-	EReference getSchema_Table();
+	EReference getDatabase_Table();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link metamodel.Schema#getSequence <em>Sequence</em>}'.
+	 * Returns the meta object for the containment reference list '{@link metamodel.Database#getSequences <em>Sequences</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sequence</em>'.
-	 * @see metamodel.Schema#getSequence()
-	 * @see #getSchema()
+	 * @return the meta object for the containment reference list '<em>Sequences</em>'.
+	 * @see metamodel.Database#getSequences()
+	 * @see #getDatabase()
 	 * @generated
 	 */
-	EReference getSchema_Sequence();
+	EReference getDatabase_Sequences();
 
 	/**
 	 * Returns the meta object for class '{@link metamodel.Table <em>Table</em>}'.
@@ -454,26 +564,37 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getTable_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link metamodel.Table#getConstraint <em>Constraint</em>}'.
+	 * Returns the meta object for the containment reference list '{@link metamodel.Table#getConstraints <em>Constraints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Constraint</em>'.
-	 * @see metamodel.Table#getConstraint()
+	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
+	 * @see metamodel.Table#getConstraints()
 	 * @see #getTable()
 	 * @generated
 	 */
-	EReference getTable_Constraint();
+	EReference getTable_Constraints();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link metamodel.Table#getColumn <em>Column</em>}'.
+	 * Returns the meta object for the containment reference list '{@link metamodel.Table#getColumns <em>Columns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Column</em>'.
-	 * @see metamodel.Table#getColumn()
+	 * @return the meta object for the containment reference list '<em>Columns</em>'.
+	 * @see metamodel.Table#getColumns()
 	 * @see #getTable()
 	 * @generated
 	 */
-	EReference getTable_Column();
+	EReference getTable_Columns();
+
+	/**
+	 * Returns the meta object for the reference list '{@link metamodel.Table#getRows <em>Rows</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Rows</em>'.
+	 * @see metamodel.Table#getRows()
+	 * @see #getTable()
+	 * @generated
+	 */
+	EReference getTable_Rows();
 
 	/**
 	 * Returns the meta object for class '{@link metamodel.Constraint <em>Constraint</em>}'.
@@ -508,15 +629,26 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getConstraint_Type();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link metamodel.Constraint#getRefTable <em>Ref Table</em>}'.
+	 * Returns the meta object for the containment reference list '{@link metamodel.Constraint#getColumns <em>Columns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Ref Table</em>'.
-	 * @see metamodel.Constraint#getRefTable()
+	 * @return the meta object for the containment reference list '<em>Columns</em>'.
+	 * @see metamodel.Constraint#getColumns()
 	 * @see #getConstraint()
 	 * @generated
 	 */
-	EReference getConstraint_RefTable();
+	EReference getConstraint_Columns();
+
+	/**
+	 * Returns the meta object for the attribute '{@link metamodel.Constraint#getReference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reference</em>'.
+	 * @see metamodel.Constraint#getReference()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EAttribute getConstraint_Reference();
 
 	/**
 	 * Returns the meta object for class '{@link metamodel.Column <em>Column</em>}'.
@@ -562,15 +694,15 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getColumn_Nullable();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link metamodel.Column#getSequenceColumn <em>Sequence Column</em>}'.
+	 * Returns the meta object for the attribute '{@link metamodel.Column#getSize <em>Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Sequence Column</em>'.
-	 * @see metamodel.Column#getSequenceColumn()
+	 * @return the meta object for the attribute '<em>Size</em>'.
+	 * @see metamodel.Column#getSize()
 	 * @see #getColumn()
 	 * @generated
 	 */
-	EReference getColumn_SequenceColumn();
+	EAttribute getColumn_Size();
 
 	/**
 	 * Returns the meta object for class '{@link metamodel.Sequence <em>Sequence</em>}'.
@@ -616,26 +748,26 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getSequence_MaxValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link metamodel.Sequence#getIncrement <em>Increment</em>}'.
+	 * Returns the meta object for the attribute '{@link metamodel.Sequence#getIncrementby <em>Incrementby</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Increment</em>'.
-	 * @see metamodel.Sequence#getIncrement()
+	 * @return the meta object for the attribute '<em>Incrementby</em>'.
+	 * @see metamodel.Sequence#getIncrementby()
 	 * @see #getSequence()
 	 * @generated
 	 */
-	EAttribute getSequence_Increment();
+	EAttribute getSequence_Incrementby();
 
 	/**
-	 * Returns the meta object for the attribute '{@link metamodel.Sequence#getStart <em>Start</em>}'.
+	 * Returns the meta object for the attribute '{@link metamodel.Sequence#getStartwith <em>Startwith</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see metamodel.Sequence#getStart()
+	 * @return the meta object for the attribute '<em>Startwith</em>'.
+	 * @see metamodel.Sequence#getStartwith()
 	 * @see #getSequence()
 	 * @generated
 	 */
-	EAttribute getSequence_Start();
+	EAttribute getSequence_Startwith();
 
 	/**
 	 * Returns the meta object for the attribute '{@link metamodel.Sequence#getCurrentValue <em>Current Value</em>}'.
@@ -649,24 +781,88 @@ public interface MetamodelPackage extends EPackage {
 	EAttribute getSequence_CurrentValue();
 
 	/**
-	 * Returns the meta object for enum '{@link metamodel.ColumnType <em>Column Type</em>}'.
+	 * Returns the meta object for the attribute '{@link metamodel.Sequence#isCycle <em>Cycle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Column Type</em>'.
-	 * @see metamodel.ColumnType
+	 * @return the meta object for the attribute '<em>Cycle</em>'.
+	 * @see metamodel.Sequence#isCycle()
+	 * @see #getSequence()
 	 * @generated
 	 */
-	EEnum getColumnType();
+	EAttribute getSequence_Cycle();
 
 	/**
-	 * Returns the meta object for enum '{@link metamodel.TypeConstraint <em>Type Constraint</em>}'.
+	 * Returns the meta object for class '{@link metamodel.Row <em>Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Type Constraint</em>'.
-	 * @see metamodel.TypeConstraint
+	 * @return the meta object for class '<em>Row</em>'.
+	 * @see metamodel.Row
 	 * @generated
 	 */
-	EEnum getTypeConstraint();
+	EClass getRow();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link metamodel.Row#getCells <em>Cells</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Cells</em>'.
+	 * @see metamodel.Row#getCells()
+	 * @see #getRow()
+	 * @generated
+	 */
+	EReference getRow_Cells();
+
+	/**
+	 * Returns the meta object for class '{@link metamodel.Cell <em>Cell</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cell</em>'.
+	 * @see metamodel.Cell
+	 * @generated
+	 */
+	EClass getCell();
+
+	/**
+	 * Returns the meta object for the attribute '{@link metamodel.Cell#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see metamodel.Cell#getValue()
+	 * @see #getCell()
+	 * @generated
+	 */
+	EAttribute getCell_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link metamodel.Cell#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Column</em>'.
+	 * @see metamodel.Cell#getColumn()
+	 * @see #getCell()
+	 * @generated
+	 */
+	EReference getCell_Column();
+
+	/**
+	 * Returns the meta object for enum '{@link metamodel.Datatye <em>Datatye</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Datatye</em>'.
+	 * @see metamodel.Datatye
+	 * @generated
+	 */
+	EEnum getDatatye();
+
+	/**
+	 * Returns the meta object for enum '{@link metamodel.ConstraintType <em>Constraint Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Constraint Type</em>'.
+	 * @see metamodel.ConstraintType
+	 * @generated
+	 */
+	EEnum getConstraintType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -692,14 +888,14 @@ public interface MetamodelPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link metamodel.impl.SchemaImpl <em>Schema</em>}' class.
+		 * The meta object literal for the '{@link metamodel.impl.DatabaseImpl <em>Database</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see metamodel.impl.SchemaImpl
-		 * @see metamodel.impl.MetamodelPackageImpl#getSchema()
+		 * @see metamodel.impl.DatabaseImpl
+		 * @see metamodel.impl.MetamodelPackageImpl#getDatabase()
 		 * @generated
 		 */
-		EClass SCHEMA = eINSTANCE.getSchema();
+		EClass DATABASE = eINSTANCE.getDatabase();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -707,7 +903,7 @@ public interface MetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCHEMA__NAME = eINSTANCE.getSchema_Name();
+		EAttribute DATABASE__NAME = eINSTANCE.getDatabase_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Table</b></em>' containment reference list feature.
@@ -715,15 +911,15 @@ public interface MetamodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SCHEMA__TABLE = eINSTANCE.getSchema_Table();
+		EReference DATABASE__TABLE = eINSTANCE.getDatabase_Table();
 
 		/**
-		 * The meta object literal for the '<em><b>Sequence</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Sequences</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SCHEMA__SEQUENCE = eINSTANCE.getSchema_Sequence();
+		EReference DATABASE__SEQUENCES = eINSTANCE.getDatabase_Sequences();
 
 		/**
 		 * The meta object literal for the '{@link metamodel.impl.TableImpl <em>Table</em>}' class.
@@ -744,20 +940,28 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute TABLE__NAME = eINSTANCE.getTable_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Constraint</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TABLE__CONSTRAINT = eINSTANCE.getTable_Constraint();
+		EReference TABLE__CONSTRAINTS = eINSTANCE.getTable_Constraints();
 
 		/**
-		 * The meta object literal for the '<em><b>Column</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TABLE__COLUMN = eINSTANCE.getTable_Column();
+		EReference TABLE__COLUMNS = eINSTANCE.getTable_Columns();
+
+		/**
+		 * The meta object literal for the '<em><b>Rows</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TABLE__ROWS = eINSTANCE.getTable_Rows();
 
 		/**
 		 * The meta object literal for the '{@link metamodel.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -786,12 +990,20 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute CONSTRAINT__TYPE = eINSTANCE.getConstraint_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Ref Table</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONSTRAINT__REF_TABLE = eINSTANCE.getConstraint_RefTable();
+		EReference CONSTRAINT__COLUMNS = eINSTANCE.getConstraint_Columns();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONSTRAINT__REFERENCE = eINSTANCE.getConstraint_Reference();
 
 		/**
 		 * The meta object literal for the '{@link metamodel.impl.ColumnImpl <em>Column</em>}' class.
@@ -828,12 +1040,12 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute COLUMN__NULLABLE = eINSTANCE.getColumn_Nullable();
 
 		/**
-		 * The meta object literal for the '<em><b>Sequence Column</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COLUMN__SEQUENCE_COLUMN = eINSTANCE.getColumn_SequenceColumn();
+		EAttribute COLUMN__SIZE = eINSTANCE.getColumn_Size();
 
 		/**
 		 * The meta object literal for the '{@link metamodel.impl.SequenceImpl <em>Sequence</em>}' class.
@@ -870,20 +1082,20 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute SEQUENCE__MAX_VALUE = eINSTANCE.getSequence_MaxValue();
 
 		/**
-		 * The meta object literal for the '<em><b>Increment</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Incrementby</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEQUENCE__INCREMENT = eINSTANCE.getSequence_Increment();
+		EAttribute SEQUENCE__INCREMENTBY = eINSTANCE.getSequence_Incrementby();
 
 		/**
-		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Startwith</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEQUENCE__START = eINSTANCE.getSequence_Start();
+		EAttribute SEQUENCE__STARTWITH = eINSTANCE.getSequence_Startwith();
 
 		/**
 		 * The meta object literal for the '<em><b>Current Value</b></em>' attribute feature.
@@ -894,24 +1106,76 @@ public interface MetamodelPackage extends EPackage {
 		EAttribute SEQUENCE__CURRENT_VALUE = eINSTANCE.getSequence_CurrentValue();
 
 		/**
-		 * The meta object literal for the '{@link metamodel.ColumnType <em>Column Type</em>}' enum.
+		 * The meta object literal for the '<em><b>Cycle</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see metamodel.ColumnType
-		 * @see metamodel.impl.MetamodelPackageImpl#getColumnType()
 		 * @generated
 		 */
-		EEnum COLUMN_TYPE = eINSTANCE.getColumnType();
+		EAttribute SEQUENCE__CYCLE = eINSTANCE.getSequence_Cycle();
 
 		/**
-		 * The meta object literal for the '{@link metamodel.TypeConstraint <em>Type Constraint</em>}' enum.
+		 * The meta object literal for the '{@link metamodel.impl.RowImpl <em>Row</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see metamodel.TypeConstraint
-		 * @see metamodel.impl.MetamodelPackageImpl#getTypeConstraint()
+		 * @see metamodel.impl.RowImpl
+		 * @see metamodel.impl.MetamodelPackageImpl#getRow()
 		 * @generated
 		 */
-		EEnum TYPE_CONSTRAINT = eINSTANCE.getTypeConstraint();
+		EClass ROW = eINSTANCE.getRow();
+
+		/**
+		 * The meta object literal for the '<em><b>Cells</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROW__CELLS = eINSTANCE.getRow_Cells();
+
+		/**
+		 * The meta object literal for the '{@link metamodel.impl.CellImpl <em>Cell</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see metamodel.impl.CellImpl
+		 * @see metamodel.impl.MetamodelPackageImpl#getCell()
+		 * @generated
+		 */
+		EClass CELL = eINSTANCE.getCell();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CELL__VALUE = eINSTANCE.getCell_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CELL__COLUMN = eINSTANCE.getCell_Column();
+
+		/**
+		 * The meta object literal for the '{@link metamodel.Datatye <em>Datatye</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see metamodel.Datatye
+		 * @see metamodel.impl.MetamodelPackageImpl#getDatatye()
+		 * @generated
+		 */
+		EEnum DATATYE = eINSTANCE.getDatatye();
+
+		/**
+		 * The meta object literal for the '{@link metamodel.ConstraintType <em>Constraint Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see metamodel.ConstraintType
+		 * @see metamodel.impl.MetamodelPackageImpl#getConstraintType()
+		 * @generated
+		 */
+		EEnum CONSTRAINT_TYPE = eINSTANCE.getConstraintType();
 
 	}
 

@@ -3,15 +3,12 @@
 package metamodel.impl;
 
 import metamodel.Column;
-import metamodel.ColumnType;
+import metamodel.Datatye;
 import metamodel.MetamodelPackage;
-import metamodel.Sequence;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -26,7 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link metamodel.impl.ColumnImpl#getName <em>Name</em>}</li>
  *   <li>{@link metamodel.impl.ColumnImpl#getType <em>Type</em>}</li>
  *   <li>{@link metamodel.impl.ColumnImpl#isNullable <em>Nullable</em>}</li>
- *   <li>{@link metamodel.impl.ColumnImpl#getSequenceColumn <em>Sequence Column</em>}</li>
+ *   <li>{@link metamodel.impl.ColumnImpl#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,7 +58,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final ColumnType TYPE_EDEFAULT = ColumnType.INT;
+	protected static final Datatye TYPE_EDEFAULT = Datatye.INT;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -71,7 +68,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * @generated
 	 * @ordered
 	 */
-	protected ColumnType type = TYPE_EDEFAULT;
+	protected Datatye type = TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isNullable() <em>Nullable</em>}' attribute.
@@ -94,14 +91,24 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	protected boolean nullable = NULLABLE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSequenceColumn() <em>Sequence Column</em>}' containment reference.
+	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSequenceColumn()
+	 * @see #getSize()
 	 * @generated
 	 * @ordered
 	 */
-	protected Sequence sequenceColumn;
+	protected static final String SIZE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSize()
+	 * @generated
+	 * @ordered
+	 */
+	protected String size = SIZE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,7 +155,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ColumnType getType() {
+	public Datatye getType() {
 		return type;
 	}
 
@@ -157,8 +164,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(ColumnType newType) {
-		ColumnType oldType = type;
+	public void setType(Datatye newType) {
+		Datatye oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.COLUMN__TYPE, oldType, type));
@@ -190,8 +197,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Sequence getSequenceColumn() {
-		return sequenceColumn;
+	public String getSize() {
+		return size;
 	}
 
 	/**
@@ -199,47 +206,11 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSequenceColumn(Sequence newSequenceColumn, NotificationChain msgs) {
-		Sequence oldSequenceColumn = sequenceColumn;
-		sequenceColumn = newSequenceColumn;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MetamodelPackage.COLUMN__SEQUENCE_COLUMN, oldSequenceColumn, newSequenceColumn);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSequenceColumn(Sequence newSequenceColumn) {
-		if (newSequenceColumn != sequenceColumn) {
-			NotificationChain msgs = null;
-			if (sequenceColumn != null)
-				msgs = ((InternalEObject)sequenceColumn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MetamodelPackage.COLUMN__SEQUENCE_COLUMN, null, msgs);
-			if (newSequenceColumn != null)
-				msgs = ((InternalEObject)newSequenceColumn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MetamodelPackage.COLUMN__SEQUENCE_COLUMN, null, msgs);
-			msgs = basicSetSequenceColumn(newSequenceColumn, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.COLUMN__SEQUENCE_COLUMN, newSequenceColumn, newSequenceColumn));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case MetamodelPackage.COLUMN__SEQUENCE_COLUMN:
-				return basicSetSequenceColumn(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setSize(String newSize) {
+		String oldSize = size;
+		size = newSize;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.COLUMN__SIZE, oldSize, size));
 	}
 
 	/**
@@ -256,8 +227,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 				return getType();
 			case MetamodelPackage.COLUMN__NULLABLE:
 				return isNullable();
-			case MetamodelPackage.COLUMN__SEQUENCE_COLUMN:
-				return getSequenceColumn();
+			case MetamodelPackage.COLUMN__SIZE:
+				return getSize();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -274,13 +245,13 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 				setName((String)newValue);
 				return;
 			case MetamodelPackage.COLUMN__TYPE:
-				setType((ColumnType)newValue);
+				setType((Datatye)newValue);
 				return;
 			case MetamodelPackage.COLUMN__NULLABLE:
 				setNullable((Boolean)newValue);
 				return;
-			case MetamodelPackage.COLUMN__SEQUENCE_COLUMN:
-				setSequenceColumn((Sequence)newValue);
+			case MetamodelPackage.COLUMN__SIZE:
+				setSize((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -303,8 +274,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 			case MetamodelPackage.COLUMN__NULLABLE:
 				setNullable(NULLABLE_EDEFAULT);
 				return;
-			case MetamodelPackage.COLUMN__SEQUENCE_COLUMN:
-				setSequenceColumn((Sequence)null);
+			case MetamodelPackage.COLUMN__SIZE:
+				setSize(SIZE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -324,8 +295,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 				return type != TYPE_EDEFAULT;
 			case MetamodelPackage.COLUMN__NULLABLE:
 				return nullable != NULLABLE_EDEFAULT;
-			case MetamodelPackage.COLUMN__SEQUENCE_COLUMN:
-				return sequenceColumn != null;
+			case MetamodelPackage.COLUMN__SIZE:
+				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -346,6 +317,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		result.append(type);
 		result.append(", nullable: ");
 		result.append(nullable);
+		result.append(", size: ");
+		result.append(size);
 		result.append(')');
 		return result.toString();
 	}

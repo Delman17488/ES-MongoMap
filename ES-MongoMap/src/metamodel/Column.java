@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link metamodel.Column#getName <em>Name</em>}</li>
  *   <li>{@link metamodel.Column#getType <em>Type</em>}</li>
  *   <li>{@link metamodel.Column#isNullable <em>Nullable</em>}</li>
- *   <li>{@link metamodel.Column#getSequenceColumn <em>Sequence Column</em>}</li>
+ *   <li>{@link metamodel.Column#getSize <em>Size</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,7 +52,7 @@ public interface Column extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link metamodel.ColumnType}.
+	 * The literals are from the enumeration {@link metamodel.Datatye}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -60,24 +60,24 @@ public interface Column extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see metamodel.ColumnType
-	 * @see #setType(ColumnType)
+	 * @see metamodel.Datatye
+	 * @see #setType(Datatye)
 	 * @see metamodel.MetamodelPackage#getColumn_Type()
 	 * @model
 	 * @generated
 	 */
-	ColumnType getType();
+	Datatye getType();
 
 	/**
 	 * Sets the value of the '{@link metamodel.Column#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see metamodel.ColumnType
+	 * @see metamodel.Datatye
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(ColumnType value);
+	void setType(Datatye value);
 
 	/**
 	 * Returns the value of the '<em><b>Nullable</b></em>' attribute.
@@ -106,29 +106,29 @@ public interface Column extends EObject {
 	void setNullable(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Sequence Column</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Size</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sequence Column</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Size</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sequence Column</em>' containment reference.
-	 * @see #setSequenceColumn(Sequence)
-	 * @see metamodel.MetamodelPackage#getColumn_SequenceColumn()
-	 * @model containment="true"
+	 * @return the value of the '<em>Size</em>' attribute.
+	 * @see #setSize(String)
+	 * @see metamodel.MetamodelPackage#getColumn_Size()
+	 * @model
 	 * @generated
 	 */
-	Sequence getSequenceColumn();
+	String getSize();
 
 	/**
-	 * Sets the value of the '{@link metamodel.Column#getSequenceColumn <em>Sequence Column</em>}' containment reference.
+	 * Sets the value of the '{@link metamodel.Column#getSize <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sequence Column</em>' containment reference.
-	 * @see #getSequenceColumn()
+	 * @param value the new value of the '<em>Size</em>' attribute.
+	 * @see #getSize()
 	 * @generated
 	 */
-	void setSequenceColumn(Sequence value);
+	void setSize(String value);
 
 } // Column

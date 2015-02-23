@@ -22,13 +22,13 @@ public interface MetamodelFactory extends EFactory {
 	MetamodelFactory eINSTANCE = metamodel.impl.MetamodelFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Schema</em>'.
+	 * Returns a new object of class '<em>Database</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Schema</em>'.
+	 * @return a new object of class '<em>Database</em>'.
 	 * @generated
 	 */
-	Schema createSchema();
+	Database createDatabase();
 
 	/**
 	 * Returns a new object of class '<em>Table</em>'.
@@ -65,6 +65,24 @@ public interface MetamodelFactory extends EFactory {
 	 * @generated
 	 */
 	Sequence createSequence();
+
+	/**
+	 * Returns a new object of class '<em>Row</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Row</em>'.
+	 * @generated
+	 */
+	Row createRow();
+
+	/**
+	 * Returns a new object of class '<em>Cell</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cell</em>'.
+	 * @generated
+	 */
+	Cell createCell();
 
 	/**
 	 * Returns the package supported by this factory.

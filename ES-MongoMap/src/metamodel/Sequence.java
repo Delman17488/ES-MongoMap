@@ -15,9 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link metamodel.Sequence#getName <em>Name</em>}</li>
  *   <li>{@link metamodel.Sequence#getMinValue <em>Min Value</em>}</li>
  *   <li>{@link metamodel.Sequence#getMaxValue <em>Max Value</em>}</li>
- *   <li>{@link metamodel.Sequence#getIncrement <em>Increment</em>}</li>
- *   <li>{@link metamodel.Sequence#getStart <em>Start</em>}</li>
+ *   <li>{@link metamodel.Sequence#getIncrementby <em>Incrementby</em>}</li>
+ *   <li>{@link metamodel.Sequence#getStartwith <em>Startwith</em>}</li>
  *   <li>{@link metamodel.Sequence#getCurrentValue <em>Current Value</em>}</li>
+ *   <li>{@link metamodel.Sequence#isCycle <em>Cycle</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,56 +106,56 @@ public interface Sequence extends EObject {
 	void setMaxValue(long value);
 
 	/**
-	 * Returns the value of the '<em><b>Increment</b></em>' attribute.
+	 * Returns the value of the '<em><b>Incrementby</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Increment</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Incrementby</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Increment</em>' attribute.
-	 * @see #setIncrement(int)
-	 * @see metamodel.MetamodelPackage#getSequence_Increment()
+	 * @return the value of the '<em>Incrementby</em>' attribute.
+	 * @see #setIncrementby(int)
+	 * @see metamodel.MetamodelPackage#getSequence_Incrementby()
 	 * @model
 	 * @generated
 	 */
-	int getIncrement();
+	int getIncrementby();
 
 	/**
-	 * Sets the value of the '{@link metamodel.Sequence#getIncrement <em>Increment</em>}' attribute.
+	 * Sets the value of the '{@link metamodel.Sequence#getIncrementby <em>Incrementby</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Increment</em>' attribute.
-	 * @see #getIncrement()
+	 * @param value the new value of the '<em>Incrementby</em>' attribute.
+	 * @see #getIncrementby()
 	 * @generated
 	 */
-	void setIncrement(int value);
+	void setIncrementby(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Start</b></em>' attribute.
+	 * Returns the value of the '<em><b>Startwith</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Start</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Startwith</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Start</em>' attribute.
-	 * @see #setStart(long)
-	 * @see metamodel.MetamodelPackage#getSequence_Start()
+	 * @return the value of the '<em>Startwith</em>' attribute.
+	 * @see #setStartwith(long)
+	 * @see metamodel.MetamodelPackage#getSequence_Startwith()
 	 * @model
 	 * @generated
 	 */
-	long getStart();
+	long getStartwith();
 
 	/**
-	 * Sets the value of the '{@link metamodel.Sequence#getStart <em>Start</em>}' attribute.
+	 * Sets the value of the '{@link metamodel.Sequence#getStartwith <em>Startwith</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Start</em>' attribute.
-	 * @see #getStart()
+	 * @param value the new value of the '<em>Startwith</em>' attribute.
+	 * @see #getStartwith()
 	 * @generated
 	 */
-	void setStart(long value);
+	void setStartwith(long value);
 
 	/**
 	 * Returns the value of the '<em><b>Current Value</b></em>' attribute.
@@ -181,5 +182,31 @@ public interface Sequence extends EObject {
 	 * @generated
 	 */
 	void setCurrentValue(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Cycle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cycle</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cycle</em>' attribute.
+	 * @see #setCycle(boolean)
+	 * @see metamodel.MetamodelPackage#getSequence_Cycle()
+	 * @model
+	 * @generated
+	 */
+	boolean isCycle();
+
+	/**
+	 * Sets the value of the '{@link metamodel.Sequence#isCycle <em>Cycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cycle</em>' attribute.
+	 * @see #isCycle()
+	 * @generated
+	 */
+	void setCycle(boolean value);
 
 } // Sequence

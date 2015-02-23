@@ -22,9 +22,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link metamodel.impl.SequenceImpl#getName <em>Name</em>}</li>
  *   <li>{@link metamodel.impl.SequenceImpl#getMinValue <em>Min Value</em>}</li>
  *   <li>{@link metamodel.impl.SequenceImpl#getMaxValue <em>Max Value</em>}</li>
- *   <li>{@link metamodel.impl.SequenceImpl#getIncrement <em>Increment</em>}</li>
- *   <li>{@link metamodel.impl.SequenceImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link metamodel.impl.SequenceImpl#getIncrementby <em>Incrementby</em>}</li>
+ *   <li>{@link metamodel.impl.SequenceImpl#getStartwith <em>Startwith</em>}</li>
  *   <li>{@link metamodel.impl.SequenceImpl#getCurrentValue <em>Current Value</em>}</li>
+ *   <li>{@link metamodel.impl.SequenceImpl#isCycle <em>Cycle</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,44 +93,44 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	protected long maxValue = MAX_VALUE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getIncrement() <em>Increment</em>}' attribute.
+	 * The default value of the '{@link #getIncrementby() <em>Incrementby</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIncrement()
+	 * @see #getIncrementby()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int INCREMENT_EDEFAULT = 0;
+	protected static final int INCREMENTBY_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getIncrement() <em>Increment</em>}' attribute.
+	 * The cached value of the '{@link #getIncrementby() <em>Incrementby</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIncrement()
+	 * @see #getIncrementby()
 	 * @generated
 	 * @ordered
 	 */
-	protected int increment = INCREMENT_EDEFAULT;
+	protected int incrementby = INCREMENTBY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
+	 * The default value of the '{@link #getStartwith() <em>Startwith</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStart()
+	 * @see #getStartwith()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final long START_EDEFAULT = 0L;
+	protected static final long STARTWITH_EDEFAULT = 0L;
 
 	/**
-	 * The cached value of the '{@link #getStart() <em>Start</em>}' attribute.
+	 * The cached value of the '{@link #getStartwith() <em>Startwith</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStart()
+	 * @see #getStartwith()
 	 * @generated
 	 * @ordered
 	 */
-	protected long start = START_EDEFAULT;
+	protected long startwith = STARTWITH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCurrentValue() <em>Current Value</em>}' attribute.
@@ -150,6 +151,26 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	 * @ordered
 	 */
 	protected long currentValue = CURRENT_VALUE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCycle() <em>Cycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCycle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CYCLE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCycle() <em>Cycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCycle()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean cycle = CYCLE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -238,8 +259,8 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getIncrement() {
-		return increment;
+	public int getIncrementby() {
+		return incrementby;
 	}
 
 	/**
@@ -247,11 +268,11 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIncrement(int newIncrement) {
-		int oldIncrement = increment;
-		increment = newIncrement;
+	public void setIncrementby(int newIncrementby) {
+		int oldIncrementby = incrementby;
+		incrementby = newIncrementby;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.SEQUENCE__INCREMENT, oldIncrement, increment));
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.SEQUENCE__INCREMENTBY, oldIncrementby, incrementby));
 	}
 
 	/**
@@ -259,8 +280,8 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public long getStart() {
-		return start;
+	public long getStartwith() {
+		return startwith;
 	}
 
 	/**
@@ -268,11 +289,11 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStart(long newStart) {
-		long oldStart = start;
-		start = newStart;
+	public void setStartwith(long newStartwith) {
+		long oldStartwith = startwith;
+		startwith = newStartwith;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.SEQUENCE__START, oldStart, start));
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.SEQUENCE__STARTWITH, oldStartwith, startwith));
 	}
 
 	/**
@@ -301,6 +322,27 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isCycle() {
+		return cycle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCycle(boolean newCycle) {
+		boolean oldCycle = cycle;
+		cycle = newCycle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.SEQUENCE__CYCLE, oldCycle, cycle));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -310,12 +352,14 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 				return getMinValue();
 			case MetamodelPackage.SEQUENCE__MAX_VALUE:
 				return getMaxValue();
-			case MetamodelPackage.SEQUENCE__INCREMENT:
-				return getIncrement();
-			case MetamodelPackage.SEQUENCE__START:
-				return getStart();
+			case MetamodelPackage.SEQUENCE__INCREMENTBY:
+				return getIncrementby();
+			case MetamodelPackage.SEQUENCE__STARTWITH:
+				return getStartwith();
 			case MetamodelPackage.SEQUENCE__CURRENT_VALUE:
 				return getCurrentValue();
+			case MetamodelPackage.SEQUENCE__CYCLE:
+				return isCycle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -337,14 +381,17 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 			case MetamodelPackage.SEQUENCE__MAX_VALUE:
 				setMaxValue((Long)newValue);
 				return;
-			case MetamodelPackage.SEQUENCE__INCREMENT:
-				setIncrement((Integer)newValue);
+			case MetamodelPackage.SEQUENCE__INCREMENTBY:
+				setIncrementby((Integer)newValue);
 				return;
-			case MetamodelPackage.SEQUENCE__START:
-				setStart((Long)newValue);
+			case MetamodelPackage.SEQUENCE__STARTWITH:
+				setStartwith((Long)newValue);
 				return;
 			case MetamodelPackage.SEQUENCE__CURRENT_VALUE:
 				setCurrentValue((Long)newValue);
+				return;
+			case MetamodelPackage.SEQUENCE__CYCLE:
+				setCycle((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -367,14 +414,17 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 			case MetamodelPackage.SEQUENCE__MAX_VALUE:
 				setMaxValue(MAX_VALUE_EDEFAULT);
 				return;
-			case MetamodelPackage.SEQUENCE__INCREMENT:
-				setIncrement(INCREMENT_EDEFAULT);
+			case MetamodelPackage.SEQUENCE__INCREMENTBY:
+				setIncrementby(INCREMENTBY_EDEFAULT);
 				return;
-			case MetamodelPackage.SEQUENCE__START:
-				setStart(START_EDEFAULT);
+			case MetamodelPackage.SEQUENCE__STARTWITH:
+				setStartwith(STARTWITH_EDEFAULT);
 				return;
 			case MetamodelPackage.SEQUENCE__CURRENT_VALUE:
 				setCurrentValue(CURRENT_VALUE_EDEFAULT);
+				return;
+			case MetamodelPackage.SEQUENCE__CYCLE:
+				setCycle(CYCLE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -394,12 +444,14 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 				return minValue != MIN_VALUE_EDEFAULT;
 			case MetamodelPackage.SEQUENCE__MAX_VALUE:
 				return maxValue != MAX_VALUE_EDEFAULT;
-			case MetamodelPackage.SEQUENCE__INCREMENT:
-				return increment != INCREMENT_EDEFAULT;
-			case MetamodelPackage.SEQUENCE__START:
-				return start != START_EDEFAULT;
+			case MetamodelPackage.SEQUENCE__INCREMENTBY:
+				return incrementby != INCREMENTBY_EDEFAULT;
+			case MetamodelPackage.SEQUENCE__STARTWITH:
+				return startwith != STARTWITH_EDEFAULT;
 			case MetamodelPackage.SEQUENCE__CURRENT_VALUE:
 				return currentValue != CURRENT_VALUE_EDEFAULT;
+			case MetamodelPackage.SEQUENCE__CYCLE:
+				return cycle != CYCLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -420,12 +472,14 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		result.append(minValue);
 		result.append(", maxValue: ");
 		result.append(maxValue);
-		result.append(", increment: ");
-		result.append(increment);
-		result.append(", start: ");
-		result.append(start);
+		result.append(", incrementby: ");
+		result.append(incrementby);
+		result.append(", startwith: ");
+		result.append(startwith);
 		result.append(", currentValue: ");
 		result.append(currentValue);
+		result.append(", cycle: ");
+		result.append(cycle);
 		result.append(')');
 		return result.toString();
 	}

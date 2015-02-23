@@ -8,23 +8,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Schema</b></em>'.
+ * A representation of the model object '<em><b>Database</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link metamodel.Schema#getName <em>Name</em>}</li>
- *   <li>{@link metamodel.Schema#getTable <em>Table</em>}</li>
- *   <li>{@link metamodel.Schema#getSequence <em>Sequence</em>}</li>
+ *   <li>{@link metamodel.Database#getName <em>Name</em>}</li>
+ *   <li>{@link metamodel.Database#getTable <em>Table</em>}</li>
+ *   <li>{@link metamodel.Database#getSequences <em>Sequences</em>}</li>
  * </ul>
  * </p>
  *
- * @see metamodel.MetamodelPackage#getSchema()
+ * @see metamodel.MetamodelPackage#getDatabase()
  * @model
  * @generated
  */
-public interface Schema extends EObject {
+public interface Database extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -35,14 +35,14 @@ public interface Schema extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see metamodel.MetamodelPackage#getSchema_Name()
+	 * @see metamodel.MetamodelPackage#getDatabase_Name()
 	 * @model
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link metamodel.Schema#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link metamodel.Database#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -61,26 +61,26 @@ public interface Schema extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Table</em>' containment reference list.
-	 * @see metamodel.MetamodelPackage#getSchema_Table()
+	 * @see metamodel.MetamodelPackage#getDatabase_Table()
 	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Table> getTable();
 
 	/**
-	 * Returns the value of the '<em><b>Sequence</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Sequences</b></em>' containment reference list.
 	 * The list contents are of type {@link metamodel.Sequence}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Sequence</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Sequences</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sequence</em>' containment reference list.
-	 * @see metamodel.MetamodelPackage#getSchema_Sequence()
+	 * @return the value of the '<em>Sequences</em>' containment reference list.
+	 * @see metamodel.MetamodelPackage#getDatabase_Sequences()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Sequence> getSequence();
+	EList<Sequence> getSequences();
 
-} // Schema
+} // Database

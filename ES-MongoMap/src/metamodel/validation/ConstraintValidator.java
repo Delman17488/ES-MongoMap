@@ -5,7 +5,7 @@
 package metamodel.validation;
 
 import metamodel.Column;
-import metamodel.TypeConstraint;
+import metamodel.ConstraintType;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,6 +19,7 @@ public interface ConstraintValidator {
 	boolean validate();
 
 	boolean validateName(String value);
-	boolean validateType(TypeConstraint value);
-	boolean validateRefTable(EList<Column> value);
+	boolean validateType(ConstraintType value);
+	boolean validateColumns(EList<Column> value);
+	boolean validateReference(String value);
 }

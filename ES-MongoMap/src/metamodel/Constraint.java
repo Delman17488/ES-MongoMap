@@ -16,7 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link metamodel.Constraint#getName <em>Name</em>}</li>
  *   <li>{@link metamodel.Constraint#getType <em>Type</em>}</li>
- *   <li>{@link metamodel.Constraint#getRefTable <em>Ref Table</em>}</li>
+ *   <li>{@link metamodel.Constraint#getColumns <em>Columns</em>}</li>
+ *   <li>{@link metamodel.Constraint#getReference <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,7 +54,7 @@ public interface Constraint extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link metamodel.TypeConstraint}.
+	 * The literals are from the enumeration {@link metamodel.ConstraintType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -61,39 +62,65 @@ public interface Constraint extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see metamodel.TypeConstraint
-	 * @see #setType(TypeConstraint)
+	 * @see metamodel.ConstraintType
+	 * @see #setType(ConstraintType)
 	 * @see metamodel.MetamodelPackage#getConstraint_Type()
 	 * @model
 	 * @generated
 	 */
-	TypeConstraint getType();
+	ConstraintType getType();
 
 	/**
 	 * Sets the value of the '{@link metamodel.Constraint#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see metamodel.TypeConstraint
+	 * @see metamodel.ConstraintType
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(TypeConstraint value);
+	void setType(ConstraintType value);
 
 	/**
-	 * Returns the value of the '<em><b>Ref Table</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Columns</b></em>' containment reference list.
 	 * The list contents are of type {@link metamodel.Column}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Ref Table</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Columns</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ref Table</em>' containment reference list.
-	 * @see metamodel.MetamodelPackage#getConstraint_RefTable()
+	 * @return the value of the '<em>Columns</em>' containment reference list.
+	 * @see metamodel.MetamodelPackage#getConstraint_Columns()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList<Column> getRefTable();
+	EList<Column> getColumns();
+
+	/**
+	 * Returns the value of the '<em><b>Reference</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Reference</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Reference</em>' attribute.
+	 * @see #setReference(String)
+	 * @see metamodel.MetamodelPackage#getConstraint_Reference()
+	 * @model id="true"
+	 * @generated
+	 */
+	String getReference();
+
+	/**
+	 * Sets the value of the '{@link metamodel.Constraint#getReference <em>Reference</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Reference</em>' attribute.
+	 * @see #getReference()
+	 * @generated
+	 */
+	void setReference(String value);
 
 } // Constraint

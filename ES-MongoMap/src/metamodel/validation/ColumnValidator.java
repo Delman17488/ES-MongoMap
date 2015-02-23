@@ -4,8 +4,7 @@
  */
 package metamodel.validation;
 
-import metamodel.ColumnType;
-import metamodel.Sequence;
+import metamodel.Datatye;
 
 /**
  * A sample validator interface for {@link metamodel.Column}.
@@ -17,7 +16,7 @@ public interface ColumnValidator {
 	boolean validate();
 
 	boolean validateName(String value);
-	boolean validateType(ColumnType value);
+	boolean validateType(Datatye value);
 	boolean validateNullable(boolean value);
-	boolean validateSequenceColumn(Sequence value);
+	boolean validateSize(String value);
 }

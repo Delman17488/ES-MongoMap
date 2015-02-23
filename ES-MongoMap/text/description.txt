@@ -7,45 +7,66 @@ This can be disabled with -vmargs -Dorg.eclipse.emf.examples.generator.validator
 
 Package metamodel <uk.ac.bham.mongoMap.sql>
 
-  Class Schema
+  Class Database
     Attribute name : EString
     Reference table : Table<<0..*>>
-    Reference sequence : Sequence<<0..*>>
+    Reference sequences : Sequence<<0..*>>
 
   Class Table
     Attribute name : EString
-    Reference constraint : Constraint<<0..*>>
-    Reference column : Column<<1..*>>
+    Reference constraints : Constraint<<0..*>>
+    Reference columns : Column<<1..*>>
+    Reference rows : Row<<0..*>>
 
   Class Constraint
     Attribute name : EString
-    Attribute type : TypeConstraint
-    Reference refTable : Column<<1..*>>
+    Attribute type : ConstraintType
+    Reference columns : Column<<1..*>>
+    Attribute reference : EString
 
   Class Column
     Attribute name : EString
-    Attribute type : ColumnType
+    Attribute type : Datatye
     Attribute nullable : EBoolean
-    Reference sequenceColumn : Sequence
+    Attribute size : EString
 
   Class Sequence
     Attribute name : EString
     Attribute minValue : EInt
     Attribute maxValue : ELong
-    Attribute increment : EInt
-    Attribute start : ELong
+    Attribute incrementby : EInt
+    Attribute startwith : ELong
     Attribute currentValue : ELong
+    Attribute cycle : EBoolean
 
-  Enum ColumnType
+  Class Row
+    Reference cells : Cell<<0..*>>
+
+  Class Cell
+    Attribute value : EString
+    Reference column : Column<<1..1>>
+
+  Enum Datatye
     Literal INT = 1
     Literal DOUBLE = 2
     Literal BOOLEAN = 3
     Literal STRING = 4
     Literal DATE = 5
     Literal FLOAT = 6
+    Literal TIMESTAMP = 0
+    Literal TEXT = 0
+    Literal DECIMAL = 0
+    Literal DATETIME = 0
+    Literal VARCHAR = 0
+    Literal CHAR = 0
+    Literal TINYTEXT = 0
+    Literal BLOB = 0
+    Literal LONGTEXT = 0
+    Literal SMALLINT = 0
+    Literal BIGINT = 0
 
-  Enum TypeConstraint
-    Literal PrimaryKey = 1
-    Literal ForeignKey = 2
-    Literal Unique = 3
-    Literal CompositePrimaryKey = 4
+  Enum ConstraintType
+    Literal PRIMARY_KEY = 1
+    Literal FOREIGN_KEY = 2
+    Literal UNIQUE = 3
+    Literal COMPOSITE_PRIMARY_KEY = 4

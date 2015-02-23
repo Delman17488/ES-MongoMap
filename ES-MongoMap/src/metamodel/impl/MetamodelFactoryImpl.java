@@ -57,11 +57,13 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case MetamodelPackage.SCHEMA: return createSchema();
+			case MetamodelPackage.DATABASE: return createDatabase();
 			case MetamodelPackage.TABLE: return createTable();
 			case MetamodelPackage.CONSTRAINT: return createConstraint();
 			case MetamodelPackage.COLUMN: return createColumn();
 			case MetamodelPackage.SEQUENCE: return createSequence();
+			case MetamodelPackage.ROW: return createRow();
+			case MetamodelPackage.CELL: return createCell();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,10 +77,10 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case MetamodelPackage.COLUMN_TYPE:
-				return createColumnTypeFromString(eDataType, initialValue);
-			case MetamodelPackage.TYPE_CONSTRAINT:
-				return createTypeConstraintFromString(eDataType, initialValue);
+			case MetamodelPackage.DATATYE:
+				return createDatatyeFromString(eDataType, initialValue);
+			case MetamodelPackage.CONSTRAINT_TYPE:
+				return createConstraintTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -92,10 +94,10 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case MetamodelPackage.COLUMN_TYPE:
-				return convertColumnTypeToString(eDataType, instanceValue);
-			case MetamodelPackage.TYPE_CONSTRAINT:
-				return convertTypeConstraintToString(eDataType, instanceValue);
+			case MetamodelPackage.DATATYE:
+				return convertDatatyeToString(eDataType, instanceValue);
+			case MetamodelPackage.CONSTRAINT_TYPE:
+				return convertConstraintTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -106,9 +108,9 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Schema createSchema() {
-		SchemaImpl schema = new SchemaImpl();
-		return schema;
+	public Database createDatabase() {
+		DatabaseImpl database = new DatabaseImpl();
+		return database;
 	}
 
 	/**
@@ -156,8 +158,28 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ColumnType createColumnTypeFromString(EDataType eDataType, String initialValue) {
-		ColumnType result = ColumnType.get(initialValue);
+	public Row createRow() {
+		RowImpl row = new RowImpl();
+		return row;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Cell createCell() {
+		CellImpl cell = new CellImpl();
+		return cell;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Datatye createDatatyeFromString(EDataType eDataType, String initialValue) {
+		Datatye result = Datatye.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -167,7 +189,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertColumnTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertDatatyeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -176,8 +198,8 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TypeConstraint createTypeConstraintFromString(EDataType eDataType, String initialValue) {
-		TypeConstraint result = TypeConstraint.get(initialValue);
+	public ConstraintType createConstraintTypeFromString(EDataType eDataType, String initialValue) {
+		ConstraintType result = ConstraintType.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -187,7 +209,7 @@ public class MetamodelFactoryImpl extends EFactoryImpl implements MetamodelFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertTypeConstraintToString(EDataType eDataType, Object instanceValue) {
+	public String convertConstraintTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

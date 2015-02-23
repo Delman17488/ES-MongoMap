@@ -2,15 +2,17 @@
  */
 package metamodel.impl;
 
+import metamodel.Cell;
 import metamodel.Column;
-import metamodel.ColumnType;
 import metamodel.Constraint;
+import metamodel.ConstraintType;
+import metamodel.Database;
+import metamodel.Datatye;
 import metamodel.MetamodelFactory;
 import metamodel.MetamodelPackage;
-import metamodel.Schema;
+import metamodel.Row;
 import metamodel.Sequence;
 import metamodel.Table;
-import metamodel.TypeConstraint;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -32,7 +34,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass schemaEClass = null;
+	private EClass databaseEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,14 +69,28 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum columnTypeEEnum = null;
+	private EClass rowEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum typeConstraintEEnum = null;
+	private EClass cellEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum datatyeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum constraintTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -142,8 +158,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSchema() {
-		return schemaEClass;
+	public EClass getDatabase() {
+		return databaseEClass;
 	}
 
 	/**
@@ -151,8 +167,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSchema_Name() {
-		return (EAttribute)schemaEClass.getEStructuralFeatures().get(0);
+	public EAttribute getDatabase_Name() {
+		return (EAttribute)databaseEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -160,8 +176,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchema_Table() {
-		return (EReference)schemaEClass.getEStructuralFeatures().get(1);
+	public EReference getDatabase_Table() {
+		return (EReference)databaseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -169,8 +185,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSchema_Sequence() {
-		return (EReference)schemaEClass.getEStructuralFeatures().get(2);
+	public EReference getDatabase_Sequences() {
+		return (EReference)databaseEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -196,7 +212,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTable_Constraint() {
+	public EReference getTable_Constraints() {
 		return (EReference)tableEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -205,8 +221,17 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTable_Column() {
+	public EReference getTable_Columns() {
 		return (EReference)tableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTable_Rows() {
+		return (EReference)tableEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -241,8 +266,17 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConstraint_RefTable() {
+	public EReference getConstraint_Columns() {
 		return (EReference)constraintEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getConstraint_Reference() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -286,8 +320,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getColumn_SequenceColumn() {
-		return (EReference)columnEClass.getEStructuralFeatures().get(3);
+	public EAttribute getColumn_Size() {
+		return (EAttribute)columnEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -331,7 +365,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSequence_Increment() {
+	public EAttribute getSequence_Incrementby() {
 		return (EAttribute)sequenceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -340,7 +374,7 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSequence_Start() {
+	public EAttribute getSequence_Startwith() {
 		return (EAttribute)sequenceEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -358,8 +392,8 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getColumnType() {
-		return columnTypeEEnum;
+	public EAttribute getSequence_Cycle() {
+		return (EAttribute)sequenceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -367,8 +401,62 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getTypeConstraint() {
-		return typeConstraintEEnum;
+	public EClass getRow() {
+		return rowEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRow_Cells() {
+		return (EReference)rowEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCell() {
+		return cellEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCell_Value() {
+		return (EAttribute)cellEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCell_Column() {
+		return (EReference)cellEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getDatatye() {
+		return datatyeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getConstraintType() {
+		return constraintTypeEEnum;
 	}
 
 	/**
@@ -399,38 +487,48 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		isCreated = true;
 
 		// Create classes and their features
-		schemaEClass = createEClass(SCHEMA);
-		createEAttribute(schemaEClass, SCHEMA__NAME);
-		createEReference(schemaEClass, SCHEMA__TABLE);
-		createEReference(schemaEClass, SCHEMA__SEQUENCE);
+		databaseEClass = createEClass(DATABASE);
+		createEAttribute(databaseEClass, DATABASE__NAME);
+		createEReference(databaseEClass, DATABASE__TABLE);
+		createEReference(databaseEClass, DATABASE__SEQUENCES);
 
 		tableEClass = createEClass(TABLE);
 		createEAttribute(tableEClass, TABLE__NAME);
-		createEReference(tableEClass, TABLE__CONSTRAINT);
-		createEReference(tableEClass, TABLE__COLUMN);
+		createEReference(tableEClass, TABLE__CONSTRAINTS);
+		createEReference(tableEClass, TABLE__COLUMNS);
+		createEReference(tableEClass, TABLE__ROWS);
 
 		constraintEClass = createEClass(CONSTRAINT);
 		createEAttribute(constraintEClass, CONSTRAINT__NAME);
 		createEAttribute(constraintEClass, CONSTRAINT__TYPE);
-		createEReference(constraintEClass, CONSTRAINT__REF_TABLE);
+		createEReference(constraintEClass, CONSTRAINT__COLUMNS);
+		createEAttribute(constraintEClass, CONSTRAINT__REFERENCE);
 
 		columnEClass = createEClass(COLUMN);
 		createEAttribute(columnEClass, COLUMN__NAME);
 		createEAttribute(columnEClass, COLUMN__TYPE);
 		createEAttribute(columnEClass, COLUMN__NULLABLE);
-		createEReference(columnEClass, COLUMN__SEQUENCE_COLUMN);
+		createEAttribute(columnEClass, COLUMN__SIZE);
 
 		sequenceEClass = createEClass(SEQUENCE);
 		createEAttribute(sequenceEClass, SEQUENCE__NAME);
 		createEAttribute(sequenceEClass, SEQUENCE__MIN_VALUE);
 		createEAttribute(sequenceEClass, SEQUENCE__MAX_VALUE);
-		createEAttribute(sequenceEClass, SEQUENCE__INCREMENT);
-		createEAttribute(sequenceEClass, SEQUENCE__START);
+		createEAttribute(sequenceEClass, SEQUENCE__INCREMENTBY);
+		createEAttribute(sequenceEClass, SEQUENCE__STARTWITH);
 		createEAttribute(sequenceEClass, SEQUENCE__CURRENT_VALUE);
+		createEAttribute(sequenceEClass, SEQUENCE__CYCLE);
+
+		rowEClass = createEClass(ROW);
+		createEReference(rowEClass, ROW__CELLS);
+
+		cellEClass = createEClass(CELL);
+		createEAttribute(cellEClass, CELL__VALUE);
+		createEReference(cellEClass, CELL__COLUMN);
 
 		// Create enums
-		columnTypeEEnum = createEEnum(COLUMN_TYPE);
-		typeConstraintEEnum = createEEnum(TYPE_CONSTRAINT);
+		datatyeEEnum = createEEnum(DATATYE);
+		constraintTypeEEnum = createEEnum(CONSTRAINT_TYPE);
 	}
 
 	/**
@@ -463,49 +561,70 @@ public class MetamodelPackageImpl extends EPackageImpl implements MetamodelPacka
 		// Add supertypes to classes
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(schemaEClass, Schema.class, "Schema", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSchema_Name(), ecorePackage.getEString(), "name", null, 0, 1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSchema_Table(), this.getTable(), null, "table", null, 0, -1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSchema_Sequence(), this.getSequence(), null, "sequence", null, 0, -1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(databaseEClass, Database.class, "Database", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDatabase_Name(), ecorePackage.getEString(), "name", null, 0, 1, Database.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDatabase_Table(), this.getTable(), null, "table", null, 0, -1, Database.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDatabase_Sequences(), this.getSequence(), null, "sequences", null, 0, -1, Database.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tableEClass, Table.class, "Table", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTable_Constraint(), this.getConstraint(), null, "constraint", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTable_Column(), this.getColumn(), null, "column", null, 1, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Columns(), this.getColumn(), null, "columns", null, 1, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Rows(), this.getRow(), null, "rows", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConstraint_Name(), ecorePackage.getEString(), "name", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConstraint_Type(), this.getTypeConstraint(), "type", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConstraint_RefTable(), this.getColumn(), null, "refTable", null, 1, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstraint_Type(), this.getConstraintType(), "type", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Columns(), this.getColumn(), null, "columns", null, 1, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConstraint_Reference(), ecorePackage.getEString(), "reference", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getColumn_Type(), this.getColumnType(), "type", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_Type(), this.getDatatye(), "type", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getColumn_SequenceColumn(), this.getSequence(), null, "sequenceColumn", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_Size(), ecorePackage.getEString(), "size", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sequenceEClass, Sequence.class, "Sequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSequence_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequence_MinValue(), ecorePackage.getEInt(), "minValue", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequence_MaxValue(), ecorePackage.getELong(), "maxValue", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSequence_Increment(), ecorePackage.getEInt(), "increment", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSequence_Start(), ecorePackage.getELong(), "start", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequence_Incrementby(), ecorePackage.getEInt(), "incrementby", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequence_Startwith(), ecorePackage.getELong(), "startwith", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSequence_CurrentValue(), ecorePackage.getELong(), "currentValue", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSequence_Cycle(), ecorePackage.getEBoolean(), "cycle", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRow_Cells(), this.getCell(), null, "cells", null, 0, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCell_Value(), ecorePackage.getEString(), "value", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCell_Column(), this.getColumn(), null, "column", null, 1, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(columnTypeEEnum, ColumnType.class, "ColumnType");
-		addEEnumLiteral(columnTypeEEnum, ColumnType.INT);
-		addEEnumLiteral(columnTypeEEnum, ColumnType.DOUBLE);
-		addEEnumLiteral(columnTypeEEnum, ColumnType.BOOLEAN);
-		addEEnumLiteral(columnTypeEEnum, ColumnType.STRING);
-		addEEnumLiteral(columnTypeEEnum, ColumnType.DATE);
-		addEEnumLiteral(columnTypeEEnum, ColumnType.FLOAT);
+		initEEnum(datatyeEEnum, Datatye.class, "Datatye");
+		addEEnumLiteral(datatyeEEnum, Datatye.INT);
+		addEEnumLiteral(datatyeEEnum, Datatye.DOUBLE);
+		addEEnumLiteral(datatyeEEnum, Datatye.BOOLEAN);
+		addEEnumLiteral(datatyeEEnum, Datatye.STRING);
+		addEEnumLiteral(datatyeEEnum, Datatye.DATE);
+		addEEnumLiteral(datatyeEEnum, Datatye.FLOAT);
+		addEEnumLiteral(datatyeEEnum, Datatye.TIMESTAMP);
+		addEEnumLiteral(datatyeEEnum, Datatye.TEXT);
+		addEEnumLiteral(datatyeEEnum, Datatye.DECIMAL);
+		addEEnumLiteral(datatyeEEnum, Datatye.DATETIME);
+		addEEnumLiteral(datatyeEEnum, Datatye.VARCHAR);
+		addEEnumLiteral(datatyeEEnum, Datatye.CHAR);
+		addEEnumLiteral(datatyeEEnum, Datatye.TINYTEXT);
+		addEEnumLiteral(datatyeEEnum, Datatye.BLOB);
+		addEEnumLiteral(datatyeEEnum, Datatye.LONGTEXT);
+		addEEnumLiteral(datatyeEEnum, Datatye.SMALLINT);
+		addEEnumLiteral(datatyeEEnum, Datatye.BIGINT);
 
-		initEEnum(typeConstraintEEnum, TypeConstraint.class, "TypeConstraint");
-		addEEnumLiteral(typeConstraintEEnum, TypeConstraint.PRIMARY_KEY);
-		addEEnumLiteral(typeConstraintEEnum, TypeConstraint.FOREIGN_KEY);
-		addEEnumLiteral(typeConstraintEEnum, TypeConstraint.UNIQUE);
-		addEEnumLiteral(typeConstraintEEnum, TypeConstraint.COMPOSITE_PRIMARY_KEY);
+		initEEnum(constraintTypeEEnum, ConstraintType.class, "ConstraintType");
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.PRIMARY_KEY);
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.FOREIGN_KEY);
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.UNIQUE);
+		addEEnumLiteral(constraintTypeEEnum, ConstraintType.COMPOSITE_PRIMARY_KEY);
 
 		// Create resource
 		createResource(eNS_URI);

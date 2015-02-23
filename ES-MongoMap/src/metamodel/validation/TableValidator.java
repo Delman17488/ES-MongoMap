@@ -6,6 +6,7 @@ package metamodel.validation;
 
 import metamodel.Column;
 import metamodel.Constraint;
+import metamodel.Row;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -19,6 +20,7 @@ public interface TableValidator {
 	boolean validate();
 
 	boolean validateName(String value);
-	boolean validateConstraint(EList<Constraint> value);
-	boolean validateColumn(EList<Column> value);
+	boolean validateConstraints(EList<Constraint> value);
+	boolean validateColumns(EList<Column> value);
+	boolean validateRows(EList<Row> value);
 }

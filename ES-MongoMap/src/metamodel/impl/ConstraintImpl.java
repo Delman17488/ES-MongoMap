@@ -6,8 +6,8 @@ import java.util.Collection;
 
 import metamodel.Column;
 import metamodel.Constraint;
+import metamodel.ConstraintType;
 import metamodel.MetamodelPackage;
-import metamodel.TypeConstraint;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -32,7 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link metamodel.impl.ConstraintImpl#getName <em>Name</em>}</li>
  *   <li>{@link metamodel.impl.ConstraintImpl#getType <em>Type</em>}</li>
- *   <li>{@link metamodel.impl.ConstraintImpl#getRefTable <em>Ref Table</em>}</li>
+ *   <li>{@link metamodel.impl.ConstraintImpl#getColumns <em>Columns</em>}</li>
+ *   <li>{@link metamodel.impl.ConstraintImpl#getReference <em>Reference</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,7 +68,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * @generated
 	 * @ordered
 	 */
-	protected static final TypeConstraint TYPE_EDEFAULT = TypeConstraint.PRIMARY_KEY;
+	protected static final ConstraintType TYPE_EDEFAULT = ConstraintType.PRIMARY_KEY;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -77,17 +78,37 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * @generated
 	 * @ordered
 	 */
-	protected TypeConstraint type = TYPE_EDEFAULT;
+	protected ConstraintType type = TYPE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRefTable() <em>Ref Table</em>}' containment reference list.
+	 * The cached value of the '{@link #getColumns() <em>Columns</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRefTable()
+	 * @see #getColumns()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Column> refTable;
+	protected EList<Column> columns;
+
+	/**
+	 * The default value of the '{@link #getReference() <em>Reference</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REFERENCE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getReference() <em>Reference</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected String reference = REFERENCE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,7 +155,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TypeConstraint getType() {
+	public ConstraintType getType() {
 		return type;
 	}
 
@@ -143,8 +164,8 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(TypeConstraint newType) {
-		TypeConstraint oldType = type;
+	public void setType(ConstraintType newType) {
+		ConstraintType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.CONSTRAINT__TYPE, oldType, type));
@@ -155,11 +176,32 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Column> getRefTable() {
-		if (refTable == null) {
-			refTable = new EObjectContainmentEList<Column>(Column.class, this, MetamodelPackage.CONSTRAINT__REF_TABLE);
+	public EList<Column> getColumns() {
+		if (columns == null) {
+			columns = new EObjectContainmentEList<Column>(Column.class, this, MetamodelPackage.CONSTRAINT__COLUMNS);
 		}
-		return refTable;
+		return columns;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getReference() {
+		return reference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReference(String newReference) {
+		String oldReference = reference;
+		reference = newReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.CONSTRAINT__REFERENCE, oldReference, reference));
 	}
 
 	/**
@@ -170,8 +212,8 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MetamodelPackage.CONSTRAINT__REF_TABLE:
-				return ((InternalEList<?>)getRefTable()).basicRemove(otherEnd, msgs);
+			case MetamodelPackage.CONSTRAINT__COLUMNS:
+				return ((InternalEList<?>)getColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -188,8 +230,10 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 				return getName();
 			case MetamodelPackage.CONSTRAINT__TYPE:
 				return getType();
-			case MetamodelPackage.CONSTRAINT__REF_TABLE:
-				return getRefTable();
+			case MetamodelPackage.CONSTRAINT__COLUMNS:
+				return getColumns();
+			case MetamodelPackage.CONSTRAINT__REFERENCE:
+				return getReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -207,11 +251,14 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 				setName((String)newValue);
 				return;
 			case MetamodelPackage.CONSTRAINT__TYPE:
-				setType((TypeConstraint)newValue);
+				setType((ConstraintType)newValue);
 				return;
-			case MetamodelPackage.CONSTRAINT__REF_TABLE:
-				getRefTable().clear();
-				getRefTable().addAll((Collection<? extends Column>)newValue);
+			case MetamodelPackage.CONSTRAINT__COLUMNS:
+				getColumns().clear();
+				getColumns().addAll((Collection<? extends Column>)newValue);
+				return;
+			case MetamodelPackage.CONSTRAINT__REFERENCE:
+				setReference((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -231,8 +278,11 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 			case MetamodelPackage.CONSTRAINT__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case MetamodelPackage.CONSTRAINT__REF_TABLE:
-				getRefTable().clear();
+			case MetamodelPackage.CONSTRAINT__COLUMNS:
+				getColumns().clear();
+				return;
+			case MetamodelPackage.CONSTRAINT__REFERENCE:
+				setReference(REFERENCE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -250,8 +300,10 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case MetamodelPackage.CONSTRAINT__TYPE:
 				return type != TYPE_EDEFAULT;
-			case MetamodelPackage.CONSTRAINT__REF_TABLE:
-				return refTable != null && !refTable.isEmpty();
+			case MetamodelPackage.CONSTRAINT__COLUMNS:
+				return columns != null && !columns.isEmpty();
+			case MetamodelPackage.CONSTRAINT__REFERENCE:
+				return REFERENCE_EDEFAULT == null ? reference != null : !REFERENCE_EDEFAULT.equals(reference);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -270,6 +322,8 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 		result.append(name);
 		result.append(", type: ");
 		result.append(type);
+		result.append(", reference: ");
+		result.append(reference);
 		result.append(')');
 		return result.toString();
 	}
