@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>MongoMap: Rules</title>
+</head>
+
+<body>
+
+<h1>MongoMap Rules</h1>
+
+<h2>Rule 8: Unique-Constraint</h2>
+<p>
+The Unique-Constraint object will be mapped to an UniqueIndex object. The relationships to the unique columns will be mapped to an array of strings. We decided to do it like this because there is no real schema (e.g. columns) in MongoDB. Hence, every document of a collection can have different key-value-pairs. Moreover, an index can be added to keys which do not exist yet in any document of the collection.
+</p id="rule8_img">
+
+<img src="composite-key-to-_id-subdocument.png"/>
+
+<h2>Rule 9: Composite Key</h2>
+
+<p>
+A composite primary key will be mapped to a subdocument which is the value of _id. The _id key is the default identifier of a document and has per default an unique index. The columns (and the corresponding cells of each row) of a composite key will be stored in the subdocument. Using a subdocument rather than multiple key-value-pairs in the parent document has the advantage that the creation of foreign keys is easier because only _ id needs to be referenced. Moreover, this solution keeps the columns of composite key semantically together.
+</p>
+
+<img src="constraint-to-uniqueindex.png"/>
+
+</body>
+
+</html>
