@@ -4,6 +4,7 @@
  */
 package uk.ac.bham.mongoMap.model.metamodel.validation;
 
+import uk.ac.bham.mongoMap.model.metamodel.Constraint;
 import uk.ac.bham.mongoMap.model.metamodel.Datatye;
 
 /**
@@ -19,4 +20,6 @@ public interface ColumnValidator {
 	boolean validateType(Datatye value);
 	boolean validateNullable(boolean value);
 	boolean validateSize(String value);
+
+	boolean validateConstraint(Constraint value);
 }

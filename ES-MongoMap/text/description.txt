@@ -21,14 +21,15 @@ Package metamodel <uk.ac.bham.mongoMap.sql>
   Class Constraint
     Attribute name : EString
     Attribute type : ConstraintType
-    Reference columns : Column<<1..*>>
     Attribute reference : EString
+    Reference column : Column<<1..*>>
 
   Class Column
     Attribute name : EString
     Attribute type : Datatye
     Attribute nullable : EBoolean
     Attribute size : EString
+    Reference constraint : Constraint
 
   Class Sequence
     Attribute name : EString

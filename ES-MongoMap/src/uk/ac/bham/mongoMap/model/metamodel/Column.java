@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Column#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Column#isNullable <em>Nullable</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Column#getSize <em>Size</em>}</li>
+ *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint <em>Constraint</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,5 +131,33 @@ public interface Column extends EObject {
 	 * @generated
 	 */
 	void setSize(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Constraint</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraint</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraint</em>' reference.
+	 * @see #setConstraint(Constraint)
+	 * @see uk.ac.bham.mongoMap.model.metamodel.sqlPackage#getColumn_Constraint()
+	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumn
+	 * @model opposite="column"
+	 * @generated
+	 */
+	Constraint getConstraint();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint <em>Constraint</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Constraint</em>' reference.
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	void setConstraint(Constraint value);
 
 } // Column

@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getType <em>Type</em>}</li>
- *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumns <em>Columns</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getReference <em>Reference</em>}</li>
+ *   <li>{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumn <em>Column</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,22 +82,6 @@ public interface Constraint extends EObject {
 	void setType(ConstraintType value);
 
 	/**
-	 * Returns the value of the '<em><b>Columns</b></em>' containment reference list.
-	 * The list contents are of type {@link uk.ac.bham.mongoMap.model.metamodel.Column}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Columns</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Columns</em>' containment reference list.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.sqlPackage#getConstraint_Columns()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	EList<Column> getColumns();
-
-	/**
 	 * Returns the value of the '<em><b>Reference</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -122,5 +106,23 @@ public interface Constraint extends EObject {
 	 * @generated
 	 */
 	void setReference(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Column</b></em>' reference list.
+	 * The list contents are of type {@link uk.ac.bham.mongoMap.model.metamodel.Column}.
+	 * It is bidirectional and its opposite is '{@link uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Column</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Column</em>' reference list.
+	 * @see uk.ac.bham.mongoMap.model.metamodel.sqlPackage#getConstraint_Column()
+	 * @see uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint
+	 * @model opposite="constraint" required="true"
+	 * @generated
+	 */
+	EList<Column> getColumn();
 
 } // Constraint

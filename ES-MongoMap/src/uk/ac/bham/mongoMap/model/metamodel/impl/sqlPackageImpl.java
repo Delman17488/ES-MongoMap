@@ -266,8 +266,8 @@ public class sqlPackageImpl extends EPackageImpl implements sqlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConstraint_Columns() {
-		return (EReference)constraintEClass.getEStructuralFeatures().get(2);
+	public EAttribute getConstraint_Reference() {
+		return (EAttribute)constraintEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -275,8 +275,8 @@ public class sqlPackageImpl extends EPackageImpl implements sqlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getConstraint_Reference() {
-		return (EAttribute)constraintEClass.getEStructuralFeatures().get(3);
+	public EReference getConstraint_Column() {
+		return (EReference)constraintEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -322,6 +322,15 @@ public class sqlPackageImpl extends EPackageImpl implements sqlPackage {
 	 */
 	public EAttribute getColumn_Size() {
 		return (EAttribute)columnEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getColumn_Constraint() {
+		return (EReference)columnEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -501,14 +510,15 @@ public class sqlPackageImpl extends EPackageImpl implements sqlPackage {
 		constraintEClass = createEClass(CONSTRAINT);
 		createEAttribute(constraintEClass, CONSTRAINT__NAME);
 		createEAttribute(constraintEClass, CONSTRAINT__TYPE);
-		createEReference(constraintEClass, CONSTRAINT__COLUMNS);
 		createEAttribute(constraintEClass, CONSTRAINT__REFERENCE);
+		createEReference(constraintEClass, CONSTRAINT__COLUMN);
 
 		columnEClass = createEClass(COLUMN);
 		createEAttribute(columnEClass, COLUMN__NAME);
 		createEAttribute(columnEClass, COLUMN__TYPE);
 		createEAttribute(columnEClass, COLUMN__NULLABLE);
 		createEAttribute(columnEClass, COLUMN__SIZE);
+		createEReference(columnEClass, COLUMN__CONSTRAINT);
 
 		sequenceEClass = createEClass(SEQUENCE);
 		createEAttribute(sequenceEClass, SEQUENCE__NAME);
@@ -575,14 +585,15 @@ public class sqlPackageImpl extends EPackageImpl implements sqlPackage {
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConstraint_Name(), ecorePackage.getEString(), "name", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConstraint_Type(), this.getConstraintType(), "type", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConstraint_Columns(), this.getColumn(), null, "columns", null, 1, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConstraint_Reference(), ecorePackage.getEString(), "reference", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Column(), this.getColumn(), this.getColumn_Constraint(), "column", null, 1, -1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Type(), this.getDatatye(), "type", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Size(), ecorePackage.getEString(), "size", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getColumn_Constraint(), this.getConstraint(), this.getConstraint_Column(), "constraint", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sequenceEClass, Sequence.class, "Sequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSequence_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

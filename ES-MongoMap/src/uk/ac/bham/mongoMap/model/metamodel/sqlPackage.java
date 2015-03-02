@@ -205,22 +205,22 @@ public interface sqlPackage extends EPackage {
 	int CONSTRAINT__TYPE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Columns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__COLUMNS = 2;
-
-	/**
 	 * The feature id for the '<em><b>Reference</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__REFERENCE = 3;
+	int CONSTRAINT__REFERENCE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Column</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__COLUMN = 3;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -287,13 +287,22 @@ public interface sqlPackage extends EPackage {
 	int COLUMN__SIZE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Constraint</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN__CONSTRAINT = 4;
+
+	/**
 	 * The number of structural features of the '<em>Column</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COLUMN_FEATURE_COUNT = 4;
+	int COLUMN_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Column</em>' class.
@@ -629,17 +638,6 @@ public interface sqlPackage extends EPackage {
 	EAttribute getConstraint_Type();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumns <em>Columns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Columns</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumns()
-	 * @see #getConstraint()
-	 * @generated
-	 */
-	EReference getConstraint_Columns();
-
-	/**
 	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getReference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -649,6 +647,17 @@ public interface sqlPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getConstraint_Reference();
+
+	/**
+	 * Returns the meta object for the reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Column</em>'.
+	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumn()
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	EReference getConstraint_Column();
 
 	/**
 	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Column <em>Column</em>}'.
@@ -703,6 +712,17 @@ public interface sqlPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getColumn_Size();
+
+	/**
+	 * Returns the meta object for the reference '{@link uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Constraint</em>'.
+	 * @see uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint()
+	 * @see #getColumn()
+	 * @generated
+	 */
+	EReference getColumn_Constraint();
 
 	/**
 	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence <em>Sequence</em>}'.
@@ -990,20 +1010,20 @@ public interface sqlPackage extends EPackage {
 		EAttribute CONSTRAINT__TYPE = eINSTANCE.getConstraint_Type();
 
 		/**
-		 * The meta object literal for the '<em><b>Columns</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONSTRAINT__COLUMNS = eINSTANCE.getConstraint_Columns();
-
-		/**
 		 * The meta object literal for the '<em><b>Reference</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute CONSTRAINT__REFERENCE = eINSTANCE.getConstraint_Reference();
+
+		/**
+		 * The meta object literal for the '<em><b>Column</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONSTRAINT__COLUMN = eINSTANCE.getConstraint_Column();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.ColumnImpl <em>Column</em>}' class.
@@ -1046,6 +1066,14 @@ public interface sqlPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COLUMN__SIZE = eINSTANCE.getColumn_Size();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraint</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COLUMN__CONSTRAINT = eINSTANCE.getColumn_Constraint();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.SequenceImpl <em>Sequence</em>}' class.

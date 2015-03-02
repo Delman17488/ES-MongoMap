@@ -22,4 +22,6 @@ public interface ConstraintValidator {
 	boolean validateType(ConstraintType value);
 	boolean validateColumns(EList<Column> value);
 	boolean validateReference(String value);
+
+	boolean validateColumn(EList<Column> value);
 }
