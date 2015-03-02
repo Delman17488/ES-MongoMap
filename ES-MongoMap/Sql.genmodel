@@ -4,7 +4,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>Sql.ecore</foreignModel>
-  <genPackages prefix="Metamodel" disposableProviderFactory="true" ecorePackage="Sql.ecore#/">
+  <genPackages prefix="sql" basePackage="uk.ac.bham.mongoMap.model" disposableProviderFactory="true"
+      ecorePackage="Sql.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Sql.ecore#//Datatye">
       <genEnumLiterals ecoreEnumLiteral="Sql.ecore#//Datatye/INT"/>
       <genEnumLiterals ecoreEnumLiteral="Sql.ecore#//Datatye/DOUBLE"/>
