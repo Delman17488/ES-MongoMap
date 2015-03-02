@@ -26,6 +26,21 @@ In a SQL database a table is simply a collection of zero or more rows while in M
 In SQL database a row represents a single, implicitly structured data item in a table while in MongoDB a document is a record in a MongoDB collection. See the figure above. 
 </p>
 
+
+<h2>Rule 4 & 5: Column to Key / Cell to Value</h2>
+
+<p>
+In SQL, each table consist of a collection of columns/fields and all those columns together are used to represent an instance of the table (row/record/tuple). For example, in a table that represents users, each row would represent a single user. Columns might represent things like user name, user age, etc. Cells in the same row are identified by the column name: 
+</p>
+
+<img src="userTable.jpg"/>
+<p>
+In Fig1, the first row is selected, which consists of several cells, and then column name is used to select/return only one cell. In this case, column is name and cell value is Sara.
+In MongoDB, each collection consist of a group of documents, documents like rows have many field:value or key:values. Key is like column names in SQL and value is like cell values.
+</p>
+<img src="insert.jpg"/>
+
+
 <h2>Rule 8: Unique-Constraint</h2>
 <p>
 The Unique-Constraint object will be mapped to an UniqueIndex object. The relationships to the unique columns will be mapped to an array of strings. We decided to do it like this because there is no real schema (e.g. columns) in MongoDB. Hence, every document of a collection can have different key-value-pairs. Moreover, an index can be added to keys which do not exist yet in any document of the collection.
