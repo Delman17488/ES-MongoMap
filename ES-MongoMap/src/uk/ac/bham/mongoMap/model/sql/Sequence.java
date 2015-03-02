@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence()
+ * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface Sequence extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence_Name()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence_Name()
 	 * @model
 	 * @generated
 	 */
@@ -63,7 +63,7 @@ public interface Sequence extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min Value</em>' attribute.
 	 * @see #setMinValue(int)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence_MinValue()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence_MinValue()
 	 * @model
 	 * @generated
 	 */
@@ -89,7 +89,7 @@ public interface Sequence extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Value</em>' attribute.
 	 * @see #setMaxValue(long)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence_MaxValue()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence_MaxValue()
 	 * @model
 	 * @generated
 	 */
@@ -115,7 +115,7 @@ public interface Sequence extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Incrementby</em>' attribute.
 	 * @see #setIncrementby(int)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence_Incrementby()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence_Incrementby()
 	 * @model
 	 * @generated
 	 */
@@ -141,7 +141,7 @@ public interface Sequence extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Startwith</em>' attribute.
 	 * @see #setStartwith(long)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence_Startwith()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence_Startwith()
 	 * @model
 	 * @generated
 	 */
@@ -167,7 +167,7 @@ public interface Sequence extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current Value</em>' attribute.
 	 * @see #setCurrentValue(long)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence_CurrentValue()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence_CurrentValue()
 	 * @model
 	 * @generated
 	 */
@@ -193,7 +193,7 @@ public interface Sequence extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cycle</em>' attribute.
 	 * @see #setCycle(boolean)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getSequence_Cycle()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getSequence_Cycle()
 	 * @model
 	 * @generated
 	 */

@@ -1,6 +1,6 @@
 /**
  */
-package uk.ac.bham.mongoMap.model.metamodel;
+package uk.ac.bham.mongoMap.model.sql;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see uk.ac.bham.mongoMap.model.metamodel.sqlFactory
+ * @see uk.ac.bham.mongoMap.model.sql.sqlFactory
  * @model kind="package"
  * @generated
  */
@@ -31,7 +31,7 @@ public interface sqlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "metamodel";
+	String eNAME = "sql";
 
 	/**
 	 * The package namespace URI.
@@ -55,14 +55,14 @@ public interface sqlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	sqlPackage eINSTANCE = uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl.init();
+	sqlPackage eINSTANCE = uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.DatabaseImpl <em>Database</em>}' class.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.impl.DatabaseImpl <em>Database</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.DatabaseImpl
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getDatabase()
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.DatabaseImpl
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getDatabase()
 	 * @generated
 	 */
 	int DATABASE = 0;
@@ -113,11 +113,11 @@ public interface sqlPackage extends EPackage {
 	int DATABASE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.TableImpl <em>Table</em>}' class.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.impl.TableImpl <em>Table</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.TableImpl
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getTable()
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.TableImpl
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getTable()
 	 * @generated
 	 */
 	int TABLE = 1;
@@ -177,11 +177,11 @@ public interface sqlPackage extends EPackage {
 	int TABLE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.ConstraintImpl <em>Constraint</em>}' class.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl <em>Constraint</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.ConstraintImpl
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getConstraint()
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getConstraint()
 	 * @generated
 	 */
 	int CONSTRAINT = 2;
@@ -241,11 +241,11 @@ public interface sqlPackage extends EPackage {
 	int CONSTRAINT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.ColumnImpl <em>Column</em>}' class.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl <em>Column</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.ColumnImpl
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getColumn()
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getColumn()
 	 * @generated
 	 */
 	int COLUMN = 3;
@@ -314,11 +314,11 @@ public interface sqlPackage extends EPackage {
 	int COLUMN_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.SequenceImpl <em>Sequence</em>}' class.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl <em>Sequence</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.SequenceImpl
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getSequence()
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getSequence()
 	 * @generated
 	 */
 	int SEQUENCE = 4;
@@ -405,11 +405,11 @@ public interface sqlPackage extends EPackage {
 	int SEQUENCE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.RowImpl <em>Row</em>}' class.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.impl.RowImpl <em>Row</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.RowImpl
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getRow()
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.RowImpl
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getRow()
 	 * @generated
 	 */
 	int ROW = 5;
@@ -442,11 +442,11 @@ public interface sqlPackage extends EPackage {
 	int ROW_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.CellImpl <em>Cell</em>}' class.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.impl.CellImpl <em>Cell</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.CellImpl
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getCell()
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.CellImpl
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getCell()
 	 * @generated
 	 */
 	int CELL = 6;
@@ -488,398 +488,398 @@ public interface sqlPackage extends EPackage {
 	int CELL_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.Datatye <em>Datatye</em>}' enum.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.Datatye <em>Datatye</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Datatye
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getDatatye()
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getDatatye()
 	 * @generated
 	 */
 	int DATATYE = 7;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.metamodel.ConstraintType <em>Constraint Type</em>}' enum.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.ConstraintType <em>Constraint Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.metamodel.ConstraintType
-	 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getConstraintType()
+	 * @see uk.ac.bham.mongoMap.model.sql.ConstraintType
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getConstraintType()
 	 * @generated
 	 */
 	int CONSTRAINT_TYPE = 8;
 
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Database <em>Database</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Database <em>Database</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Database</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Database
+	 * @see uk.ac.bham.mongoMap.model.sql.Database
 	 * @generated
 	 */
 	EClass getDatabase();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Database#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Database#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Database#getName()
+	 * @see uk.ac.bham.mongoMap.model.sql.Database#getName()
 	 * @see #getDatabase()
 	 * @generated
 	 */
 	EAttribute getDatabase_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Database#getTable <em>Table</em>}'.
+	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.sql.Database#getTable <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Table</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Database#getTable()
+	 * @see uk.ac.bham.mongoMap.model.sql.Database#getTable()
 	 * @see #getDatabase()
 	 * @generated
 	 */
 	EReference getDatabase_Table();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Database#getSequences <em>Sequences</em>}'.
+	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.sql.Database#getSequences <em>Sequences</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Sequences</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Database#getSequences()
+	 * @see uk.ac.bham.mongoMap.model.sql.Database#getSequences()
 	 * @see #getDatabase()
 	 * @generated
 	 */
 	EReference getDatabase_Sequences();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Table <em>Table</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Table <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Table</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Table
+	 * @see uk.ac.bham.mongoMap.model.sql.Table
 	 * @generated
 	 */
 	EClass getTable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Table#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Table#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Table#getName()
+	 * @see uk.ac.bham.mongoMap.model.sql.Table#getName()
 	 * @see #getTable()
 	 * @generated
 	 */
 	EAttribute getTable_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Table#getConstraints <em>Constraints</em>}'.
+	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.sql.Table#getConstraints <em>Constraints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Table#getConstraints()
+	 * @see uk.ac.bham.mongoMap.model.sql.Table#getConstraints()
 	 * @see #getTable()
 	 * @generated
 	 */
 	EReference getTable_Constraints();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Table#getColumns <em>Columns</em>}'.
+	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.sql.Table#getColumns <em>Columns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Columns</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Table#getColumns()
+	 * @see uk.ac.bham.mongoMap.model.sql.Table#getColumns()
 	 * @see #getTable()
 	 * @generated
 	 */
 	EReference getTable_Columns();
 
 	/**
-	 * Returns the meta object for the reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Table#getRows <em>Rows</em>}'.
+	 * Returns the meta object for the reference list '{@link uk.ac.bham.mongoMap.model.sql.Table#getRows <em>Rows</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Rows</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Table#getRows()
+	 * @see uk.ac.bham.mongoMap.model.sql.Table#getRows()
 	 * @see #getTable()
 	 * @generated
 	 */
 	EReference getTable_Rows();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint <em>Constraint</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Constraint</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint
+	 * @see uk.ac.bham.mongoMap.model.sql.Constraint
 	 * @generated
 	 */
 	EClass getConstraint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Constraint#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint#getName()
+	 * @see uk.ac.bham.mongoMap.model.sql.Constraint#getName()
 	 * @see #getConstraint()
 	 * @generated
 	 */
 	EAttribute getConstraint_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Constraint#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint#getType()
+	 * @see uk.ac.bham.mongoMap.model.sql.Constraint#getType()
 	 * @see #getConstraint()
 	 * @generated
 	 */
 	EAttribute getConstraint_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getReference <em>Reference</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Constraint#getReference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Reference</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint#getReference()
+	 * @see uk.ac.bham.mongoMap.model.sql.Constraint#getReference()
 	 * @see #getConstraint()
 	 * @generated
 	 */
 	EAttribute getConstraint_Reference();
 
 	/**
-	 * Returns the meta object for the reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumn <em>Column</em>}'.
+	 * Returns the meta object for the reference list '{@link uk.ac.bham.mongoMap.model.sql.Constraint#getColumn <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Column</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint#getColumn()
+	 * @see uk.ac.bham.mongoMap.model.sql.Constraint#getColumn()
 	 * @see #getConstraint()
 	 * @generated
 	 */
 	EReference getConstraint_Column();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Column <em>Column</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Column <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Column</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Column
+	 * @see uk.ac.bham.mongoMap.model.sql.Column
 	 * @generated
 	 */
 	EClass getColumn();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Column#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Column#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Column#getName()
+	 * @see uk.ac.bham.mongoMap.model.sql.Column#getName()
 	 * @see #getColumn()
 	 * @generated
 	 */
 	EAttribute getColumn_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Column#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Column#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Column#getType()
+	 * @see uk.ac.bham.mongoMap.model.sql.Column#getType()
 	 * @see #getColumn()
 	 * @generated
 	 */
 	EAttribute getColumn_Type();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Column#isNullable <em>Nullable</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Column#isNullable <em>Nullable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Nullable</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Column#isNullable()
+	 * @see uk.ac.bham.mongoMap.model.sql.Column#isNullable()
 	 * @see #getColumn()
 	 * @generated
 	 */
 	EAttribute getColumn_Nullable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Column#getSize <em>Size</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Column#getSize <em>Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Size</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Column#getSize()
+	 * @see uk.ac.bham.mongoMap.model.sql.Column#getSize()
 	 * @see #getColumn()
 	 * @generated
 	 */
 	EAttribute getColumn_Size();
 
 	/**
-	 * Returns the meta object for the reference '{@link uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint <em>Constraint</em>}'.
+	 * Returns the meta object for the reference '{@link uk.ac.bham.mongoMap.model.sql.Column#getConstraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Constraint</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Column#getConstraint()
+	 * @see uk.ac.bham.mongoMap.model.sql.Column#getConstraint()
 	 * @see #getColumn()
 	 * @generated
 	 */
 	EReference getColumn_Constraint();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence <em>Sequence</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Sequence <em>Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Sequence</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence
 	 * @generated
 	 */
 	EClass getSequence();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Sequence#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence#getName()
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence#getName()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EAttribute getSequence_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence#getMinValue <em>Min Value</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Sequence#getMinValue <em>Min Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Min Value</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence#getMinValue()
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence#getMinValue()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EAttribute getSequence_MinValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence#getMaxValue <em>Max Value</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Sequence#getMaxValue <em>Max Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Max Value</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence#getMaxValue()
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence#getMaxValue()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EAttribute getSequence_MaxValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence#getIncrementby <em>Incrementby</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Sequence#getIncrementby <em>Incrementby</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Incrementby</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence#getIncrementby()
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence#getIncrementby()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EAttribute getSequence_Incrementby();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence#getStartwith <em>Startwith</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Sequence#getStartwith <em>Startwith</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Startwith</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence#getStartwith()
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence#getStartwith()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EAttribute getSequence_Startwith();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence#getCurrentValue <em>Current Value</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Sequence#getCurrentValue <em>Current Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Current Value</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence#getCurrentValue()
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence#getCurrentValue()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EAttribute getSequence_CurrentValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence#isCycle <em>Cycle</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Sequence#isCycle <em>Cycle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Cycle</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence#isCycle()
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence#isCycle()
 	 * @see #getSequence()
 	 * @generated
 	 */
 	EAttribute getSequence_Cycle();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Row <em>Row</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Row <em>Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Row</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Row
+	 * @see uk.ac.bham.mongoMap.model.sql.Row
 	 * @generated
 	 */
 	EClass getRow();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.metamodel.Row#getCells <em>Cells</em>}'.
+	 * Returns the meta object for the containment reference list '{@link uk.ac.bham.mongoMap.model.sql.Row#getCells <em>Cells</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Cells</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Row#getCells()
+	 * @see uk.ac.bham.mongoMap.model.sql.Row#getCells()
 	 * @see #getRow()
 	 * @generated
 	 */
 	EReference getRow_Cells();
 
 	/**
-	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.metamodel.Cell <em>Cell</em>}'.
+	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Cell <em>Cell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Cell</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Cell
+	 * @see uk.ac.bham.mongoMap.model.sql.Cell
 	 * @generated
 	 */
 	EClass getCell();
 
 	/**
-	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.metamodel.Cell#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.sql.Cell#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Cell#getValue()
+	 * @see uk.ac.bham.mongoMap.model.sql.Cell#getValue()
 	 * @see #getCell()
 	 * @generated
 	 */
 	EAttribute getCell_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link uk.ac.bham.mongoMap.model.metamodel.Cell#getColumn <em>Column</em>}'.
+	 * Returns the meta object for the reference '{@link uk.ac.bham.mongoMap.model.sql.Cell#getColumn <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Column</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Cell#getColumn()
+	 * @see uk.ac.bham.mongoMap.model.sql.Cell#getColumn()
 	 * @see #getCell()
 	 * @generated
 	 */
 	EReference getCell_Column();
 
 	/**
-	 * Returns the meta object for enum '{@link uk.ac.bham.mongoMap.model.metamodel.Datatye <em>Datatye</em>}'.
+	 * Returns the meta object for enum '{@link uk.ac.bham.mongoMap.model.sql.Datatye <em>Datatye</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Datatye</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Datatye
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
 	 * @generated
 	 */
 	EEnum getDatatye();
 
 	/**
-	 * Returns the meta object for enum '{@link uk.ac.bham.mongoMap.model.metamodel.ConstraintType <em>Constraint Type</em>}'.
+	 * Returns the meta object for enum '{@link uk.ac.bham.mongoMap.model.sql.ConstraintType <em>Constraint Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Constraint Type</em>'.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.ConstraintType
+	 * @see uk.ac.bham.mongoMap.model.sql.ConstraintType
 	 * @generated
 	 */
 	EEnum getConstraintType();
@@ -908,11 +908,11 @@ public interface sqlPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.DatabaseImpl <em>Database</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.DatabaseImpl <em>Database</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.DatabaseImpl
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getDatabase()
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.DatabaseImpl
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getDatabase()
 		 * @generated
 		 */
 		EClass DATABASE = eINSTANCE.getDatabase();
@@ -942,11 +942,11 @@ public interface sqlPackage extends EPackage {
 		EReference DATABASE__SEQUENCES = eINSTANCE.getDatabase_Sequences();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.TableImpl <em>Table</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.TableImpl <em>Table</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.TableImpl
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getTable()
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.TableImpl
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getTable()
 		 * @generated
 		 */
 		EClass TABLE = eINSTANCE.getTable();
@@ -984,11 +984,11 @@ public interface sqlPackage extends EPackage {
 		EReference TABLE__ROWS = eINSTANCE.getTable_Rows();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl <em>Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.ConstraintImpl
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getConstraint()
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getConstraint()
 		 * @generated
 		 */
 		EClass CONSTRAINT = eINSTANCE.getConstraint();
@@ -1026,11 +1026,11 @@ public interface sqlPackage extends EPackage {
 		EReference CONSTRAINT__COLUMN = eINSTANCE.getConstraint_Column();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.ColumnImpl <em>Column</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl <em>Column</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.ColumnImpl
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getColumn()
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getColumn()
 		 * @generated
 		 */
 		EClass COLUMN = eINSTANCE.getColumn();
@@ -1076,11 +1076,11 @@ public interface sqlPackage extends EPackage {
 		EReference COLUMN__CONSTRAINT = eINSTANCE.getColumn_Constraint();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.SequenceImpl <em>Sequence</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl <em>Sequence</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.SequenceImpl
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getSequence()
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getSequence()
 		 * @generated
 		 */
 		EClass SEQUENCE = eINSTANCE.getSequence();
@@ -1142,11 +1142,11 @@ public interface sqlPackage extends EPackage {
 		EAttribute SEQUENCE__CYCLE = eINSTANCE.getSequence_Cycle();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.RowImpl <em>Row</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.RowImpl <em>Row</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.RowImpl
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getRow()
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.RowImpl
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getRow()
 		 * @generated
 		 */
 		EClass ROW = eINSTANCE.getRow();
@@ -1160,11 +1160,11 @@ public interface sqlPackage extends EPackage {
 		EReference ROW__CELLS = eINSTANCE.getRow_Cells();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.impl.CellImpl <em>Cell</em>}' class.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.CellImpl <em>Cell</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.CellImpl
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getCell()
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.CellImpl
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getCell()
 		 * @generated
 		 */
 		EClass CELL = eINSTANCE.getCell();
@@ -1186,21 +1186,21 @@ public interface sqlPackage extends EPackage {
 		EReference CELL__COLUMN = eINSTANCE.getCell_Column();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.Datatye <em>Datatye</em>}' enum.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.Datatye <em>Datatye</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.Datatye
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getDatatye()
+		 * @see uk.ac.bham.mongoMap.model.sql.Datatye
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getDatatye()
 		 * @generated
 		 */
 		EEnum DATATYE = eINSTANCE.getDatatye();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.metamodel.ConstraintType <em>Constraint Type</em>}' enum.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.ConstraintType <em>Constraint Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.metamodel.ConstraintType
-		 * @see uk.ac.bham.mongoMap.model.metamodel.impl.sqlPackageImpl#getConstraintType()
+		 * @see uk.ac.bham.mongoMap.model.sql.ConstraintType
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.sqlPackageImpl#getConstraintType()
 		 * @generated
 		 */
 		EEnum CONSTRAINT_TYPE = eINSTANCE.getConstraintType();

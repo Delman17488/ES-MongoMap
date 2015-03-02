@@ -3,25 +3,19 @@
 package uk.ac.bham.mongoMap.model.sql.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import uk.ac.bham.mongoMap.model.sql.Database;
-import uk.ac.bham.mongoMap.model.sql.MetamodelPackage;
 import uk.ac.bham.mongoMap.model.sql.Sequence;
 import uk.ac.bham.mongoMap.model.sql.Table;
+import uk.ac.bham.mongoMap.model.sql.sqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -95,7 +89,7 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MetamodelPackage.Literals.DATABASE;
+		return sqlPackage.Literals.DATABASE;
 	}
 
 	/**
@@ -116,7 +110,7 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.DATABASE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.DATABASE__NAME, oldName, name));
 	}
 
 	/**
@@ -126,7 +120,7 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	 */
 	public EList<Table> getTable() {
 		if (table == null) {
-			table = new EObjectContainmentEList<Table>(Table.class, this, MetamodelPackage.DATABASE__TABLE);
+			table = new EObjectContainmentEList<Table>(Table.class, this, sqlPackage.DATABASE__TABLE);
 		}
 		return table;
 	}
@@ -138,7 +132,7 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	 */
 	public EList<Sequence> getSequences() {
 		if (sequences == null) {
-			sequences = new EObjectContainmentEList<Sequence>(Sequence.class, this, MetamodelPackage.DATABASE__SEQUENCES);
+			sequences = new EObjectContainmentEList<Sequence>(Sequence.class, this, sqlPackage.DATABASE__SEQUENCES);
 		}
 		return sequences;
 	}
@@ -151,9 +145,9 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MetamodelPackage.DATABASE__TABLE:
+			case sqlPackage.DATABASE__TABLE:
 				return ((InternalEList<?>)getTable()).basicRemove(otherEnd, msgs);
-			case MetamodelPackage.DATABASE__SEQUENCES:
+			case sqlPackage.DATABASE__SEQUENCES:
 				return ((InternalEList<?>)getSequences()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -167,11 +161,11 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MetamodelPackage.DATABASE__NAME:
+			case sqlPackage.DATABASE__NAME:
 				return getName();
-			case MetamodelPackage.DATABASE__TABLE:
+			case sqlPackage.DATABASE__TABLE:
 				return getTable();
-			case MetamodelPackage.DATABASE__SEQUENCES:
+			case sqlPackage.DATABASE__SEQUENCES:
 				return getSequences();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -186,14 +180,14 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MetamodelPackage.DATABASE__NAME:
+			case sqlPackage.DATABASE__NAME:
 				setName((String)newValue);
 				return;
-			case MetamodelPackage.DATABASE__TABLE:
+			case sqlPackage.DATABASE__TABLE:
 				getTable().clear();
 				getTable().addAll((Collection<? extends Table>)newValue);
 				return;
-			case MetamodelPackage.DATABASE__SEQUENCES:
+			case sqlPackage.DATABASE__SEQUENCES:
 				getSequences().clear();
 				getSequences().addAll((Collection<? extends Sequence>)newValue);
 				return;
@@ -209,13 +203,13 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.DATABASE__NAME:
+			case sqlPackage.DATABASE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case MetamodelPackage.DATABASE__TABLE:
+			case sqlPackage.DATABASE__TABLE:
 				getTable().clear();
 				return;
-			case MetamodelPackage.DATABASE__SEQUENCES:
+			case sqlPackage.DATABASE__SEQUENCES:
 				getSequences().clear();
 				return;
 		}
@@ -230,11 +224,11 @@ public class DatabaseImpl extends MinimalEObjectImpl.Container implements Databa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.DATABASE__NAME:
+			case sqlPackage.DATABASE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case MetamodelPackage.DATABASE__TABLE:
+			case sqlPackage.DATABASE__TABLE:
 				return table != null && !table.isEmpty();
-			case MetamodelPackage.DATABASE__SEQUENCES:
+			case sqlPackage.DATABASE__SEQUENCES:
 				return sequences != null && !sequences.isEmpty();
 		}
 		return super.eIsSet(featureID);

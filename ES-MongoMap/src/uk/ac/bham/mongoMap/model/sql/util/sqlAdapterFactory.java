@@ -1,6 +1,6 @@
 /**
  */
-package uk.ac.bham.mongoMap.model.metamodel.util;
+package uk.ac.bham.mongoMap.model.sql.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,14 +9,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import uk.ac.bham.mongoMap.model.metamodel.*;
+import uk.ac.bham.mongoMap.model.sql.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see uk.ac.bham.mongoMap.model.metamodel.sqlPackage
+ * @see uk.ac.bham.mongoMap.model.sql.sqlPackage
  * @generated
  */
 public class sqlAdapterFactory extends AdapterFactoryImpl {
@@ -116,13 +116,13 @@ public class sqlAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.metamodel.Database <em>Database</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.sql.Database <em>Database</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Database
+	 * @see uk.ac.bham.mongoMap.model.sql.Database
 	 * @generated
 	 */
 	public Adapter createDatabaseAdapter() {
@@ -130,13 +130,13 @@ public class sqlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.metamodel.Table <em>Table</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.sql.Table <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Table
+	 * @see uk.ac.bham.mongoMap.model.sql.Table
 	 * @generated
 	 */
 	public Adapter createTableAdapter() {
@@ -144,13 +144,13 @@ public class sqlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.metamodel.Constraint <em>Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.sql.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Constraint
+	 * @see uk.ac.bham.mongoMap.model.sql.Constraint
 	 * @generated
 	 */
 	public Adapter createConstraintAdapter() {
@@ -158,13 +158,13 @@ public class sqlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.metamodel.Column <em>Column</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.sql.Column <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Column
+	 * @see uk.ac.bham.mongoMap.model.sql.Column
 	 * @generated
 	 */
 	public Adapter createColumnAdapter() {
@@ -172,13 +172,13 @@ public class sqlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.metamodel.Sequence <em>Sequence</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.sql.Sequence <em>Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Sequence
+	 * @see uk.ac.bham.mongoMap.model.sql.Sequence
 	 * @generated
 	 */
 	public Adapter createSequenceAdapter() {
@@ -186,13 +186,13 @@ public class sqlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.metamodel.Row <em>Row</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.sql.Row <em>Row</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Row
+	 * @see uk.ac.bham.mongoMap.model.sql.Row
 	 * @generated
 	 */
 	public Adapter createRowAdapter() {
@@ -200,13 +200,13 @@ public class sqlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.metamodel.Cell <em>Cell</em>}'.
+	 * Creates a new adapter for an object of class '{@link uk.ac.bham.mongoMap.model.sql.Cell <em>Cell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see uk.ac.bham.mongoMap.model.metamodel.Cell
+	 * @see uk.ac.bham.mongoMap.model.sql.Cell
 	 * @generated
 	 */
 	public Adapter createCellAdapter() {

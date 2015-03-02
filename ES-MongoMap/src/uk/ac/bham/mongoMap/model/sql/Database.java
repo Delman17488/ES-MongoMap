@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getDatabase()
+ * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getDatabase()
  * @model
  * @generated
  */
@@ -35,7 +35,7 @@ public interface Database extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getDatabase_Name()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getDatabase_Name()
 	 * @model
 	 * @generated
 	 */
@@ -61,7 +61,7 @@ public interface Database extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Table</em>' containment reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getDatabase_Table()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getDatabase_Table()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -77,7 +77,7 @@ public interface Database extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sequences</em>' containment reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getDatabase_Sequences()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getDatabase_Sequences()
 	 * @model containment="true"
 	 * @generated
 	 */

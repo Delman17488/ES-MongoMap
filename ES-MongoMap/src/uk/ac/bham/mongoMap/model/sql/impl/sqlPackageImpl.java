@@ -1,6 +1,6 @@
 /**
  */
-package uk.ac.bham.mongoMap.model.metamodel.impl;
+package uk.ac.bham.mongoMap.model.sql.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -10,17 +10,17 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import uk.ac.bham.mongoMap.model.metamodel.Cell;
-import uk.ac.bham.mongoMap.model.metamodel.Column;
-import uk.ac.bham.mongoMap.model.metamodel.Constraint;
-import uk.ac.bham.mongoMap.model.metamodel.ConstraintType;
-import uk.ac.bham.mongoMap.model.metamodel.Database;
-import uk.ac.bham.mongoMap.model.metamodel.Datatye;
-import uk.ac.bham.mongoMap.model.metamodel.Row;
-import uk.ac.bham.mongoMap.model.metamodel.Sequence;
-import uk.ac.bham.mongoMap.model.metamodel.Table;
-import uk.ac.bham.mongoMap.model.metamodel.sqlFactory;
-import uk.ac.bham.mongoMap.model.metamodel.sqlPackage;
+import uk.ac.bham.mongoMap.model.sql.Cell;
+import uk.ac.bham.mongoMap.model.sql.Column;
+import uk.ac.bham.mongoMap.model.sql.Constraint;
+import uk.ac.bham.mongoMap.model.sql.ConstraintType;
+import uk.ac.bham.mongoMap.model.sql.Database;
+import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Row;
+import uk.ac.bham.mongoMap.model.sql.Sequence;
+import uk.ac.bham.mongoMap.model.sql.Table;
+import uk.ac.bham.mongoMap.model.sql.sqlFactory;
+import uk.ac.bham.mongoMap.model.sql.sqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -103,7 +103,7 @@ public class sqlPackageImpl extends EPackageImpl implements sqlPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see uk.ac.bham.mongoMap.model.metamodel.sqlPackage#eNS_URI
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

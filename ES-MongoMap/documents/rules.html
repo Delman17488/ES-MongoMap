@@ -65,24 +65,24 @@ In MongoDB, each collection consist of a group of documents, documents like rows
 	<figcaption></figcaption>
 </figure>
 
-<h2>Rule 8: Unique-Constraint</h2>
+<h2>Rule 8: Unique-Constraint to UniqueIndex</h2>
 <p>
 The Unique-Constraint object will be mapped to an UniqueIndex object. The relationships to the unique columns will be mapped to an array of strings. We decided to do it like this because there is no real schema (e.g. columns) in MongoDB. Hence, every document of a collection can have different key-value-pairs. Moreover, an index can be added to keys which do not exist yet in any document of the collection.
 </p id="rule8_img">
 
 <figure>
-	<img src="composite-key-to-_id-subdocument.png"/>
+	<img src="constraint-to-uniqueindex.png"/>
 	<figcaption>Mapping of Unique-Constraint instance (left) to UniqueIndex instance (right)</figcaption>
 </figure>
 
-<h2>Rule 9: Composite Key</h2>
+<h2>Rule 9: Composite Key to _id-Subdocument</h2>
 
 <p>
 A composite primary key will be mapped to a subdocument which is the value of _id. The _id key is the default identifier of a document and has per default an unique index. The columns (and the corresponding cells of each row) of a composite key will be stored in the subdocument. Using a subdocument rather than multiple key-value-pairs in the parent document has the advantage that the creation of foreign keys is easier because only _ id needs to be referenced. Moreover, this solution keeps the columns of composite key semantically together.
 </p>
 
 <figure>
-	<img src="constraint-to-uniqueindex.png"/>
+	<img src="composite-key-to-_id-subdocument.png"/>
 	<figcaption>Mapping of Composite-Primary-Key to _id with subdocument</figcaption>
 </figure>
 

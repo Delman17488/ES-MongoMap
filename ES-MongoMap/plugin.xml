@@ -6,7 +6,7 @@
       <!-- @generated Sql -->
       <package
             uri="uk.ac.bham.mongoMap.sql"
-            class="uk.ac.bham.mongoMap.model.metamodel.sqlPackage"
+            class="uk.ac.bham.mongoMap.model.sql.sqlPackage"
             genModel="Sql.genmodel"/>
    </extension>
 

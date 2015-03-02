@@ -1,6 +1,6 @@
 /**
  */
-package uk.ac.bham.mongoMap.model.metamodel.impl;
+package uk.ac.bham.mongoMap.model.sql.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import uk.ac.bham.mongoMap.model.metamodel.*;
+import uk.ac.bham.mongoMap.model.sql.*;
 
 /**
  * <!-- begin-user-doc -->

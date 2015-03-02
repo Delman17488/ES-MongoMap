@@ -1,13 +1,13 @@
 /**
  */
-package uk.ac.bham.mongoMap.model.metamodel.util;
+package uk.ac.bham.mongoMap.model.sql.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import uk.ac.bham.mongoMap.model.metamodel.*;
+import uk.ac.bham.mongoMap.model.sql.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import uk.ac.bham.mongoMap.model.metamodel.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see uk.ac.bham.mongoMap.model.metamodel.sqlPackage
+ * @see uk.ac.bham.mongoMap.model.sql.sqlPackage
  * @generated
  */
 public class sqlSwitch<T> extends Switch<T> {

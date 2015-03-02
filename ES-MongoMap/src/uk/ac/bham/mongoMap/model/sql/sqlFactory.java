@@ -1,6 +1,6 @@
 /**
  */
-package uk.ac.bham.mongoMap.model.metamodel;
+package uk.ac.bham.mongoMap.model.sql;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see uk.ac.bham.mongoMap.model.metamodel.sqlPackage
+ * @see uk.ac.bham.mongoMap.model.sql.sqlPackage
  * @generated
  */
 public interface sqlFactory extends EFactory {
@@ -19,7 +19,7 @@ public interface sqlFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	sqlFactory eINSTANCE = uk.ac.bham.mongoMap.model.metamodel.impl.sqlFactoryImpl.init();
+	sqlFactory eINSTANCE = uk.ac.bham.mongoMap.model.sql.impl.sqlFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Database</em>'.

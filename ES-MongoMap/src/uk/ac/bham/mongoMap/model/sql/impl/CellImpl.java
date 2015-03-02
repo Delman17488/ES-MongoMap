@@ -3,16 +3,13 @@
 package uk.ac.bham.mongoMap.model.sql.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import uk.ac.bham.mongoMap.model.sql.Cell;
 import uk.ac.bham.mongoMap.model.sql.Column;
-import uk.ac.bham.mongoMap.model.sql.MetamodelPackage;
+import uk.ac.bham.mongoMap.model.sql.sqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -75,7 +72,7 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MetamodelPackage.Literals.CELL;
+		return sqlPackage.Literals.CELL;
 	}
 
 	/**
@@ -96,7 +93,7 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.CELL__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.CELL__VALUE, oldValue, value));
 	}
 
 	/**
@@ -110,7 +107,7 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 			column = (Column)eResolveProxy(oldColumn);
 			if (column != oldColumn) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MetamodelPackage.CELL__COLUMN, oldColumn, column));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, sqlPackage.CELL__COLUMN, oldColumn, column));
 			}
 		}
 		return column;
@@ -134,7 +131,7 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 		Column oldColumn = column;
 		column = newColumn;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.CELL__COLUMN, oldColumn, column));
+			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.CELL__COLUMN, oldColumn, column));
 	}
 
 	/**
@@ -145,9 +142,9 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MetamodelPackage.CELL__VALUE:
+			case sqlPackage.CELL__VALUE:
 				return getValue();
-			case MetamodelPackage.CELL__COLUMN:
+			case sqlPackage.CELL__COLUMN:
 				if (resolve) return getColumn();
 				return basicGetColumn();
 		}
@@ -162,10 +159,10 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MetamodelPackage.CELL__VALUE:
+			case sqlPackage.CELL__VALUE:
 				setValue((String)newValue);
 				return;
-			case MetamodelPackage.CELL__COLUMN:
+			case sqlPackage.CELL__COLUMN:
 				setColumn((Column)newValue);
 				return;
 		}
@@ -180,10 +177,10 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.CELL__VALUE:
+			case sqlPackage.CELL__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
-			case MetamodelPackage.CELL__COLUMN:
+			case sqlPackage.CELL__COLUMN:
 				setColumn((Column)null);
 				return;
 		}
@@ -198,9 +195,9 @@ public class CellImpl extends MinimalEObjectImpl.Container implements Cell {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.CELL__VALUE:
+			case sqlPackage.CELL__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
-			case MetamodelPackage.CELL__COLUMN:
+			case sqlPackage.CELL__COLUMN:
 				return column != null;
 		}
 		return super.eIsSet(featureID);

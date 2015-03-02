@@ -3,27 +3,21 @@
 package uk.ac.bham.mongoMap.model.sql.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
-import uk.ac.bham.mongoMap.model.sql.MetamodelPackage;
 import uk.ac.bham.mongoMap.model.sql.Row;
 import uk.ac.bham.mongoMap.model.sql.Table;
+import uk.ac.bham.mongoMap.model.sql.sqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,7 +102,7 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return MetamodelPackage.Literals.TABLE;
+		return sqlPackage.Literals.TABLE;
 	}
 
 	/**
@@ -129,7 +123,7 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MetamodelPackage.TABLE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.TABLE__NAME, oldName, name));
 	}
 
 	/**
@@ -139,7 +133,7 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	 */
 	public EList<Constraint> getConstraints() {
 		if (constraints == null) {
-			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, MetamodelPackage.TABLE__CONSTRAINTS);
+			constraints = new EObjectContainmentEList<Constraint>(Constraint.class, this, sqlPackage.TABLE__CONSTRAINTS);
 		}
 		return constraints;
 	}
@@ -151,7 +145,7 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	 */
 	public EList<Column> getColumns() {
 		if (columns == null) {
-			columns = new EObjectContainmentEList<Column>(Column.class, this, MetamodelPackage.TABLE__COLUMNS);
+			columns = new EObjectContainmentEList<Column>(Column.class, this, sqlPackage.TABLE__COLUMNS);
 		}
 		return columns;
 	}
@@ -163,7 +157,7 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	 */
 	public EList<Row> getRows() {
 		if (rows == null) {
-			rows = new EObjectResolvingEList<Row>(Row.class, this, MetamodelPackage.TABLE__ROWS);
+			rows = new EObjectResolvingEList<Row>(Row.class, this, sqlPackage.TABLE__ROWS);
 		}
 		return rows;
 	}
@@ -176,9 +170,9 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MetamodelPackage.TABLE__CONSTRAINTS:
+			case sqlPackage.TABLE__CONSTRAINTS:
 				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
-			case MetamodelPackage.TABLE__COLUMNS:
+			case sqlPackage.TABLE__COLUMNS:
 				return ((InternalEList<?>)getColumns()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -192,13 +186,13 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MetamodelPackage.TABLE__NAME:
+			case sqlPackage.TABLE__NAME:
 				return getName();
-			case MetamodelPackage.TABLE__CONSTRAINTS:
+			case sqlPackage.TABLE__CONSTRAINTS:
 				return getConstraints();
-			case MetamodelPackage.TABLE__COLUMNS:
+			case sqlPackage.TABLE__COLUMNS:
 				return getColumns();
-			case MetamodelPackage.TABLE__ROWS:
+			case sqlPackage.TABLE__ROWS:
 				return getRows();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -213,18 +207,18 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MetamodelPackage.TABLE__NAME:
+			case sqlPackage.TABLE__NAME:
 				setName((String)newValue);
 				return;
-			case MetamodelPackage.TABLE__CONSTRAINTS:
+			case sqlPackage.TABLE__CONSTRAINTS:
 				getConstraints().clear();
 				getConstraints().addAll((Collection<? extends Constraint>)newValue);
 				return;
-			case MetamodelPackage.TABLE__COLUMNS:
+			case sqlPackage.TABLE__COLUMNS:
 				getColumns().clear();
 				getColumns().addAll((Collection<? extends Column>)newValue);
 				return;
-			case MetamodelPackage.TABLE__ROWS:
+			case sqlPackage.TABLE__ROWS:
 				getRows().clear();
 				getRows().addAll((Collection<? extends Row>)newValue);
 				return;
@@ -240,16 +234,16 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.TABLE__NAME:
+			case sqlPackage.TABLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case MetamodelPackage.TABLE__CONSTRAINTS:
+			case sqlPackage.TABLE__CONSTRAINTS:
 				getConstraints().clear();
 				return;
-			case MetamodelPackage.TABLE__COLUMNS:
+			case sqlPackage.TABLE__COLUMNS:
 				getColumns().clear();
 				return;
-			case MetamodelPackage.TABLE__ROWS:
+			case sqlPackage.TABLE__ROWS:
 				getRows().clear();
 				return;
 		}
@@ -264,13 +258,13 @@ public class TableImpl extends MinimalEObjectImpl.Container implements Table {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MetamodelPackage.TABLE__NAME:
+			case sqlPackage.TABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case MetamodelPackage.TABLE__CONSTRAINTS:
+			case sqlPackage.TABLE__CONSTRAINTS:
 				return constraints != null && !constraints.isEmpty();
-			case MetamodelPackage.TABLE__COLUMNS:
+			case sqlPackage.TABLE__COLUMNS:
 				return columns != null && !columns.isEmpty();
-			case MetamodelPackage.TABLE__ROWS:
+			case sqlPackage.TABLE__ROWS:
 				return rows != null && !rows.isEmpty();
 		}
 		return super.eIsSet(featureID);

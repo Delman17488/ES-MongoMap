@@ -7,9 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: uk.ac.bham.mongoMap.model.metamodel,
- uk.ac.bham.mongoMap.model.metamodel.impl,
- uk.ac.bham.mongoMap.model.metamodel.util
+Export-Package: uk.ac.bham.mongoMap.model.sql,
+ uk.ac.bham.mongoMap.model.sql.impl,
+ uk.ac.bham.mongoMap.model.sql.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -16,10 +16,11 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#isNullable <em>Nullable</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#getSize <em>Size</em>}</li>
+ *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#getConstraint <em>Constraint</em>}</li>
  * </ul>
  * </p>
  *
- * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getColumn()
+ * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getColumn()
  * @model
  * @generated
  */
@@ -34,7 +35,7 @@ public interface Column extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getColumn_Name()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getColumn_Name()
 	 * @model
 	 * @generated
 	 */
@@ -62,7 +63,7 @@ public interface Column extends EObject {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
 	 * @see #setType(Datatye)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getColumn_Type()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getColumn_Type()
 	 * @model
 	 * @generated
 	 */
@@ -89,7 +90,7 @@ public interface Column extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Nullable</em>' attribute.
 	 * @see #setNullable(boolean)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getColumn_Nullable()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getColumn_Nullable()
 	 * @model
 	 * @generated
 	 */
@@ -115,7 +116,7 @@ public interface Column extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.MetamodelPackage#getColumn_Size()
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getColumn_Size()
 	 * @model
 	 * @generated
 	 */
@@ -130,5 +131,33 @@ public interface Column extends EObject {
 	 * @generated
 	 */
 	void setSize(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Constraint</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link uk.ac.bham.mongoMap.model.sql.Constraint#getColumn <em>Column</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Constraint</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Constraint</em>' reference.
+	 * @see #setConstraint(Constraint)
+	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getColumn_Constraint()
+	 * @see uk.ac.bham.mongoMap.model.sql.Constraint#getColumn
+	 * @model opposite="column"
+	 * @generated
+	 */
+	Constraint getConstraint();
+
+	/**
+	 * Sets the value of the '{@link uk.ac.bham.mongoMap.model.sql.Column#getConstraint <em>Constraint</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Constraint</em>' reference.
+	 * @see #getConstraint()
+	 * @generated
+	 */
+	void setConstraint(Constraint value);
 
 } // Column
