@@ -9,6 +9,23 @@
 
 <h1>MongoMap Rules</h1>
 
+<h2>Rule 1: Database to MongoDB db</h2>
+<p>
+Database in the context of SQL metamodel and not SQL metamodel is a systematic collection of data; therefore a SQL database is transformed into MongoDB database.
+</p>
+
+<h2>Rule 2: Table to Collection</h2>
+<p>
+In a SQL database a table is simply a collection of zero or more rows while in MongoDB a collection is a grouping of MongoDB documents. See next figure. 
+</p>
+
+<img src="table-row_Sql_Mongo.png"/>
+
+<h2>Rule 3: Row to Document</h2>
+<p>
+In SQL database a row represents a single, implicitly structured data item in a table while in MongoDB a document is a record in a MongoDB collection. See the figure above. 
+</p>
+
 <h2>Rule 8: Unique-Constraint</h2>
 <p>
 The Unique-Constraint object will be mapped to an UniqueIndex object. The relationships to the unique columns will be mapped to an array of strings. We decided to do it like this because there is no real schema (e.g. columns) in MongoDB. Hence, every document of a collection can have different key-value-pairs. Moreover, an index can be added to keys which do not exist yet in any document of the collection.
