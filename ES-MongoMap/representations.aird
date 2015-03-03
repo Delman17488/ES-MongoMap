@@ -3,7 +3,6 @@
   <models xmi:type="ecore:EPackage" href="Sql.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
   <models xmi:type="genmodel:GenModel" href="Sql.genmodel#/"/>
-  <models xmi:type="modisco.xml:Root" href="plugin.xml#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="__sNwMLB5EeSGTqVqJYxUYw" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="__5JY8LB5EeSGTqVqJYxUYw" name="sql">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="__5pIMLB5EeSGTqVqJYxUYw" source="GMF_DIAGRAMS">
@@ -1114,7 +1113,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nnzckMDuEeSvjJgfM8dk6A" sourceNode="_BHrzMLB7EeSGTqVqJYxUYw" targetNode="_OY0SELB7EeSGTqVqJYxUYw" beginLabel="[0..1] constraint" endLabel="[1..*] column">
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nnzckMDuEeSvjJgfM8dk6A" sourceNode="_BHrzMLB7EeSGTqVqJYxUYw" targetNode="_OY0SELB7EeSGTqVqJYxUYw" beginLabel="[0..*] constraint" endLabel="[1..*] column">
         <target xmi:type="ecore:EReference" href="Sql.ecore#//Constraint/column"/>
         <semanticElements xmi:type="ecore:EReference" href="Sql.ecore#//Constraint/column"/>
         <semanticElements xmi:type="ecore:EReference" href="Sql.ecore#//Column/constraint"/>
@@ -1138,4 +1137,5 @@
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>
+  <models xmi:type="modisco.xml:Root" href="plugin.xml#/"/>
 </viewpoint:DAnalysis>
