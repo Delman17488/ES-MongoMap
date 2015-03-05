@@ -15,6 +15,8 @@ import uk.ac.bham.mongoMap.model.sql.Column;
 public interface CellValidator {
 	boolean validate();
 
+	boolean validateValue(Object value);
+
 	boolean validateValue(String value);
 	boolean validateColumn(Column value);
 }

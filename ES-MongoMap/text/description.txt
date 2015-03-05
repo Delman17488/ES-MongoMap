@@ -78,7 +78,7 @@ Package sql <uk.ac.bham.mongoMap.sql>
     Reference cells : Cell<<0..*>>
 
   Class Cell
-    Attribute value : EString
+    Attribute value : EJavaObject
     Reference column : Column<<1..1>>
 
   Enum Datatye

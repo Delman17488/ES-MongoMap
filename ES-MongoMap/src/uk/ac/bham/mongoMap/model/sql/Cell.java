@@ -31,12 +31,12 @@ public interface Cell extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
+	 * @see #setValue(Object)
 	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getCell_Value()
 	 * @model
 	 * @generated
 	 */
-	String getValue();
+	Object getValue();
 
 	/**
 	 * Sets the value of the '{@link uk.ac.bham.mongoMap.model.sql.Cell#getValue <em>Value</em>}' attribute.
@@ -46,7 +46,7 @@ public interface Cell extends EObject {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setValue(Object value);
 
 	/**
 	 * Returns the value of the '<em><b>Column</b></em>' reference.
