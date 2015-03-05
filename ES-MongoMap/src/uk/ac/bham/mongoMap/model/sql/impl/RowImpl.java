@@ -3,16 +3,22 @@
 package uk.ac.bham.mongoMap.model.sql.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import uk.ac.bham.mongoMap.model.sql.Cell;
 import uk.ac.bham.mongoMap.model.sql.Row;
-import uk.ac.bham.mongoMap.model.sql.sqlPackage;
+import uk.ac.bham.mongoMap.model.sql.SqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,7 +60,7 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return sqlPackage.Literals.ROW;
+		return SqlPackage.Literals.ROW;
 	}
 
 	/**
@@ -64,7 +70,7 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	 */
 	public EList<Cell> getCells() {
 		if (cells == null) {
-			cells = new EObjectContainmentEList<Cell>(Cell.class, this, sqlPackage.ROW__CELLS);
+			cells = new EObjectContainmentEList<Cell>(Cell.class, this, SqlPackage.ROW__CELLS);
 		}
 		return cells;
 	}
@@ -77,7 +83,7 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case sqlPackage.ROW__CELLS:
+			case SqlPackage.ROW__CELLS:
 				return ((InternalEList<?>)getCells()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -91,7 +97,7 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case sqlPackage.ROW__CELLS:
+			case SqlPackage.ROW__CELLS:
 				return getCells();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -106,7 +112,7 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case sqlPackage.ROW__CELLS:
+			case SqlPackage.ROW__CELLS:
 				getCells().clear();
 				getCells().addAll((Collection<? extends Cell>)newValue);
 				return;
@@ -122,7 +128,7 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case sqlPackage.ROW__CELLS:
+			case SqlPackage.ROW__CELLS:
 				getCells().clear();
 				return;
 		}
@@ -137,7 +143,7 @@ public class RowImpl extends MinimalEObjectImpl.Container implements Row {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case sqlPackage.ROW__CELLS:
+			case SqlPackage.ROW__CELLS:
 				return cells != null && !cells.isEmpty();
 		}
 		return super.eIsSet(featureID);

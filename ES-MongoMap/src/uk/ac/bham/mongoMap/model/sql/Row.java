@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getRow()
+ * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getRow()
  * @model
  * @generated
  */
@@ -33,7 +33,7 @@ public interface Row extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cells</em>' containment reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getRow_Cells()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getRow_Cells()
 	 * @model containment="true"
 	 * @generated
 	 */

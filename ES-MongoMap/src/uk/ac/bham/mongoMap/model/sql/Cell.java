@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getCell()
+ * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getCell()
  * @model
  * @generated
  */
@@ -32,7 +32,7 @@ public interface Cell extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getCell_Value()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getCell_Value()
 	 * @model
 	 * @generated
 	 */
@@ -58,7 +58,7 @@ public interface Cell extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column</em>' reference.
 	 * @see #setColumn(Column)
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getCell_Column()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getCell_Column()
 	 * @model required="true"
 	 * @generated
 	 */

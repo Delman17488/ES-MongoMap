@@ -3,11 +3,14 @@
 package uk.ac.bham.mongoMap.model.sql.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import uk.ac.bham.mongoMap.model.sql.Sequence;
-import uk.ac.bham.mongoMap.model.sql.sqlPackage;
+import uk.ac.bham.mongoMap.model.sql.SqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -185,7 +188,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return sqlPackage.Literals.SEQUENCE;
+		return SqlPackage.Literals.SEQUENCE;
 	}
 
 	/**
@@ -206,7 +209,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.SEQUENCE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.SEQUENCE__NAME, oldName, name));
 	}
 
 	/**
@@ -227,7 +230,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		int oldMinValue = minValue;
 		minValue = newMinValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.SEQUENCE__MIN_VALUE, oldMinValue, minValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.SEQUENCE__MIN_VALUE, oldMinValue, minValue));
 	}
 
 	/**
@@ -248,7 +251,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		long oldMaxValue = maxValue;
 		maxValue = newMaxValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.SEQUENCE__MAX_VALUE, oldMaxValue, maxValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.SEQUENCE__MAX_VALUE, oldMaxValue, maxValue));
 	}
 
 	/**
@@ -269,7 +272,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		int oldIncrementby = incrementby;
 		incrementby = newIncrementby;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.SEQUENCE__INCREMENTBY, oldIncrementby, incrementby));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.SEQUENCE__INCREMENTBY, oldIncrementby, incrementby));
 	}
 
 	/**
@@ -290,7 +293,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		long oldStartwith = startwith;
 		startwith = newStartwith;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.SEQUENCE__STARTWITH, oldStartwith, startwith));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.SEQUENCE__STARTWITH, oldStartwith, startwith));
 	}
 
 	/**
@@ -311,7 +314,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		long oldCurrentValue = currentValue;
 		currentValue = newCurrentValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.SEQUENCE__CURRENT_VALUE, oldCurrentValue, currentValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.SEQUENCE__CURRENT_VALUE, oldCurrentValue, currentValue));
 	}
 
 	/**
@@ -332,7 +335,7 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 		boolean oldCycle = cycle;
 		cycle = newCycle;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.SEQUENCE__CYCLE, oldCycle, cycle));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.SEQUENCE__CYCLE, oldCycle, cycle));
 	}
 
 	/**
@@ -343,19 +346,19 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case sqlPackage.SEQUENCE__NAME:
+			case SqlPackage.SEQUENCE__NAME:
 				return getName();
-			case sqlPackage.SEQUENCE__MIN_VALUE:
+			case SqlPackage.SEQUENCE__MIN_VALUE:
 				return getMinValue();
-			case sqlPackage.SEQUENCE__MAX_VALUE:
+			case SqlPackage.SEQUENCE__MAX_VALUE:
 				return getMaxValue();
-			case sqlPackage.SEQUENCE__INCREMENTBY:
+			case SqlPackage.SEQUENCE__INCREMENTBY:
 				return getIncrementby();
-			case sqlPackage.SEQUENCE__STARTWITH:
+			case SqlPackage.SEQUENCE__STARTWITH:
 				return getStartwith();
-			case sqlPackage.SEQUENCE__CURRENT_VALUE:
+			case SqlPackage.SEQUENCE__CURRENT_VALUE:
 				return getCurrentValue();
-			case sqlPackage.SEQUENCE__CYCLE:
+			case SqlPackage.SEQUENCE__CYCLE:
 				return isCycle();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -369,25 +372,25 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case sqlPackage.SEQUENCE__NAME:
+			case SqlPackage.SEQUENCE__NAME:
 				setName((String)newValue);
 				return;
-			case sqlPackage.SEQUENCE__MIN_VALUE:
+			case SqlPackage.SEQUENCE__MIN_VALUE:
 				setMinValue((Integer)newValue);
 				return;
-			case sqlPackage.SEQUENCE__MAX_VALUE:
+			case SqlPackage.SEQUENCE__MAX_VALUE:
 				setMaxValue((Long)newValue);
 				return;
-			case sqlPackage.SEQUENCE__INCREMENTBY:
+			case SqlPackage.SEQUENCE__INCREMENTBY:
 				setIncrementby((Integer)newValue);
 				return;
-			case sqlPackage.SEQUENCE__STARTWITH:
+			case SqlPackage.SEQUENCE__STARTWITH:
 				setStartwith((Long)newValue);
 				return;
-			case sqlPackage.SEQUENCE__CURRENT_VALUE:
+			case SqlPackage.SEQUENCE__CURRENT_VALUE:
 				setCurrentValue((Long)newValue);
 				return;
-			case sqlPackage.SEQUENCE__CYCLE:
+			case SqlPackage.SEQUENCE__CYCLE:
 				setCycle((Boolean)newValue);
 				return;
 		}
@@ -402,25 +405,25 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case sqlPackage.SEQUENCE__NAME:
+			case SqlPackage.SEQUENCE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case sqlPackage.SEQUENCE__MIN_VALUE:
+			case SqlPackage.SEQUENCE__MIN_VALUE:
 				setMinValue(MIN_VALUE_EDEFAULT);
 				return;
-			case sqlPackage.SEQUENCE__MAX_VALUE:
+			case SqlPackage.SEQUENCE__MAX_VALUE:
 				setMaxValue(MAX_VALUE_EDEFAULT);
 				return;
-			case sqlPackage.SEQUENCE__INCREMENTBY:
+			case SqlPackage.SEQUENCE__INCREMENTBY:
 				setIncrementby(INCREMENTBY_EDEFAULT);
 				return;
-			case sqlPackage.SEQUENCE__STARTWITH:
+			case SqlPackage.SEQUENCE__STARTWITH:
 				setStartwith(STARTWITH_EDEFAULT);
 				return;
-			case sqlPackage.SEQUENCE__CURRENT_VALUE:
+			case SqlPackage.SEQUENCE__CURRENT_VALUE:
 				setCurrentValue(CURRENT_VALUE_EDEFAULT);
 				return;
-			case sqlPackage.SEQUENCE__CYCLE:
+			case SqlPackage.SEQUENCE__CYCLE:
 				setCycle(CYCLE_EDEFAULT);
 				return;
 		}
@@ -435,19 +438,19 @@ public class SequenceImpl extends MinimalEObjectImpl.Container implements Sequen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case sqlPackage.SEQUENCE__NAME:
+			case SqlPackage.SEQUENCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case sqlPackage.SEQUENCE__MIN_VALUE:
+			case SqlPackage.SEQUENCE__MIN_VALUE:
 				return minValue != MIN_VALUE_EDEFAULT;
-			case sqlPackage.SEQUENCE__MAX_VALUE:
+			case SqlPackage.SEQUENCE__MAX_VALUE:
 				return maxValue != MAX_VALUE_EDEFAULT;
-			case sqlPackage.SEQUENCE__INCREMENTBY:
+			case SqlPackage.SEQUENCE__INCREMENTBY:
 				return incrementby != INCREMENTBY_EDEFAULT;
-			case sqlPackage.SEQUENCE__STARTWITH:
+			case SqlPackage.SEQUENCE__STARTWITH:
 				return startwith != STARTWITH_EDEFAULT;
-			case sqlPackage.SEQUENCE__CURRENT_VALUE:
+			case SqlPackage.SEQUENCE__CURRENT_VALUE:
 				return currentValue != CURRENT_VALUE_EDEFAULT;
-			case sqlPackage.SEQUENCE__CYCLE:
+			case SqlPackage.SEQUENCE__CYCLE:
 				return cycle != CYCLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);

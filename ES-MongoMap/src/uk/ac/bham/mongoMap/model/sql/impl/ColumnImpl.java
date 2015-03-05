@@ -2,16 +2,26 @@
  */
 package uk.ac.bham.mongoMap.model.sql.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.Datatye;
-import uk.ac.bham.mongoMap.model.sql.sqlPackage;
+import uk.ac.bham.mongoMap.model.sql.SqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -112,14 +122,14 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	protected String size = SIZE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' reference.
+	 * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getConstraint()
 	 * @generated
 	 * @ordered
 	 */
-	protected Constraint constraint;
+	protected EList<Constraint> constraint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,7 +147,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return sqlPackage.Literals.COLUMN;
+		return SqlPackage.Literals.COLUMN;
 	}
 
 	/**
@@ -158,7 +168,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.COLUMN__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.COLUMN__NAME, oldName, name));
 	}
 
 	/**
@@ -179,7 +189,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		Datatye oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.COLUMN__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.COLUMN__TYPE, oldType, type));
 	}
 
 	/**
@@ -200,7 +210,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		boolean oldNullable = nullable;
 		nullable = newNullable;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.COLUMN__NULLABLE, oldNullable, nullable));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.COLUMN__NULLABLE, oldNullable, nullable));
 	}
 
 	/**
@@ -221,7 +231,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 		String oldSize = size;
 		size = newSize;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.COLUMN__SIZE, oldSize, size));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.COLUMN__SIZE, oldSize, size));
 	}
 
 	/**
@@ -229,14 +239,9 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint getConstraint() {
-		if (constraint != null && constraint.eIsProxy()) {
-			InternalEObject oldConstraint = (InternalEObject)constraint;
-			constraint = (Constraint)eResolveProxy(oldConstraint);
-			if (constraint != oldConstraint) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, sqlPackage.COLUMN__CONSTRAINT, oldConstraint, constraint));
-			}
+	public EList<Constraint> getConstraint() {
+		if (constraint == null) {
+			constraint = new EObjectWithInverseResolvingEList.ManyInverse<Constraint>(Constraint.class, this, SqlPackage.COLUMN__CONSTRAINT, SqlPackage.CONSTRAINT__COLUMN);
 		}
 		return constraint;
 	}
@@ -246,56 +251,12 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint basicGetConstraint() {
-		return constraint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetConstraint(Constraint newConstraint, NotificationChain msgs) {
-		Constraint oldConstraint = constraint;
-		constraint = newConstraint;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, sqlPackage.COLUMN__CONSTRAINT, oldConstraint, newConstraint);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setConstraint(Constraint newConstraint) {
-		if (newConstraint != constraint) {
-			NotificationChain msgs = null;
-			if (constraint != null)
-				msgs = ((InternalEObject)constraint).eInverseRemove(this, sqlPackage.CONSTRAINT__COLUMN, Constraint.class, msgs);
-			if (newConstraint != null)
-				msgs = ((InternalEObject)newConstraint).eInverseAdd(this, sqlPackage.CONSTRAINT__COLUMN, Constraint.class, msgs);
-			msgs = basicSetConstraint(newConstraint, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.COLUMN__CONSTRAINT, newConstraint, newConstraint));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case sqlPackage.COLUMN__CONSTRAINT:
-				if (constraint != null)
-					msgs = ((InternalEObject)constraint).eInverseRemove(this, sqlPackage.CONSTRAINT__COLUMN, Constraint.class, msgs);
-				return basicSetConstraint((Constraint)otherEnd, msgs);
+			case SqlPackage.COLUMN__CONSTRAINT:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConstraint()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -308,8 +269,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case sqlPackage.COLUMN__CONSTRAINT:
-				return basicSetConstraint(null, msgs);
+			case SqlPackage.COLUMN__CONSTRAINT:
+				return ((InternalEList<?>)getConstraint()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -322,17 +283,16 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case sqlPackage.COLUMN__NAME:
+			case SqlPackage.COLUMN__NAME:
 				return getName();
-			case sqlPackage.COLUMN__TYPE:
+			case SqlPackage.COLUMN__TYPE:
 				return getType();
-			case sqlPackage.COLUMN__NULLABLE:
+			case SqlPackage.COLUMN__NULLABLE:
 				return isNullable();
-			case sqlPackage.COLUMN__SIZE:
+			case SqlPackage.COLUMN__SIZE:
 				return getSize();
-			case sqlPackage.COLUMN__CONSTRAINT:
-				if (resolve) return getConstraint();
-				return basicGetConstraint();
+			case SqlPackage.COLUMN__CONSTRAINT:
+				return getConstraint();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -342,23 +302,25 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case sqlPackage.COLUMN__NAME:
+			case SqlPackage.COLUMN__NAME:
 				setName((String)newValue);
 				return;
-			case sqlPackage.COLUMN__TYPE:
+			case SqlPackage.COLUMN__TYPE:
 				setType((Datatye)newValue);
 				return;
-			case sqlPackage.COLUMN__NULLABLE:
+			case SqlPackage.COLUMN__NULLABLE:
 				setNullable((Boolean)newValue);
 				return;
-			case sqlPackage.COLUMN__SIZE:
+			case SqlPackage.COLUMN__SIZE:
 				setSize((String)newValue);
 				return;
-			case sqlPackage.COLUMN__CONSTRAINT:
-				setConstraint((Constraint)newValue);
+			case SqlPackage.COLUMN__CONSTRAINT:
+				getConstraint().clear();
+				getConstraint().addAll((Collection<? extends Constraint>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -372,20 +334,20 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case sqlPackage.COLUMN__NAME:
+			case SqlPackage.COLUMN__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case sqlPackage.COLUMN__TYPE:
+			case SqlPackage.COLUMN__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case sqlPackage.COLUMN__NULLABLE:
+			case SqlPackage.COLUMN__NULLABLE:
 				setNullable(NULLABLE_EDEFAULT);
 				return;
-			case sqlPackage.COLUMN__SIZE:
+			case SqlPackage.COLUMN__SIZE:
 				setSize(SIZE_EDEFAULT);
 				return;
-			case sqlPackage.COLUMN__CONSTRAINT:
-				setConstraint((Constraint)null);
+			case SqlPackage.COLUMN__CONSTRAINT:
+				getConstraint().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -399,16 +361,16 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case sqlPackage.COLUMN__NAME:
+			case SqlPackage.COLUMN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case sqlPackage.COLUMN__TYPE:
+			case SqlPackage.COLUMN__TYPE:
 				return type != TYPE_EDEFAULT;
-			case sqlPackage.COLUMN__NULLABLE:
+			case SqlPackage.COLUMN__NULLABLE:
 				return nullable != NULLABLE_EDEFAULT;
-			case sqlPackage.COLUMN__SIZE:
+			case SqlPackage.COLUMN__SIZE:
 				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
-			case sqlPackage.COLUMN__CONSTRAINT:
-				return constraint != null;
+			case SqlPackage.COLUMN__CONSTRAINT:
+				return constraint != null && !constraint.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

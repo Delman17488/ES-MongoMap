@@ -9,7 +9,10 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: uk.ac.bham.mongoMap.model.sql,
  uk.ac.bham.mongoMap.model.sql.impl,
- uk.ac.bham.mongoMap.model.sql.util
+ uk.ac.bham.mongoMap.model.sql.util,
+ uk.ac.bham.mongoMap.model.mongo,
+ uk.ac.bham.mongoMap.model.mongo.impl,
+ uk.ac.bham.mongoMap.model.mongo.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

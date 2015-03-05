@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getTable()
+ * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getTable()
  * @model
  * @generated
  */
@@ -36,7 +36,7 @@ public interface Table extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getTable_Name()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getTable_Name()
 	 * @model
 	 * @generated
 	 */
@@ -62,7 +62,7 @@ public interface Table extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constraints</em>' containment reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getTable_Constraints()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getTable_Constraints()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -78,7 +78,7 @@ public interface Table extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Columns</em>' containment reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getTable_Columns()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getTable_Columns()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
@@ -94,7 +94,7 @@ public interface Table extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rows</em>' reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getTable_Rows()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getTable_Rows()
 	 * @model
 	 * @generated
 	 */

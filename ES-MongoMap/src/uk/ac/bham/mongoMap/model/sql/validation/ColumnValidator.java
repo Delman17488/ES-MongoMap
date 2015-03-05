@@ -4,6 +4,8 @@
  */
 package uk.ac.bham.mongoMap.model.sql.validation;
 
+import org.eclipse.emf.common.util.EList;
+
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.Datatye;
 
@@ -20,5 +22,5 @@ public interface ColumnValidator {
 	boolean validateType(Datatye value);
 	boolean validateNullable(boolean value);
 	boolean validateSize(String value);
-	boolean validateConstraint(Constraint value);
+	boolean validateConstraint(EList<Constraint> value);
 }

@@ -3,19 +3,25 @@
 package uk.ac.bham.mongoMap.model.sql.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.ConstraintType;
-import uk.ac.bham.mongoMap.model.sql.sqlPackage;
+import uk.ac.bham.mongoMap.model.sql.SqlPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -120,7 +126,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return sqlPackage.Literals.CONSTRAINT;
+		return SqlPackage.Literals.CONSTRAINT;
 	}
 
 	/**
@@ -141,7 +147,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.CONSTRAINT__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.CONSTRAINT__NAME, oldName, name));
 	}
 
 	/**
@@ -162,7 +168,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 		ConstraintType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.CONSTRAINT__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.CONSTRAINT__TYPE, oldType, type));
 	}
 
 	/**
@@ -183,7 +189,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 		String oldReference = reference;
 		reference = newReference;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, sqlPackage.CONSTRAINT__REFERENCE, oldReference, reference));
+			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.CONSTRAINT__REFERENCE, oldReference, reference));
 	}
 
 	/**
@@ -193,7 +199,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	 */
 	public EList<Column> getColumn() {
 		if (column == null) {
-			column = new EObjectWithInverseResolvingEList<Column>(Column.class, this, sqlPackage.CONSTRAINT__COLUMN, sqlPackage.COLUMN__CONSTRAINT);
+			column = new EObjectWithInverseResolvingEList.ManyInverse<Column>(Column.class, this, SqlPackage.CONSTRAINT__COLUMN, SqlPackage.COLUMN__CONSTRAINT);
 		}
 		return column;
 	}
@@ -207,7 +213,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case sqlPackage.CONSTRAINT__COLUMN:
+			case SqlPackage.CONSTRAINT__COLUMN:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getColumn()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -221,7 +227,7 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case sqlPackage.CONSTRAINT__COLUMN:
+			case SqlPackage.CONSTRAINT__COLUMN:
 				return ((InternalEList<?>)getColumn()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -235,13 +241,13 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case sqlPackage.CONSTRAINT__NAME:
+			case SqlPackage.CONSTRAINT__NAME:
 				return getName();
-			case sqlPackage.CONSTRAINT__TYPE:
+			case SqlPackage.CONSTRAINT__TYPE:
 				return getType();
-			case sqlPackage.CONSTRAINT__REFERENCE:
+			case SqlPackage.CONSTRAINT__REFERENCE:
 				return getReference();
-			case sqlPackage.CONSTRAINT__COLUMN:
+			case SqlPackage.CONSTRAINT__COLUMN:
 				return getColumn();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -256,16 +262,16 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case sqlPackage.CONSTRAINT__NAME:
+			case SqlPackage.CONSTRAINT__NAME:
 				setName((String)newValue);
 				return;
-			case sqlPackage.CONSTRAINT__TYPE:
+			case SqlPackage.CONSTRAINT__TYPE:
 				setType((ConstraintType)newValue);
 				return;
-			case sqlPackage.CONSTRAINT__REFERENCE:
+			case SqlPackage.CONSTRAINT__REFERENCE:
 				setReference((String)newValue);
 				return;
-			case sqlPackage.CONSTRAINT__COLUMN:
+			case SqlPackage.CONSTRAINT__COLUMN:
 				getColumn().clear();
 				getColumn().addAll((Collection<? extends Column>)newValue);
 				return;
@@ -281,16 +287,16 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case sqlPackage.CONSTRAINT__NAME:
+			case SqlPackage.CONSTRAINT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case sqlPackage.CONSTRAINT__TYPE:
+			case SqlPackage.CONSTRAINT__TYPE:
 				setType(TYPE_EDEFAULT);
 				return;
-			case sqlPackage.CONSTRAINT__REFERENCE:
+			case SqlPackage.CONSTRAINT__REFERENCE:
 				setReference(REFERENCE_EDEFAULT);
 				return;
-			case sqlPackage.CONSTRAINT__COLUMN:
+			case SqlPackage.CONSTRAINT__COLUMN:
 				getColumn().clear();
 				return;
 		}
@@ -305,13 +311,13 @@ public class ConstraintImpl extends MinimalEObjectImpl.Container implements Cons
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case sqlPackage.CONSTRAINT__NAME:
+			case SqlPackage.CONSTRAINT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case sqlPackage.CONSTRAINT__TYPE:
+			case SqlPackage.CONSTRAINT__TYPE:
 				return type != TYPE_EDEFAULT;
-			case sqlPackage.CONSTRAINT__REFERENCE:
+			case SqlPackage.CONSTRAINT__REFERENCE:
 				return REFERENCE_EDEFAULT == null ? reference != null : !REFERENCE_EDEFAULT.equals(reference);
-			case sqlPackage.CONSTRAINT__COLUMN:
+			case SqlPackage.CONSTRAINT__COLUMN:
 				return column != null && !column.isEmpty();
 		}
 		return super.eIsSet(featureID);

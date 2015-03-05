@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getConstraint()
+ * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getConstraint()
  * @model
  * @generated
  */
@@ -36,7 +36,7 @@ public interface Constraint extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getConstraint_Name()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getConstraint_Name()
 	 * @model
 	 * @generated
 	 */
@@ -64,7 +64,7 @@ public interface Constraint extends EObject {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see uk.ac.bham.mongoMap.model.sql.ConstraintType
 	 * @see #setType(ConstraintType)
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getConstraint_Type()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getConstraint_Type()
 	 * @model
 	 * @generated
 	 */
@@ -91,7 +91,7 @@ public interface Constraint extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reference</em>' attribute.
 	 * @see #setReference(String)
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getConstraint_Reference()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getConstraint_Reference()
 	 * @model id="true"
 	 * @generated
 	 */
@@ -118,7 +118,7 @@ public interface Constraint extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column</em>' reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.sqlPackage#getConstraint_Column()
+	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getConstraint_Column()
 	 * @see uk.ac.bham.mongoMap.model.sql.Column#getConstraint
 	 * @model opposite="constraint" required="true"
 	 * @generated
