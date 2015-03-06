@@ -1,13 +1,14 @@
 package uk.ac.bham.mongoMap.map.rules;
 
+import uk.ac.bham.mongoMap.model.mongo.Key;
 import uk.ac.bham.mongoMap.model.mongo.Value;
 import uk.ac.bham.mongoMap.model.sql.Cell;
 import uk.ac.bham.sitra.Rule;
 import uk.ac.bham.sitra.Transformer;
 
-public class CellToVal implements Rule<Cell, Value> {
+public class CellToKeyVal implements Rule<Cell, Key> {
 
-	public CellToVal() {
+	public CellToKeyVal() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -17,13 +18,13 @@ public class CellToVal implements Rule<Cell, Value> {
 	}
 
 	@Override
-	public Value build(Cell source, Transformer t) {
+	public Key build(Cell source, Transformer t) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void setProperties(Value target, Cell source, Transformer t) {
+	public void setProperties(Key target, Cell source, Transformer t) {
 		// TODO Auto-generated method stub
 		
 	}
