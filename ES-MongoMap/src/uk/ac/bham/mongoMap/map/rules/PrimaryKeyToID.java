@@ -1,6 +1,8 @@
 package uk.ac.bham.mongoMap.map.rules;
 
 import uk.ac.bham.mongoMap.model.mongo.Id;
+import uk.ac.bham.mongoMap.model.mongo.MongoFactory;
+import uk.ac.bham.mongoMap.model.mongo.MongoObject;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.ConstraintType;
 import uk.ac.bham.sitra.Rule;
@@ -24,7 +26,14 @@ public class PrimaryKeyToID implements Rule<Constraint, Id> {
 	@Override
 	public Id build(Constraint source, Transformer t) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		MongoFactory mongoFactory = MongoFactory.eINSTANCE;
+		Id id = mongoFactory.createId();
+		
+		id.setName(source.getName());
+		//id.setValue(source.getColumn().);
+		
+		return id;
 	}
 
 	@Override
