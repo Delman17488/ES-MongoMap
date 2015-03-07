@@ -1489,7 +1489,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_H4-sdMM1EeSmmpLRE_UddA" red="255" green="252" blue="216"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_EZaOQMM1EeSmmpLRE_UddA" name="name : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@7b04c531{platform:/resource/ES-MongoMap/Mongo.ecore#//MongoDB/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_EZaOQMM1EeSmmpLRE_UddA" name="name : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="Mongo.ecore#//MongoDB/name"/>
           <semanticElements xmi:type="ecore:EAttribute" href="Mongo.ecore#//MongoDB/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_H5IdcMM1EeSmmpLRE_UddA" labelAlignment="LEFT">
@@ -1515,7 +1515,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_KcdV1MM1EeSmmpLRE_UddA" red="255" green="252" blue="216"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_InLPMMM1EeSmmpLRE_UddA" name="name : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@b047d88{platform:/resource/ES-MongoMap/Mongo.ecore#//Collection/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_InLPMMM1EeSmmpLRE_UddA" name="name : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="Mongo.ecore#//Collection/name"/>
           <semanticElements xmi:type="ecore:EAttribute" href="Mongo.ecore#//Collection/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_KcdV1cM1EeSmmpLRE_UddA" labelAlignment="LEFT">
@@ -1541,7 +1541,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_ixvpNMM2EeSmmpLRE_UddA" red="255" green="252" blue="216"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ft6r0MM2EeSmmpLRE_UddA" name="name : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@6fbe2658{platform:/resource/ES-MongoMap/Mongo.ecore#//Key/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ft6r0MM2EeSmmpLRE_UddA" name="name : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="Mongo.ecore#//Key/name"/>
           <semanticElements xmi:type="ecore:EAttribute" href="Mongo.ecore#//Key/name"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ixvpNcM2EeSmmpLRE_UddA" labelAlignment="LEFT">
@@ -1579,7 +1579,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_OpXltMM2EeSmmpLRE_UddA" red="255" green="252" blue="216"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_9eGMgMM1EeSmmpLRE_UddA" name="type : Datatye = INT" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@753a3297{platform:/resource/ES-MongoMap/Mongo.ecore#//Value/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_9eGMgMM1EeSmmpLRE_UddA" name="type : Datatye = INT" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="Mongo.ecore#//Value/type"/>
           <semanticElements xmi:type="ecore:EAttribute" href="Mongo.ecore#//Value/type"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_J61aBcM2EeSmmpLRE_UddA" labelAlignment="LEFT">
@@ -1590,7 +1590,7 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K5IOQMM2EeSmmpLRE_UddA" name="value : EJavaObject" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@c9220f7{platform:/resource/ES-MongoMap/Mongo.ecore#//Value/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_K5IOQMM2EeSmmpLRE_UddA" name="value : EJavaObject" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="Mongo.ecore#//Value/value"/>
           <semanticElements xmi:type="ecore:EAttribute" href="Mongo.ecore#//Value/value"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_OpXltcM2EeSmmpLRE_UddA" labelAlignment="LEFT">
@@ -1616,7 +1616,7 @@
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_vQP71MM3EeSmmpLRE_UddA" red="255" green="252" blue="216"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Nd5tkMM1EeSmmpLRE_UddA" name="keys : EString" tooltipText="&#xA;ERROR : The required feature 'eAttributeType' of 'org.eclipse.emf.ecore.impl.EAttributeImpl@5a4e4fc5{platform:/resource/ES-MongoMap/Mongo.ecore#//UniqueIndex/newAttribute}' must be set&#xA;ERROR : The typed element must have a type">
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Nd5tkMM1EeSmmpLRE_UddA" name="keys : EString" tooltipText="">
           <target xmi:type="ecore:EAttribute" href="Mongo.ecore#//UniqueIndex/keys"/>
           <semanticElements xmi:type="ecore:EAttribute" href="Mongo.ecore#//UniqueIndex/keys"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_vQP71cM3EeSmmpLRE_UddA" labelAlignment="LEFT">

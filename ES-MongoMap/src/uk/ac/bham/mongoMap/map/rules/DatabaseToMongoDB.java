@@ -24,17 +24,10 @@ public class DatabaseToMongoDB implements Rule<Database, MongoDB> {
 	@Override
 	public MongoDB build(Database source, Transformer t) {
 		// TODO Auto-generated method stub
-		source.getTable();
-		Collection coll = null;
-		try {
-			coll = t.transform(TableToCollection.class, source.getTable().get(0));
-		} catch (RuleNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		MongoFactory mf = new MongoFactoryImpl();
 		MongoDB mdb = mf.createMongoDB();
-		mdb.getCollections().add(coll);
+		mdb.setName(source.getName());
+		
 		return mdb;
 	}
 
