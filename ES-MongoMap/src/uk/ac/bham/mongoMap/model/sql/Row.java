@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Row#getCells <em>Cells</em>}</li>
- *   <li>{@link uk.ac.bham.mongoMap.model.sql.Row#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,21 +38,5 @@ public interface Row extends EObject {
 	 * @generated
 	 */
 	EList<Cell> getCells();
-
-	/**
-	 * Returns the value of the '<em><b>Constraints</b></em>' reference list.
-	 * The list contents are of type {@link uk.ac.bham.mongoMap.model.sql.Constraint}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Constraints</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints</em>' reference list.
-	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getRow_Constraints()
-	 * @model
-	 * @generated
-	 */
-	EList<Constraint> getConstraints();
 
 } // Row

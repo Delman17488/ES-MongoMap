@@ -76,7 +76,6 @@ Package sql <uk.ac.bham.mongoMap.sql>
 
   Class Row
     Reference cells : Cell<<0..*>>
-    Reference constraints : Constraint<<0..*>>
 
   Class Cell
     Attribute value : EJavaObject

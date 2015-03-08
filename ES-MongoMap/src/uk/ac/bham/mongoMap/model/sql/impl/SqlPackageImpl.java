@@ -437,15 +437,6 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getRow_Constraints() {
-		return (EReference)rowEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getCell() {
 		return cellEClass;
 	}
@@ -549,7 +540,6 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 
 		rowEClass = createEClass(ROW);
 		createEReference(rowEClass, ROW__CELLS);
-		createEReference(rowEClass, ROW__CONSTRAINTS);
 
 		cellEClass = createEClass(CELL);
 		createEAttribute(cellEClass, CELL__VALUE);
@@ -625,7 +615,6 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 
 		initEClass(rowEClass, Row.class, "Row", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRow_Cells(), this.getCell(), null, "cells", null, 0, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRow_Constraints(), this.getConstraint(), null, "constraints", null, 0, -1, Row.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(cellEClass, Cell.class, "Cell", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCell_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

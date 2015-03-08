@@ -424,22 +424,13 @@ public interface SqlPackage extends EPackage {
 	int ROW__CELLS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROW__CONSTRAINTS = 1;
-
-	/**
 	 * The number of structural features of the '<em>Row</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROW_FEATURE_COUNT = 2;
+	int ROW_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Row</em>' class.
@@ -842,17 +833,6 @@ public interface SqlPackage extends EPackage {
 	EReference getRow_Cells();
 
 	/**
-	 * Returns the meta object for the reference list '{@link uk.ac.bham.mongoMap.model.sql.Row#getConstraints <em>Constraints</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Constraints</em>'.
-	 * @see uk.ac.bham.mongoMap.model.sql.Row#getConstraints()
-	 * @see #getRow()
-	 * @generated
-	 */
-	EReference getRow_Constraints();
-
-	/**
 	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.sql.Cell <em>Cell</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1178,14 +1158,6 @@ public interface SqlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ROW__CELLS = eINSTANCE.getRow_Cells();
-
-		/**
-		 * The meta object literal for the '<em><b>Constraints</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ROW__CONSTRAINTS = eINSTANCE.getRow_Constraints();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.impl.CellImpl <em>Cell</em>}' class.
