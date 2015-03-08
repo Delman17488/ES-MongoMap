@@ -7,6 +7,7 @@ package uk.ac.bham.mongoMap.model.sql.validation;
 import org.eclipse.emf.common.util.EList;
 
 import uk.ac.bham.mongoMap.model.sql.Cell;
+import uk.ac.bham.mongoMap.model.sql.Constraint;
 
 /**
  * A sample validator interface for {@link uk.ac.bham.mongoMap.model.sql.Row}.
@@ -18,4 +19,6 @@ public interface RowValidator {
 	boolean validate();
 
 	boolean validateCells(EList<Cell> value);
+
+	boolean validateConstraints(EList<Constraint> value);
 }

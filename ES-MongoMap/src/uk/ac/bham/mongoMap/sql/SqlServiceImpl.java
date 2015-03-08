@@ -78,6 +78,9 @@ public class SqlServiceImpl implements SqlService {
 			c3.setValue(Date.valueOf("1987-11-" + (1 + (i % 30))));
 			
 			Row row = sqlFac.createRow();
+			
+			row.getConstraints().addAll(table.getConstraints());
+			
 			row.getCells().add(c1);
 			row.getCells().add(c2);
 			row.getCells().add(c3);

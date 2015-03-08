@@ -2,7 +2,6 @@
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" xmlns:modisco.xml="http://www.eclipse.org/MoDisco/Xml/0.1.incubation/XML" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_zX_s4LB2EeS7ENIcpfQOlA" selectedViews="__sNwMLB5EeSGTqVqJYxUYw" version="8.1.1">
   <models xmi:type="ecore:EPackage" href="Sql.ecore#/"/>
   <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-  <models xmi:type="modisco.xml:Root" href="plugin.xml#/"/>
   <models xmi:type="ecore:EPackage" href="Mongo.ecore#/"/>
   <models xmi:type="genmodel:GenModel" href="model.genmodel#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="__sNwMLB5EeSGTqVqJYxUYw" initialized="true">
@@ -328,6 +327,22 @@
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_npcbUsDuEeSvjJgfM8dk6A" id="(0.4897959183673469,0.16)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_npcbU8DuEeSvjJgfM8dk6A" id="(0.5730994152046783,0.13008130081300814)"/>
           </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_Im-lQMWCEeSS0_z4sCWDpw" type="4001" element="_Imv7wMWCEeSS0_z4sCWDpw" source="_q-OukLdmEeSiOtuR6eTOZw" target="_BH7DwLB7EeSGTqVqJYxUYw">
+            <children xmi:type="notation:Node" xmi:id="_Im_MUMWCEeSS0_z4sCWDpw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Im_MUcWCEeSS0_z4sCWDpw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Im_MUsWCEeSS0_z4sCWDpw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Im_MU8WCEeSS0_z4sCWDpw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Im_MVMWCEeSS0_z4sCWDpw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Im_MVcWCEeSS0_z4sCWDpw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_Im-lQcWCEeSS0_z4sCWDpw" routing="Rectilinear" jumpLinkStatus="Above"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_Im-lQsWCEeSS0_z4sCWDpw" fontColor="7490599" fontName="Cantarell" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Im-lQ8WCEeSS0_z4sCWDpw" points="[216, 385, 216, 385]$[120, 192, 120, 192]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Im_zYMWCEeSS0_z4sCWDpw" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Im_zYcWCEeSS0_z4sCWDpw" id="(0.4965986394557823,0.5)"/>
+          </edges>
         </data>
       </ownedAnnotationEntries>
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_vf0koLB6EeSGTqVqJYxUYw" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -511,7 +526,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BHrzMLB7EeSGTqVqJYxUYw" name="Constraint" tooltipText="" outgoingEdges="_nnzckMDuEeSvjJgfM8dk6A" incomingEdges="_GgDJkLB8EeSGTqVqJYxUYw" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BHrzMLB7EeSGTqVqJYxUYw" name="Constraint" tooltipText="" outgoingEdges="_nnzckMDuEeSvjJgfM8dk6A" incomingEdges="_GgDJkLB8EeSGTqVqJYxUYw _Imv7wMWCEeSS0_z4sCWDpw" width="12" height="10">
         <target xmi:type="ecore:EClass" href="Sql.ecore#//Constraint"/>
         <semanticElements xmi:type="ecore:EClass" href="Sql.ecore#//Constraint"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -1027,7 +1042,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_q9RsULdmEeSiOtuR6eTOZw" name="Row" tooltipText="" outgoingEdges="_hNR8cLdnEeSiOtuR6eTOZw" incomingEdges="_-CLrMLdnEeSiOtuR6eTOZw" width="12" height="10">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_q9RsULdmEeSiOtuR6eTOZw" name="Row" tooltipText="" outgoingEdges="_hNR8cLdnEeSiOtuR6eTOZw _Imv7wMWCEeSS0_z4sCWDpw" incomingEdges="_-CLrMLdnEeSiOtuR6eTOZw" width="12" height="10">
         <target xmi:type="ecore:EClass" href="Sql.ecore#//Row"/>
         <semanticElements xmi:type="ecore:EClass" href="Sql.ecore#//Row"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -1127,6 +1142,23 @@
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Imv7wMWCEeSS0_z4sCWDpw" name="[0..*] constraints" sourceNode="_q9RsULdmEeSiOtuR6eTOZw" targetNode="_BHrzMLB7EeSGTqVqJYxUYw">
+        <target xmi:type="ecore:EReference" href="Sql.ecore#//Row/constraints"/>
+        <semanticElements xmi:type="ecore:EReference" href="Sql.ecore#//Row/constraints"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Imwi0MWCEeSS0_z4sCWDpw" routingStyle="manhattan">
+          <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_Imwi0cWCEeSS0_z4sCWDpw"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_Imwi0sWCEeSS0_z4sCWDpw" showIcon="false">
+            <customFeatures>labelSize</customFeatures>
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Imwi08WCEeSS0_z4sCWDpw"/>
+          </centerLabelStyle>
+          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_Imwi1MWCEeSS0_z4sCWDpw" showIcon="false">
+            <customFeatures>labelSize</customFeatures>
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Imwi1cWCEeSS0_z4sCWDpw" red="39" green="76" blue="114"/>
+          </endLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </ownedDiagramElements>
       <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="__5KAArB5EeSGTqVqJYxUYw"/>
@@ -1804,4 +1836,5 @@
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>
+  <models xmi:type="modisco.xml:Root" href="plugin.xml#/"/>
 </viewpoint:DAnalysis>
