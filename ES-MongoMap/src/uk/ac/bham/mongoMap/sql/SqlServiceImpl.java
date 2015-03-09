@@ -91,7 +91,76 @@ public class SqlServiceImpl implements SqlService {
 
 		table.getRows().addAll(rows);
 		
+		createAddressTable(db, table);
+		
 		return db;
+	}
+	
+	private void createAddressTable(Database db, Table persons) {
+		SqlFactory sqlFac = SqlFactory.eINSTANCE;
+		Table table = sqlFac.createTable();
+		Column personIdCol = sqlFac.createColumn();
+		Column streetCol = sqlFac.createColumn();
+		Column numberCol = sqlFac.createColumn();
+		
+		db.getTable().add(table);
+
+
+		table.setName("Addresses");
+
+		personIdCol.setName("person_id");
+		personIdCol.setType(Datatye.BIGINT);
+
+		streetCol.setName("street");
+		streetCol.setType(Datatye.TEXT);
+
+		numberCol.setName("number");
+		numberCol.setType(Datatye.INT);
+		
+		table.getColumns().add(personIdCol);
+		table.getColumns().add(streetCol);
+		table.getColumns().add(numberCol);
+
+		Constraint pkey = sqlFac.createConstraint();
+		pkey.setName("PKEY");
+		pkey.setType(ConstraintType.COMPOSITE_PRIMARY_KEY);
+		pkey.getColumn().add(personIdCol);
+		pkey.getColumn().add(streetCol);
+		
+		Constraint uniqueName = sqlFac.createConstraint();
+		uniqueName.setName("person_fkey");
+		uniqueName.setType(ConstraintType.FOREIGN_KEY);
+		uniqueName.getColumn().add(personIdCol);
+
+		table.getConstraints().add(pkey);
+		table.getConstraints().add(uniqueName);
+		
+		List<Row> rows = new ArrayList<Row>();
+
+		for (int i = 0; i < 10; i++) {
+			Cell c1 = sqlFac.createCell();
+			Cell c2 = sqlFac.createCell();
+			Cell c3 = sqlFac.createCell();
+
+			c1.setColumn(personIdCol);
+			c1.setValue(persons.getRows().get(0).getCells().get(0));
+
+			c2.setColumn(streetCol);
+			c2.setValue("Street Name " + i);
+			
+			c3.setColumn(numberCol);
+			c3.setValue(i);
+
+			Row row = sqlFac.createRow();
+			
+			row.getCells().add(c1);
+			row.getCells().add(c2);
+			row.getCells().add(c3);
+			
+			rows.add(row);
+		}
+
+		table.getRows().addAll(rows);
 	}
 
 }
