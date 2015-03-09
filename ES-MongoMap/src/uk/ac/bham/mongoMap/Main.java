@@ -5,10 +5,7 @@ import java.util.List;
 
 import uk.ac.bham.mongoMap.map.SitraMapper;
 import uk.ac.bham.mongoMap.map.rules.CellToKeyVal;
-import uk.ac.bham.mongoMap.map.rules.ColumnToKey;
-import uk.ac.bham.mongoMap.map.rules.CompositePrimaryKeyToID;
 import uk.ac.bham.mongoMap.map.rules.DatabaseToMongoDB;
-import uk.ac.bham.mongoMap.map.rules.ForeignKeyToKeyVal;
 import uk.ac.bham.mongoMap.map.rules.PrimaryKeyToID;
 import uk.ac.bham.mongoMap.map.rules.RowToDocument;
 import uk.ac.bham.mongoMap.map.rules.TableToCollection;
@@ -25,10 +22,7 @@ public class Main {
 		// add rules to list
 		List<Class<? extends Rule<?, ?>>> rules = new ArrayList<Class<? extends Rule<?, ?>>>();
 		rules.add(CellToKeyVal.class);
-		rules.add(ColumnToKey.class);
-		rules.add(CompositePrimaryKeyToID.class);
 		rules.add(DatabaseToMongoDB.class);
-		rules.add(ForeignKeyToKeyVal.class);
 		rules.add(PrimaryKeyToID.class);
 		rules.add(RowToDocument.class);
 		rules.add(TableToCollection.class);

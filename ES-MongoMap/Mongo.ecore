@@ -29,8 +29,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Document" eSuperTypes="#//MongoObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="keys" upperBound="-1" eType="#//Key"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="id" lowerBound="1" eType="#//Id"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="id" eType="#//Id" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Id" eSuperTypes="#//Key"/>
 </ecore:EPackage>

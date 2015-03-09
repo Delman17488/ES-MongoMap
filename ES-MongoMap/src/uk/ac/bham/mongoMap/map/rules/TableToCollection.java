@@ -21,7 +21,7 @@ public class TableToCollection implements Rule<Table, Collection> {
 
 	@Override
 	public Collection build(Table source, Transformer t) {
-		MongoFactory mf = new MongoFactoryImpl();
+		MongoFactory mf = MongoFactory.eINSTANCE;
 		Collection coll = mf.createCollection();
 		coll.setName(source.getName());
 		

@@ -1,6 +1,7 @@
 package uk.ac.bham.mongoMap.sql;
 
 import java.sql.Date;
+import java.sql.SQLXML;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +24,10 @@ public class SqlServiceImpl implements SqlService {
 
 	@Override
 	public Database getDatabase(String dbName) {
-		SqlFactory sqlFac = SqlFactoryImpl.init();
+		SqlFactory sqlFac = SqlFactory.eINSTANCE;
 
 		Database db = sqlFac.createDatabase();
+		db.setName("AAMService");
 		Table table = sqlFac.createTable();
 		Column idCol = sqlFac.createColumn();
 		Column nameCol = sqlFac.createColumn();
@@ -33,9 +35,6 @@ public class SqlServiceImpl implements SqlService {
 		
 		db.getTable().add(table);
 
-		table.getColumns().add(idCol);
-		table.getColumns().add(nameCol);
-		table.getColumns().add(dobCol);
 
 		table.setName("Persons");
 
@@ -48,6 +47,10 @@ public class SqlServiceImpl implements SqlService {
 		dobCol.setName("date_of_birth");
 		dobCol.setType(Datatye.DATE);
 		
+		table.getColumns().add(idCol);
+		table.getColumns().add(nameCol);
+		table.getColumns().add(dobCol);
+
 		Constraint pkey = sqlFac.createConstraint();
 		pkey.setName("PKEY");
 		pkey.setType(ConstraintType.PRIMARY_KEY);

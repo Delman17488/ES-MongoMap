@@ -35,7 +35,7 @@ Package mongo <uk.ac.bham.mongoMap.mongo>
 
   Class Document -> MongoObject
     Reference keys : Key<<0..*>>
-    Reference id : Id<<1..1>>
+    Reference id : Id
 
   Class Id -> Key
 

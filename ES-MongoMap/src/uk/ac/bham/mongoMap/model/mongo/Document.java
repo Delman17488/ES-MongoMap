@@ -49,7 +49,7 @@ public interface Document extends MongoObject {
 	 * @return the value of the '<em>Id</em>' containment reference.
 	 * @see #setId(Id)
 	 * @see uk.ac.bham.mongoMap.model.mongo.MongoPackage#getDocument_Id()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	Id getId();
