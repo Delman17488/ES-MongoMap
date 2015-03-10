@@ -1,7 +1,6 @@
 package uk.ac.bham.mongoMap.sql;
 
 import java.sql.Date;
-import java.sql.SQLXML;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +13,10 @@ import uk.ac.bham.mongoMap.model.sql.Datatye;
 import uk.ac.bham.mongoMap.model.sql.Row;
 import uk.ac.bham.mongoMap.model.sql.SqlFactory;
 import uk.ac.bham.mongoMap.model.sql.Table;
-import uk.ac.bham.mongoMap.model.sql.impl.SqlFactoryImpl;
 
-public class SqlServiceImpl implements SqlService {
+public class SqlServiceTestingImpl implements SqlService {
 
-	public SqlServiceImpl() {
+	public SqlServiceTestingImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -143,7 +141,7 @@ public class SqlServiceImpl implements SqlService {
 			Cell c3 = sqlFac.createCell();
 
 			c1.setColumn(personIdCol);
-			c1.setValue(persons.getRows().get(0).getCells().get(0));
+			c1.setValue(persons.getRows().get(0).getCells().get(0).getValue());
 
 			c2.setColumn(streetCol);
 			c2.setValue("Street Name " + i);

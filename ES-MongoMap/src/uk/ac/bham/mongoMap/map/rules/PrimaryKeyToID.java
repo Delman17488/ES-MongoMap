@@ -28,6 +28,7 @@ public class PrimaryKeyToID implements Rule<List<Cell>, Id> {
 	public Id build(List<Cell> source, Transformer t) {
 		MongoFactory mongoFactory = MongoFactory.eINSTANCE;
 		Id id = mongoFactory.createId();
+		id.setName("_id");
 		
 		if (source.size() ==1) {
 			

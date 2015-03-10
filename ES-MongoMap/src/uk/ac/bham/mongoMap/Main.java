@@ -12,8 +12,9 @@ import uk.ac.bham.mongoMap.map.rules.TableToCollection;
 import uk.ac.bham.mongoMap.map.rules.UniqueToUniqueIndex;
 import uk.ac.bham.mongoMap.model.mongo.MongoDB;
 import uk.ac.bham.mongoMap.sql.SqlService;
-import uk.ac.bham.mongoMap.sql.SqlServiceImpl;
+import uk.ac.bham.mongoMap.sql.SqlServiceTestingImpl;
 import uk.ac.bham.sitra.Rule;
+import utils.MongoDbPrinter;
 
 public class Main {
 
@@ -30,7 +31,7 @@ public class Main {
 
 		// instantiate sqlService and sitraMapper with rules
 		SitraMapper sitraMapper = new SitraMapper(rules);
-		SqlService service = new SqlServiceImpl();
+		SqlService service = new SqlServiceTestingImpl();
 
 		// perform the transformation from SQL-DB to MongoDB
 		MongoDB mDB = null;
@@ -45,7 +46,8 @@ public class Main {
 		// print the new and shiny mongoDB
 		if (mDB != null) {
 			System.out.println("MongoDB: ------");
-			System.out.println(mDB.toString());
+			MongoDbPrinter printer = new MongoDbPrinter();
+			System.out.println(printer.printMongoDB(mDB));
 		}
 	}
 }
