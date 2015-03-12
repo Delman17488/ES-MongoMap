@@ -19,6 +19,8 @@ public class SqlServiceTestingImpl implements SqlService {
 	public SqlServiceTestingImpl() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	// TODO add table with no prime key (preferable with many-to-many table like persons to roles)
 
 	@Override
 	public Database getDatabase(String dbName) {
@@ -64,7 +66,7 @@ public class SqlServiceTestingImpl implements SqlService {
 		
 		List<Row> rows = new ArrayList<Row>();
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 2; i++) {
 			Cell c1 = sqlFac.createCell();
 			Cell c2 = sqlFac.createCell();
 			Cell c3 = sqlFac.createCell();
@@ -135,13 +137,13 @@ public class SqlServiceTestingImpl implements SqlService {
 		
 		List<Row> rows = new ArrayList<Row>();
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 2; i++) {
 			Cell c1 = sqlFac.createCell();
 			Cell c2 = sqlFac.createCell();
 			Cell c3 = sqlFac.createCell();
 
 			c1.setColumn(personIdCol);
-			c1.setValue(persons.getRows().get(0).getCells().get(0).getValue());
+			c1.setValue(persons.getRows().get(i).getCells().get(0).getValue());
 
 			c2.setColumn(streetCol);
 			c2.setValue("Street Name " + i);
