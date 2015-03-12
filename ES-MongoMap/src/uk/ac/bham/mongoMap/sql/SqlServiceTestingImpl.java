@@ -88,6 +88,28 @@ public class SqlServiceTestingImpl implements SqlService {
 			
 			rows.add(row);
 		}
+		
+		//temp
+		Cell c1 = sqlFac.createCell();
+		Cell c2 = sqlFac.createCell();
+		Cell c3 = sqlFac.createCell();
+
+		c1.setColumn(idCol);
+		c1.setValue(new Long(2));
+
+		c2.setColumn(nameCol);
+		c2.setValue("Name " + 1);
+
+		c3.setColumn(dobCol);
+		c3.setValue(Date.valueOf("1987-11-" + (1 + (2 % 30))));
+		
+		Row row = sqlFac.createRow();
+		
+		row.getCells().add(c1);
+		row.getCells().add(c2);
+		row.getCells().add(c3);
+		
+		rows.add(row);
 
 		table.getRows().addAll(rows);
 		

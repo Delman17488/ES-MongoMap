@@ -44,16 +44,16 @@ public class MongoServiceimpl implements MongoService{
 			DBCollection collection= db.getCollection(colname);
 			collection.drop();
 			System.out.println("Collection : "+ colname);
-			
+
 			// create indices
-			
+
 			for (UniqueIndex list : c.getUniqueIndices()) {
-				DBObject keys = new BasicDBObject();
+
 				for (String key : list.getKeys()) {
-					// second parameter: ascending order
-					keys.put(key, 1);
+
+					collection.ensureIndex(new BasicDBObject(key, 1), new BasicDBObject("unique", true));
 				}
-				collection.createIndex(keys);
+
 			}
 
 			//add each document to the collection
