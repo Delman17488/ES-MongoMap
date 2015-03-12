@@ -5,6 +5,7 @@
 package uk.ac.bham.mongoMap.model.mongo.validation;
 
 import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 
 /**
  * A sample validator interface for {@link uk.ac.bham.mongoMap.model.mongo.Value}.
@@ -14,6 +15,8 @@ import uk.ac.bham.mongoMap.model.sql.Datatye;
  */
 public interface ValueValidator {
 	boolean validate();
+
+	boolean validateType(Datatype value);
 
 	boolean validateType(Datatye value);
 	boolean validateValue(Object value);

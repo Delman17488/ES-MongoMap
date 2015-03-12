@@ -26,30 +26,55 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Column">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Datatye"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Datatype"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" upperBound="-1"
         eType="#//Constraint" eOpposite="#//Constraint/column"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Datatye">
-    <eLiterals name="INT" value="1"/>
-    <eLiterals name="DOUBLE" value="2"/>
-    <eLiterals name="BOOLEAN" value="3"/>
-    <eLiterals name="STRING" value="4"/>
-    <eLiterals name="DATE" value="5"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Datatype">
+    <eLiterals name="INT" value="9999"/>
+    <eLiterals name="DOUBLE" value="8"/>
+    <eLiterals name="BOOLEAN" value="16"/>
+    <eLiterals name="STRING" value="9998"/>
+    <eLiterals name="DATE" value="91"/>
     <eLiterals name="FLOAT" value="6"/>
-    <eLiterals name="TIMESTAMP"/>
-    <eLiterals name="TEXT"/>
-    <eLiterals name="DECIMAL"/>
-    <eLiterals name="DATETIME"/>
-    <eLiterals name="VARCHAR"/>
-    <eLiterals name="CHAR"/>
-    <eLiterals name="TINYTEXT"/>
-    <eLiterals name="BLOB"/>
-    <eLiterals name="LONGTEXT"/>
-    <eLiterals name="SMALLINT"/>
-    <eLiterals name="BIGINT"/>
+    <eLiterals name="TIMESTAMP" value="93"/>
+    <eLiterals name="TEXT" value="9997"/>
+    <eLiterals name="DECIMAL" value="3"/>
+    <eLiterals name="DATETIME" value="9996"/>
+    <eLiterals name="VARCHAR" value="12"/>
+    <eLiterals name="CHAR" value="1"/>
+    <eLiterals name="TINYTEXT" value="9995"/>
+    <eLiterals name="BLOB" value="2004"/>
+    <eLiterals name="LONGTEXT" value="9994"/>
+    <eLiterals name="SMALLINT" value="5"/>
+    <eLiterals name="BIGINT" value="-5"/>
+    <eLiterals name="ARRAY" value="2003"/>
+    <eLiterals name="BINARY" value="-2"/>
+    <eLiterals name="BIT" value="-7"/>
+    <eLiterals name="CLOB" value="2005"/>
+    <eLiterals name="DATALINK" value="70"/>
+    <eLiterals name="DISTINCT" value="2001"/>
+    <eLiterals name="INTEGER" value="4"/>
+    <eLiterals name="JAVA_OBJECT" value="2000"/>
+    <eLiterals name="LONGNVARCHAR" value="-16"/>
+    <eLiterals name="LONGVARBINARY" value="-4"/>
+    <eLiterals name="LONGVARCHAR" value="-1"/>
+    <eLiterals name="NCHAR" value="-15"/>
+    <eLiterals name="NCLOB" value="2001"/>
+    <eLiterals name="NULL"/>
+    <eLiterals name="NUMERIC" value="2"/>
+    <eLiterals name="NVARCHAR" value="-9"/>
+    <eLiterals name="OTHER" value="1111"/>
+    <eLiterals name="REAL" value="7"/>
+    <eLiterals name="REF" value="2006"/>
+    <eLiterals name="ROWID" value="-8"/>
+    <eLiterals name="SQLXML"/>
+    <eLiterals name="STRUCT" value="2002"/>
+    <eLiterals name="TIME" value="92"/>
+    <eLiterals name="VARBINARY" value="-3"/>
+    <eLiterals name="TINYINT" value="-6"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConstraintType">
     <eLiterals name="PRIMARY_KEY" value="1"/>

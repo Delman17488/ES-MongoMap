@@ -77,8 +77,8 @@ public class SqlFactoryImpl extends EFactoryImpl implements SqlFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case SqlPackage.DATATYE:
-				return createDatatyeFromString(eDataType, initialValue);
+			case SqlPackage.DATATYPE:
+				return createDatatypeFromString(eDataType, initialValue);
 			case SqlPackage.CONSTRAINT_TYPE:
 				return createConstraintTypeFromString(eDataType, initialValue);
 			default:
@@ -94,8 +94,8 @@ public class SqlFactoryImpl extends EFactoryImpl implements SqlFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case SqlPackage.DATATYE:
-				return convertDatatyeToString(eDataType, instanceValue);
+			case SqlPackage.DATATYPE:
+				return convertDatatypeToString(eDataType, instanceValue);
 			case SqlPackage.CONSTRAINT_TYPE:
 				return convertConstraintTypeToString(eDataType, instanceValue);
 			default:
@@ -178,8 +178,8 @@ public class SqlFactoryImpl extends EFactoryImpl implements SqlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Datatye createDatatyeFromString(EDataType eDataType, String initialValue) {
-		Datatye result = Datatye.get(initialValue);
+	public Datatype createDatatypeFromString(EDataType eDataType, String initialValue) {
+		Datatype result = Datatype.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -189,7 +189,7 @@ public class SqlFactoryImpl extends EFactoryImpl implements SqlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertDatatyeToString(EDataType eDataType, Object instanceValue) {
+	public String convertDatatypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

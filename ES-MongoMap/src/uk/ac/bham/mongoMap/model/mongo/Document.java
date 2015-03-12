@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.Document#getKeys <em>Keys</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.Document#getId <em>Id</em>}</li>
  * </ul>
+ * </p>
  *
  * @see uk.ac.bham.mongoMap.model.mongo.MongoPackage#getDocument()
  * @model

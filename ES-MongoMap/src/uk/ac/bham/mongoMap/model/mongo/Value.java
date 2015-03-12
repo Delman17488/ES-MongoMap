@@ -2,7 +2,7 @@
  */
 package uk.ac.bham.mongoMap.model.mongo;
 
-import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,11 +11,11 @@ import uk.ac.bham.mongoMap.model.sql.Datatye;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.Value#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.Value#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @see uk.ac.bham.mongoMap.model.mongo.MongoPackage#getValue()
  * @model
@@ -24,7 +24,7 @@ import uk.ac.bham.mongoMap.model.sql.Datatye;
 public interface Value extends MongoObject {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link uk.ac.bham.mongoMap.model.sql.Datatye}.
+	 * The literals are from the enumeration {@link uk.ac.bham.mongoMap.model.sql.Datatype}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -32,24 +32,24 @@ public interface Value extends MongoObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
-	 * @see #setType(Datatye)
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatype
+	 * @see #setType(Datatype)
 	 * @see uk.ac.bham.mongoMap.model.mongo.MongoPackage#getValue_Type()
 	 * @model
 	 * @generated
 	 */
-	Datatye getType();
+	Datatype getType();
 
 	/**
 	 * Sets the value of the '{@link uk.ac.bham.mongoMap.model.mongo.Value#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatype
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(Datatye value);
+	void setType(Datatype value);
 
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.

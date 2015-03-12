@@ -1,5 +1,6 @@
 package uk.ac.bham.mongoMap.sql;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.ConstraintType;
 import uk.ac.bham.mongoMap.model.sql.Database;
-import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 import uk.ac.bham.mongoMap.model.sql.Row;
 import uk.ac.bham.mongoMap.model.sql.SqlFactory;
 import uk.ac.bham.mongoMap.model.sql.Table;
@@ -39,13 +40,13 @@ public class SqlServiceTestingImpl implements SqlService {
 		table.setName("Persons");
 
 		idCol.setName("person_id");
-		idCol.setType(Datatye.BIGINT);
+		idCol.setType(Datatype.BIGINT);
 
 		nameCol.setName("name");
-		nameCol.setType(Datatye.TEXT);
+		nameCol.setType(Datatype.TEXT);
 
 		dobCol.setName("date_of_birth");
-		dobCol.setType(Datatye.DATE);
+		dobCol.setType(Datatype.DATE);
 		
 		table.getColumns().add(idCol);
 		table.getColumns().add(nameCol);
@@ -131,13 +132,13 @@ public class SqlServiceTestingImpl implements SqlService {
 		table.setName("Addresses");
 
 		personIdCol.setName("person_id");
-		personIdCol.setType(Datatye.BIGINT);
+		personIdCol.setType(Datatype.BIGINT);
 
 		streetCol.setName("street");
-		streetCol.setType(Datatye.TEXT);
+		streetCol.setType(Datatype.TEXT);
 
 		numberCol.setName("number");
-		numberCol.setType(Datatye.INT);
+		numberCol.setType(Datatype.INT);
 		
 		table.getColumns().add(personIdCol);
 		table.getColumns().add(streetCol);
@@ -183,6 +184,12 @@ public class SqlServiceTestingImpl implements SqlService {
 		}
 
 		table.getRows().addAll(rows);
+	}
+
+	@Override
+	public Database getDatabase(Connection con, String dbName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

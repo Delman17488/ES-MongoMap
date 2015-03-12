@@ -3,15 +3,11 @@
 package uk.ac.bham.mongoMap.model.mongo.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import uk.ac.bham.mongoMap.model.mongo.MongoPackage;
 import uk.ac.bham.mongoMap.model.mongo.Value;
-
-import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,11 +15,11 @@ import uk.ac.bham.mongoMap.model.sql.Datatye;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.ValueImpl#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.ValueImpl#getValue <em>Value</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -36,7 +32,7 @@ public class ValueImpl extends MongoObjectImpl implements Value {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Datatye TYPE_EDEFAULT = Datatye.INT;
+	protected static final Datatype TYPE_EDEFAULT = Datatype.INT;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -46,7 +42,7 @@ public class ValueImpl extends MongoObjectImpl implements Value {
 	 * @generated
 	 * @ordered
 	 */
-	protected Datatye type = TYPE_EDEFAULT;
+	protected Datatype type = TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -92,7 +88,7 @@ public class ValueImpl extends MongoObjectImpl implements Value {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Datatye getType() {
+	public Datatype getType() {
 		return type;
 	}
 
@@ -101,8 +97,8 @@ public class ValueImpl extends MongoObjectImpl implements Value {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(Datatye newType) {
-		Datatye oldType = type;
+	public void setType(Datatype newType) {
+		Datatype oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MongoPackage.VALUE__TYPE, oldType, type));
@@ -154,7 +150,7 @@ public class ValueImpl extends MongoObjectImpl implements Value {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case MongoPackage.VALUE__TYPE:
-				setType((Datatye)newValue);
+				setType((Datatype)newValue);
 				return;
 			case MongoPackage.VALUE__VALUE:
 				setValue(newValue);

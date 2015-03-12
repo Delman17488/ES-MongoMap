@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Sequence#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Sequence#getMinValue <em>Min Value</em>}</li>
@@ -21,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Sequence#getCurrentValue <em>Current Value</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Sequence#isCycle <em>Cycle</em>}</li>
  * </ul>
+ * </p>
  *
  * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getSequence()
  * @model

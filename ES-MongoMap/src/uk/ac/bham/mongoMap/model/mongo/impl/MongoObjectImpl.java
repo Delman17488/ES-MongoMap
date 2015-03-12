@@ -17,10 +17,10 @@ import uk.ac.bham.mongoMap.model.mongo.MongoPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.MongoObjectImpl#isDoc <em>Doc</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

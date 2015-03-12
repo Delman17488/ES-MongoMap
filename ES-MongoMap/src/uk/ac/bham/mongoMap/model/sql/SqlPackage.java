@@ -488,14 +488,14 @@ public interface SqlPackage extends EPackage {
 	int CELL_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.Datatye <em>Datatye</em>}' enum.
+	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.Datatype <em>Datatype</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
-	 * @see uk.ac.bham.mongoMap.model.sql.impl.SqlPackageImpl#getDatatye()
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatype
+	 * @see uk.ac.bham.mongoMap.model.sql.impl.SqlPackageImpl#getDatatype()
 	 * @generated
 	 */
-	int DATATYE = 7;
+	int DATATYPE = 7;
 
 	/**
 	 * The meta object id for the '{@link uk.ac.bham.mongoMap.model.sql.ConstraintType <em>Constraint Type</em>}' enum.
@@ -865,14 +865,14 @@ public interface SqlPackage extends EPackage {
 	EReference getCell_Column();
 
 	/**
-	 * Returns the meta object for enum '{@link uk.ac.bham.mongoMap.model.sql.Datatye <em>Datatye</em>}'.
+	 * Returns the meta object for enum '{@link uk.ac.bham.mongoMap.model.sql.Datatype <em>Datatype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Datatye</em>'.
-	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
+	 * @return the meta object for enum '<em>Datatype</em>'.
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatype
 	 * @generated
 	 */
-	EEnum getDatatye();
+	EEnum getDatatype();
 
 	/**
 	 * Returns the meta object for enum '{@link uk.ac.bham.mongoMap.model.sql.ConstraintType <em>Constraint Type</em>}'.
@@ -1186,14 +1186,14 @@ public interface SqlPackage extends EPackage {
 		EReference CELL__COLUMN = eINSTANCE.getCell_Column();
 
 		/**
-		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.Datatye <em>Datatye</em>}' enum.
+		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.Datatype <em>Datatype</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see uk.ac.bham.mongoMap.model.sql.Datatye
-		 * @see uk.ac.bham.mongoMap.model.sql.impl.SqlPackageImpl#getDatatye()
+		 * @see uk.ac.bham.mongoMap.model.sql.Datatype
+		 * @see uk.ac.bham.mongoMap.model.sql.impl.SqlPackageImpl#getDatatype()
 		 * @generated
 		 */
-		EEnum DATATYE = eINSTANCE.getDatatye();
+		EEnum DATATYPE = eINSTANCE.getDatatype();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.sql.ConstraintType <em>Constraint Type</em>}' enum.

@@ -116,7 +116,6 @@ public class MongoFactoryImpl extends EFactoryImpl implements MongoFactory {
 	 */
 	public Value createValue() {
 		ValueImpl value = new ValueImpl();
-		value.doc=false;
 		return value;
 	}
 
@@ -137,7 +136,6 @@ public class MongoFactoryImpl extends EFactoryImpl implements MongoFactory {
 	 */
 	public Document createDocument() {
 		DocumentImpl document = new DocumentImpl();
-		document.doc=true;
 		return document;
 	}
 

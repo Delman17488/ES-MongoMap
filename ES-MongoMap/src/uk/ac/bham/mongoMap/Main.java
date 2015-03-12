@@ -13,7 +13,9 @@ import uk.ac.bham.mongoMap.map.rules.UniqueToUniqueIndex;
 import uk.ac.bham.mongoMap.model.mongo.MongoDB;
 import uk.ac.bham.mongoMap.mongo.MongoService;
 import uk.ac.bham.mongoMap.mongo.MongoServiceimpl;
+import uk.ac.bham.mongoMap.sql.ConnectionJDBC;
 import uk.ac.bham.mongoMap.sql.SqlService;
+import uk.ac.bham.mongoMap.sql.SqlServiceImpl;
 import uk.ac.bham.mongoMap.sql.SqlServiceTestingImpl;
 import uk.ac.bham.sitra.Rule;
 import utils.MongoDbPrinter;
@@ -46,13 +48,44 @@ public class Main {
 		}
 
 		// print the new and shiny mongoDB
-		if (mDB != null) {
+/*		if (mDB != null) {
 			
-			/*System.out.println("MongoDB: ------");
+			System.out.println("MongoDB: ------");
 			MongoDbPrinter printer = new MongoDbPrinter();
-			System.out.println(printer.printMongoDB(mDB));*/
+			System.out.println(printer.printMongoDB(mDB));
 			MongoService ms = new MongoServiceimpl();
 			ms.setMongoDBDatabase(mDB);
+		}*/
+		
+		
+		
+		
+		//Getting data from MySQL
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		ConnectionJDBC conJDBC = new ConnectionJDBC();
+		String databaseName = "sakila";
+		String user = "root";
+		String password = "1esmelulita8";
+		String url = "jdbc:mysql://localhost/"+databaseName;
+		conJDBC.getConnectionJDBC(url,user,password);
+		SqlService sqlImp = new SqlServiceImpl();
+		sqlImp.getDatabase(conJDBC.getConnection(), databaseName);
+		
+		MongoDB mDB2 = null;
+		try {
+			mDB2 = (MongoDB) sitraMapper.performTransformation(sqlImp
+					.getDatabase(null));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Row#getCells <em>Cells</em>}</li>
  * </ul>
+ * </p>
  *
  * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getRow()
  * @model

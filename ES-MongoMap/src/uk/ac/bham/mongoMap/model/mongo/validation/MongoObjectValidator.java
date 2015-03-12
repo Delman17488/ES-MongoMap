@@ -14,4 +14,6 @@ package uk.ac.bham.mongoMap.model.mongo.validation;
 public interface MongoObjectValidator {
 	boolean validate();
 
+	boolean validateDoc(boolean value);
+
 }

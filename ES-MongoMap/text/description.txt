@@ -25,9 +25,10 @@ Package mongo <uk.ac.bham.mongoMap.mongo>
     Attribute name : EString
 
   Class MongoObject
+    Attribute doc : EBoolean
 
   Class Value -> MongoObject
-    Attribute type : Datatye
+    Attribute type : Datatype
     Attribute value : EJavaObject
 
   Class UniqueIndex
@@ -60,7 +61,7 @@ Package sql <uk.ac.bham.mongoMap.sql>
 
   Class Column
     Attribute name : EString
-    Attribute type : Datatye
+    Attribute type : Datatype
     Attribute nullable : EBoolean
     Attribute size : EString
     Reference constraint : Constraint<<0..*>>
@@ -81,24 +82,49 @@ Package sql <uk.ac.bham.mongoMap.sql>
     Attribute value : EJavaObject
     Reference column : Column<<1..1>>
 
-  Enum Datatye
-    Literal INT = 1
-    Literal DOUBLE = 2
-    Literal BOOLEAN = 3
-    Literal STRING = 4
-    Literal DATE = 5
+  Enum Datatype
+    Literal INT = 9999
+    Literal DOUBLE = 8
+    Literal BOOLEAN = 16
+    Literal STRING = 9998
+    Literal DATE = 91
     Literal FLOAT = 6
-    Literal TIMESTAMP = 0
-    Literal TEXT = 0
-    Literal DECIMAL = 0
-    Literal DATETIME = 0
-    Literal VARCHAR = 0
-    Literal CHAR = 0
-    Literal TINYTEXT = 0
-    Literal BLOB = 0
-    Literal LONGTEXT = 0
-    Literal SMALLINT = 0
-    Literal BIGINT = 0
+    Literal TIMESTAMP = 93
+    Literal TEXT = 9997
+    Literal DECIMAL = 3
+    Literal DATETIME = 9996
+    Literal VARCHAR = 12
+    Literal CHAR = 1
+    Literal TINYTEXT = 9995
+    Literal BLOB = 2004
+    Literal LONGTEXT = 9994
+    Literal SMALLINT = 5
+    Literal BIGINT = -5
+    Literal ARRAY = 2003
+    Literal BINARY = -2
+    Literal BIT = -7
+    Literal CLOB = 2005
+    Literal DATALINK = 70
+    Literal DISTINCT = 2001
+    Literal INTEGER = 4
+    Literal JAVA_OBJECT = 2000
+    Literal LONGNVARCHAR = -16
+    Literal LONGVARBINARY = -4
+    Literal LONGVARCHAR = -1
+    Literal NCHAR = -15
+    Literal NCLOB = 2001
+    Literal NULL = 0
+    Literal NUMERIC = 2
+    Literal NVARCHAR = -9
+    Literal OTHER = 1111
+    Literal REAL = 7
+    Literal REF = 2006
+    Literal ROWID = -8
+    Literal SQLXML = 0
+    Literal STRUCT = 2002
+    Literal TIME = 92
+    Literal VARBINARY = -3
+    Literal TINYINT = -6
 
   Enum ConstraintType
     Literal PRIMARY_KEY = 1

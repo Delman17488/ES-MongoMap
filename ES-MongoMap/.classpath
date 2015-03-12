@@ -8,5 +8,6 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/ES-MongoMap/jars/mongo-java-driver-2.9.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="jars/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

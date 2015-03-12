@@ -3,24 +3,18 @@
 package uk.ac.bham.mongoMap.model.sql.impl;
 
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
-import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 import uk.ac.bham.mongoMap.model.sql.SqlPackage;
 
 /**
@@ -29,7 +23,6 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getType <em>Type</em>}</li>
@@ -37,6 +30,7 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getSize <em>Size</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */
@@ -69,7 +63,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Datatye TYPE_EDEFAULT = Datatye.INT;
+	protected static final Datatype TYPE_EDEFAULT = Datatype.INT;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -79,7 +73,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * @generated
 	 * @ordered
 	 */
-	protected Datatye type = TYPE_EDEFAULT;
+	protected Datatype type = TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isNullable() <em>Nullable</em>}' attribute.
@@ -176,7 +170,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Datatye getType() {
+	public Datatype getType() {
 		return type;
 	}
 
@@ -185,8 +179,8 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(Datatye newType) {
-		Datatye oldType = type;
+	public void setType(Datatype newType) {
+		Datatype oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, SqlPackage.COLUMN__TYPE, oldType, type));
@@ -310,7 +304,7 @@ public class ColumnImpl extends MinimalEObjectImpl.Container implements Column {
 				setName((String)newValue);
 				return;
 			case SqlPackage.COLUMN__TYPE:
-				setType((Datatye)newValue);
+				setType((Datatype)newValue);
 				return;
 			case SqlPackage.COLUMN__NULLABLE:
 				setNullable((Boolean)newValue);

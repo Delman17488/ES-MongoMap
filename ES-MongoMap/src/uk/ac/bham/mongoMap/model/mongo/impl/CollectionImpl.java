@@ -27,12 +27,12 @@ import uk.ac.bham.mongoMap.model.mongo.UniqueIndex;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.CollectionImpl#getDocuments <em>Documents</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.CollectionImpl#getUniqueIndices <em>Unique Indices</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.CollectionImpl#getName <em>Name</em>}</li>
  * </ul>
+ * </p>
  *
  * @generated
  */

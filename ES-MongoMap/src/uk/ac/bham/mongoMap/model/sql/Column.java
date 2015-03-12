@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
- * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#getType <em>Type</em>}</li>
@@ -21,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#getSize <em>Size</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Column#getConstraint <em>Constraint</em>}</li>
  * </ul>
+ * </p>
  *
  * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getColumn()
  * @model
@@ -55,7 +55,7 @@ public interface Column extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' attribute.
-	 * The literals are from the enumeration {@link uk.ac.bham.mongoMap.model.sql.Datatye}.
+	 * The literals are from the enumeration {@link uk.ac.bham.mongoMap.model.sql.Datatype}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -63,24 +63,24 @@ public interface Column extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
-	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
-	 * @see #setType(Datatye)
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatype
+	 * @see #setType(Datatype)
 	 * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getColumn_Type()
 	 * @model
 	 * @generated
 	 */
-	Datatye getType();
+	Datatype getType();
 
 	/**
 	 * Sets the value of the '{@link uk.ac.bham.mongoMap.model.sql.Column#getType <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
-	 * @see uk.ac.bham.mongoMap.model.sql.Datatye
+	 * @see uk.ac.bham.mongoMap.model.sql.Datatype
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(Datatye value);
+	void setType(Datatype value);
 
 	/**
 	 * Returns the value of the '<em><b>Nullable</b></em>' attribute.

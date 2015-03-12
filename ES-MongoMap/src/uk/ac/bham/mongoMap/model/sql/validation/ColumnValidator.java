@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList;
 
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 
 /**
  * A sample validator interface for {@link uk.ac.bham.mongoMap.model.sql.Column}.
@@ -19,6 +20,8 @@ public interface ColumnValidator {
 	boolean validate();
 
 	boolean validateName(String value);
+	boolean validateType(Datatype value);
+
 	boolean validateType(Datatye value);
 	boolean validateNullable(boolean value);
 	boolean validateSize(String value);

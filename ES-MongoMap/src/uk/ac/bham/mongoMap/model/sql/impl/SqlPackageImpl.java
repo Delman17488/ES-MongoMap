@@ -7,19 +7,15 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import uk.ac.bham.mongoMap.model.mongo.MongoPackage;
-
 import uk.ac.bham.mongoMap.model.mongo.impl.MongoPackageImpl;
-
 import uk.ac.bham.mongoMap.model.sql.Cell;
 import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.ConstraintType;
 import uk.ac.bham.mongoMap.model.sql.Database;
-import uk.ac.bham.mongoMap.model.sql.Datatye;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 import uk.ac.bham.mongoMap.model.sql.Row;
 import uk.ac.bham.mongoMap.model.sql.Sequence;
 import uk.ac.bham.mongoMap.model.sql.SqlFactory;
@@ -87,7 +83,7 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum datatyeEEnum = null;
+	private EEnum datatypeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -464,8 +460,8 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getDatatye() {
-		return datatyeEEnum;
+	public EEnum getDatatype() {
+		return datatypeEEnum;
 	}
 
 	/**
@@ -546,7 +542,7 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 		createEReference(cellEClass, CELL__COLUMN);
 
 		// Create enums
-		datatyeEEnum = createEEnum(DATATYE);
+		datatypeEEnum = createEEnum(DATATYPE);
 		constraintTypeEEnum = createEEnum(CONSTRAINT_TYPE);
 	}
 
@@ -599,7 +595,7 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 
 		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getColumn_Name(), ecorePackage.getEString(), "name", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getColumn_Type(), this.getDatatye(), "type", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_Type(), this.getDatatype(), "type", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getColumn_Size(), ecorePackage.getEString(), "size", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getColumn_Constraint(), this.getConstraint(), this.getConstraint_Column(), "constraint", null, 0, -1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -621,24 +617,49 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 		initEReference(getCell_Column(), this.getColumn(), null, "column", null, 1, 1, Cell.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(datatyeEEnum, Datatye.class, "Datatye");
-		addEEnumLiteral(datatyeEEnum, Datatye.INT);
-		addEEnumLiteral(datatyeEEnum, Datatye.DOUBLE);
-		addEEnumLiteral(datatyeEEnum, Datatye.BOOLEAN);
-		addEEnumLiteral(datatyeEEnum, Datatye.STRING);
-		addEEnumLiteral(datatyeEEnum, Datatye.DATE);
-		addEEnumLiteral(datatyeEEnum, Datatye.FLOAT);
-		addEEnumLiteral(datatyeEEnum, Datatye.TIMESTAMP);
-		addEEnumLiteral(datatyeEEnum, Datatye.TEXT);
-		addEEnumLiteral(datatyeEEnum, Datatye.DECIMAL);
-		addEEnumLiteral(datatyeEEnum, Datatye.DATETIME);
-		addEEnumLiteral(datatyeEEnum, Datatye.VARCHAR);
-		addEEnumLiteral(datatyeEEnum, Datatye.CHAR);
-		addEEnumLiteral(datatyeEEnum, Datatye.TINYTEXT);
-		addEEnumLiteral(datatyeEEnum, Datatye.BLOB);
-		addEEnumLiteral(datatyeEEnum, Datatye.LONGTEXT);
-		addEEnumLiteral(datatyeEEnum, Datatye.SMALLINT);
-		addEEnumLiteral(datatyeEEnum, Datatye.BIGINT);
+		initEEnum(datatypeEEnum, Datatype.class, "Datatype");
+		addEEnumLiteral(datatypeEEnum, Datatype.INT);
+		addEEnumLiteral(datatypeEEnum, Datatype.DOUBLE);
+		addEEnumLiteral(datatypeEEnum, Datatype.BOOLEAN);
+		addEEnumLiteral(datatypeEEnum, Datatype.STRING);
+		addEEnumLiteral(datatypeEEnum, Datatype.DATE);
+		addEEnumLiteral(datatypeEEnum, Datatype.FLOAT);
+		addEEnumLiteral(datatypeEEnum, Datatype.TIMESTAMP);
+		addEEnumLiteral(datatypeEEnum, Datatype.TEXT);
+		addEEnumLiteral(datatypeEEnum, Datatype.DECIMAL);
+		addEEnumLiteral(datatypeEEnum, Datatype.DATETIME);
+		addEEnumLiteral(datatypeEEnum, Datatype.VARCHAR);
+		addEEnumLiteral(datatypeEEnum, Datatype.CHAR);
+		addEEnumLiteral(datatypeEEnum, Datatype.TINYTEXT);
+		addEEnumLiteral(datatypeEEnum, Datatype.BLOB);
+		addEEnumLiteral(datatypeEEnum, Datatype.LONGTEXT);
+		addEEnumLiteral(datatypeEEnum, Datatype.SMALLINT);
+		addEEnumLiteral(datatypeEEnum, Datatype.BIGINT);
+		addEEnumLiteral(datatypeEEnum, Datatype.ARRAY);
+		addEEnumLiteral(datatypeEEnum, Datatype.BINARY);
+		addEEnumLiteral(datatypeEEnum, Datatype.BIT);
+		addEEnumLiteral(datatypeEEnum, Datatype.CLOB);
+		addEEnumLiteral(datatypeEEnum, Datatype.DATALINK);
+		addEEnumLiteral(datatypeEEnum, Datatype.DISTINCT);
+		addEEnumLiteral(datatypeEEnum, Datatype.INTEGER);
+		addEEnumLiteral(datatypeEEnum, Datatype.JAVA_OBJECT);
+		addEEnumLiteral(datatypeEEnum, Datatype.LONGNVARCHAR);
+		addEEnumLiteral(datatypeEEnum, Datatype.LONGVARBINARY);
+		addEEnumLiteral(datatypeEEnum, Datatype.LONGVARCHAR);
+		addEEnumLiteral(datatypeEEnum, Datatype.NCHAR);
+		addEEnumLiteral(datatypeEEnum, Datatype.NCLOB);
+		addEEnumLiteral(datatypeEEnum, Datatype.NULL);
+		addEEnumLiteral(datatypeEEnum, Datatype.NUMERIC);
+		addEEnumLiteral(datatypeEEnum, Datatype.NVARCHAR);
+		addEEnumLiteral(datatypeEEnum, Datatype.OTHER);
+		addEEnumLiteral(datatypeEEnum, Datatype.REAL);
+		addEEnumLiteral(datatypeEEnum, Datatype.REF);
+		addEEnumLiteral(datatypeEEnum, Datatype.ROWID);
+		addEEnumLiteral(datatypeEEnum, Datatype.SQLXML);
+		addEEnumLiteral(datatypeEEnum, Datatype.STRUCT);
+		addEEnumLiteral(datatypeEEnum, Datatype.TIME);
+		addEEnumLiteral(datatypeEEnum, Datatype.VARBINARY);
+		addEEnumLiteral(datatypeEEnum, Datatype.TINYINT);
 
 		initEEnum(constraintTypeEEnum, ConstraintType.class, "ConstraintType");
 		addEEnumLiteral(constraintTypeEEnum, ConstraintType.PRIMARY_KEY);
