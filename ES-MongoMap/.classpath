@@ -3,6 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="jars/mongo-java-driver-2.9.3.jar"/>
+	<classpathentry kind="lib" path="jars/mongo-java-driver-2.9.3.jar" sourcepath="/home/odiehl/.m2/repository/org/mongodb/mongo-java-driver/2.9.3/mongo-java-driver-2.9.3-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/ES-MongoMap/jars/mongo-java-driver-2.9.3-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

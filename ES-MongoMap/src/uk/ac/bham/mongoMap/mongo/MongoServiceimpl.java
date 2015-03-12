@@ -8,6 +8,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.Mongo;
 
 import uk.ac.bham.mongoMap.model.mongo.Collection;
@@ -43,6 +44,17 @@ public class MongoServiceimpl implements MongoService{
 			DBCollection collection= db.getCollection(colname);
 			collection.drop();
 			System.out.println("Collection : "+ colname);
+			
+			// create indices
+			
+			for (UniqueIndex list : c.getUniqueIndices()) {
+				DBObject keys = new BasicDBObject();
+				for (String key : list.getKeys()) {
+					// second parameter: ascending order
+					keys.put(key, 1);
+				}
+				collection.createIndex(keys);
+			}
 
 			//add each document to the collection
 
