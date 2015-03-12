@@ -18,6 +18,7 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl#getMinValue <em>Min Value</em>}</li>
@@ -27,7 +28,6 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl#getCurrentValue <em>Current Value</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.SequenceImpl#isCycle <em>Cycle</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

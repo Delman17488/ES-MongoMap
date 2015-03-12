@@ -28,11 +28,11 @@ import uk.ac.bham.mongoMap.model.mongo.MongoPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.DocumentImpl#getKeys <em>Keys</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.DocumentImpl#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

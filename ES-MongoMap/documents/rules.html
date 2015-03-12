@@ -45,7 +45,7 @@ In SQL database a row represents a single, implicitly structured data item in a 
 </p>
 
 
-<h2>Rule 4 & 5: Column to Key / Cell to Value</h2>
+<h2>Rule 4 : Cell to Value</h2>
 
 <p>
 In SQL, each table consist of a collection of columns/fields and all those columns together are used to represent an instance of the table (row/record/tuple). For example, in a table that represents users, each row would represent a single user. Columns might represent things like user name, user age, etc. Cells in the same row are identified by the column name: 
@@ -65,17 +65,26 @@ In MongoDB, each collection consist of a group of documents, documents like rows
 	<figcaption></figcaption>
 </figure>
 
-<h2>Rule 8: Unique-Constraint to UniqueIndex</h2>
+<h2>Rule 5: Primary-Key/Composite-Key</h2>
 <p>
-The Unique-Constraint object will be mapped to an UniqueIndex object. The relationships to the unique columns will be mapped to an array of strings. We decided to do it like this because there is no real schema (e.g. columns) in MongoDB. Hence, every document of a collection can have different key-value-pairs. Moreover, an index can be added to keys which do not exist yet in any document of the collection.
-</p id="rule8_img">
-
+<h3>5.A: Primary Key</h3>
+<p>
+_id in mongo DS is the default primary key which can be overwritten.  It is unique by default. The values of  primary key from SQL database will be copied to MongoDB as Values in Key value pair where key is “_id.”
+</p >
 <figure>
-	<img src="constraint-to-uniqueindex.png"/>
-	<figcaption>Mapping of Unique-Constraint instance (left) to UniqueIndex instance (right)</figcaption>
+	<img src="sampletable.png"/>
+	<figcaption>Sample table</figcaption>
 </figure>
 
-<h2>Rule 9: Composite Key to _id-Subdocument</h2>
+<p>
+<figure>
+	<img src="idmongo.png"/>
+	<figcaption>Mapping Primary key to the value of _id</figcaption>
+</figure>
+
+
+
+<h3>5.B: Composite Key </h3>
 
 <p>
 A composite primary key will be mapped to a subdocument which is the value of _id. The _id key is the default identifier of a document and has per default an unique index. The columns (and the corresponding cells of each row) of a composite key will be stored in the subdocument. Using a subdocument rather than multiple key-value-pairs in the parent document has the advantage that the creation of foreign keys is easier because only _ id needs to be referenced. Moreover, this solution keeps the columns of composite key semantically together.
@@ -84,6 +93,16 @@ A composite primary key will be mapped to a subdocument which is the value of _i
 <figure>
 	<img src="composite-key-to-_id-subdocument.png"/>
 	<figcaption>Mapping of Composite-Primary-Key to _id with subdocument</figcaption>
+</figure>
+
+<h2>Rule 6: Unique-Constraint to UniqueIndex</h2>
+<p>
+The Unique-Constraint object will be mapped to an UniqueIndex object. The relationships to the unique columns will be mapped to an array of strings. We decided to do it like this because there is no real schema (e.g. columns) in MongoDB. Hence, every document of a collection can have different key-value-pairs. Moreover, an index can be added to keys which do not exist yet in any document of the collection.
+</p id="rule8_img">
+
+<figure>
+	<img src="constraint-to-uniqueindex.png"/>
+	<figcaption>Mapping of Unique-Constraint instance (left) to UniqueIndex instance (right)</figcaption>
 </figure>
 
 </body>

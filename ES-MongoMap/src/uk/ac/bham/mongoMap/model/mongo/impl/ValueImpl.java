@@ -19,11 +19,11 @@ import uk.ac.bham.mongoMap.model.sql.Datatye;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.ValueImpl#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.ValueImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

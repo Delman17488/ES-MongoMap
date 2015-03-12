@@ -11,6 +11,8 @@ import uk.ac.bham.mongoMap.map.rules.RowToDocument;
 import uk.ac.bham.mongoMap.map.rules.TableToCollection;
 import uk.ac.bham.mongoMap.map.rules.UniqueToUniqueIndex;
 import uk.ac.bham.mongoMap.model.mongo.MongoDB;
+import uk.ac.bham.mongoMap.mongo.MongoService;
+import uk.ac.bham.mongoMap.mongo.MongoServiceimpl;
 import uk.ac.bham.mongoMap.sql.SqlService;
 import uk.ac.bham.mongoMap.sql.SqlServiceTestingImpl;
 import uk.ac.bham.sitra.Rule;
@@ -45,9 +47,12 @@ public class Main {
 
 		// print the new and shiny mongoDB
 		if (mDB != null) {
-			System.out.println("MongoDB: ------");
+			
+			/*System.out.println("MongoDB: ------");
 			MongoDbPrinter printer = new MongoDbPrinter();
-			System.out.println(printer.printMongoDB(mDB));
+			System.out.println(printer.printMongoDB(mDB));*/
+			MongoService ms = new MongoServiceimpl();
+			ms.setMongoDBDatabase(mDB);
 		}
 	}
 }

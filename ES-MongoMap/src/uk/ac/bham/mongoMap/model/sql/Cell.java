@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Cell#getValue <em>Value</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Cell#getColumn <em>Column</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getCell()
  * @model

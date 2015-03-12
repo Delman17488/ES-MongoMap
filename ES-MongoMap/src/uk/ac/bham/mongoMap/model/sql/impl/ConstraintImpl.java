@@ -29,13 +29,13 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl#getReference <em>Reference</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ConstraintImpl#getColumn <em>Column</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

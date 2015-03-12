@@ -11,11 +11,11 @@ import uk.ac.bham.mongoMap.model.sql.Datatye;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.Value#getType <em>Type</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.Value#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.bham.mongoMap.model.mongo.MongoPackage#getValue()
  * @model

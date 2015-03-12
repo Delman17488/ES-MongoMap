@@ -257,6 +257,15 @@ public class MongoPackageImpl extends EPackageImpl implements MongoPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMongoObject_Doc() {
+		return (EAttribute)mongoObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getValue() {
 		return valueEClass;
 	}
@@ -375,6 +384,7 @@ public class MongoPackageImpl extends EPackageImpl implements MongoPackage {
 		createEAttribute(keyEClass, KEY__NAME);
 
 		mongoObjectEClass = createEClass(MONGO_OBJECT);
+		createEAttribute(mongoObjectEClass, MONGO_OBJECT__DOC);
 
 		valueEClass = createEClass(VALUE);
 		createEAttribute(valueEClass, VALUE__TYPE);
@@ -440,6 +450,7 @@ public class MongoPackageImpl extends EPackageImpl implements MongoPackage {
 		initEAttribute(getKey_Name(), ecorePackage.getEString(), "name", null, 0, 1, Key.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mongoObjectEClass, MongoObject.class, "MongoObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMongoObject_Doc(), ecorePackage.getEBoolean(), "doc", null, 0, 1, MongoObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getValue_Type(), theSqlPackage.getDatatye(), "type", null, 0, 1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

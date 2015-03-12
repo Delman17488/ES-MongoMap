@@ -29,6 +29,7 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getType <em>Type</em>}</li>
@@ -36,7 +37,6 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getSize <em>Size</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.ColumnImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

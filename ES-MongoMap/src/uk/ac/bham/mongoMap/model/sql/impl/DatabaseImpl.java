@@ -29,12 +29,12 @@ import uk.ac.bham.mongoMap.model.sql.Table;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.DatabaseImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.DatabaseImpl#getTable <em>Table</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.DatabaseImpl#getSequences <em>Sequences</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

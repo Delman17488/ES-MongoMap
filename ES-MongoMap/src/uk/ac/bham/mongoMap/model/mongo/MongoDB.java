@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.MongoDB#getCollections <em>Collections</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.MongoDB#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.bham.mongoMap.model.mongo.MongoPackage#getMongoDB()
  * @model

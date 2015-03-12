@@ -214,13 +214,22 @@ public interface MongoPackage extends EPackage {
 	int MONGO_OBJECT = 3;
 
 	/**
+	 * The feature id for the '<em><b>Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MONGO_OBJECT__DOC = 0;
+
+	/**
 	 * The number of structural features of the '<em>Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MONGO_OBJECT_FEATURE_COUNT = 0;
+	int MONGO_OBJECT_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Object</em>' class.
@@ -240,6 +249,15 @@ public interface MongoPackage extends EPackage {
 	 * @generated
 	 */
 	int VALUE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE__DOC = MONGO_OBJECT__DOC;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -323,6 +341,15 @@ public interface MongoPackage extends EPackage {
 	 * @generated
 	 */
 	int DOCUMENT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOCUMENT__DOC = MONGO_OBJECT__DOC;
 
 	/**
 	 * The feature id for the '<em><b>Keys</b></em>' containment reference list.
@@ -523,6 +550,17 @@ public interface MongoPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMongoObject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link uk.ac.bham.mongoMap.model.mongo.MongoObject#isDoc <em>Doc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Doc</em>'.
+	 * @see uk.ac.bham.mongoMap.model.mongo.MongoObject#isDoc()
+	 * @see #getMongoObject()
+	 * @generated
+	 */
+	EAttribute getMongoObject_Doc();
 
 	/**
 	 * Returns the meta object for class '{@link uk.ac.bham.mongoMap.model.mongo.Value <em>Value</em>}'.
@@ -737,6 +775,14 @@ public interface MongoPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MONGO_OBJECT = eINSTANCE.getMongoObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Doc</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MONGO_OBJECT__DOC = eINSTANCE.getMongoObject_Doc();
 
 		/**
 		 * The meta object literal for the '{@link uk.ac.bham.mongoMap.model.mongo.impl.ValueImpl <em>Value</em>}' class.

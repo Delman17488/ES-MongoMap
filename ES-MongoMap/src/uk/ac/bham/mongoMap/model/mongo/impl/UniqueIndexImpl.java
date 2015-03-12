@@ -21,10 +21,10 @@ import uk.ac.bham.mongoMap.model.mongo.UniqueIndex;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.mongo.impl.UniqueIndexImpl#getKeys <em>Keys</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

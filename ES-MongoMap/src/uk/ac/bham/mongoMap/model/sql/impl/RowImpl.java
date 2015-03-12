@@ -20,10 +20,10 @@ import uk.ac.bham.mongoMap.model.sql.SqlPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.RowImpl#getCells <em>Cells</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

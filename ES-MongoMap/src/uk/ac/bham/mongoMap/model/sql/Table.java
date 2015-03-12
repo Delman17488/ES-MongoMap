@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Table#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Table#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Table#getColumns <em>Columns</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.Table#getRows <em>Rows</em>}</li>
  * </ul>
- * </p>
  *
  * @see uk.ac.bham.mongoMap.model.sql.SqlPackage#getTable()
  * @model

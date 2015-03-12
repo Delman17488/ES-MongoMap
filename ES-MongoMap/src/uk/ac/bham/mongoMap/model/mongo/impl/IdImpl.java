@@ -11,8 +11,6 @@ import uk.ac.bham.mongoMap.model.mongo.MongoPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Id</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

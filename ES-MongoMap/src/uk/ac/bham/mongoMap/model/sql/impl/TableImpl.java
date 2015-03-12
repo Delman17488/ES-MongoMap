@@ -31,13 +31,13 @@ import uk.ac.bham.mongoMap.model.sql.Table;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.TableImpl#getName <em>Name</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.TableImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.TableImpl#getColumns <em>Columns</em>}</li>
  *   <li>{@link uk.ac.bham.mongoMap.model.sql.impl.TableImpl#getRows <em>Rows</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
