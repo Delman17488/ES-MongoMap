@@ -71,7 +71,7 @@ public class Main {
 		ConnectionJDBC conJDBC = new ConnectionJDBC();
 		String databaseName = "sakila";
 		String user = "root";
-		String password = "1esmelulita8";
+		String password = "";
 		String url = "jdbc:mysql://localhost/"+databaseName;
 		conJDBC.getConnectionJDBC(url,user,password);
 		SqlService sqlImp = new SqlServiceImpl();
