@@ -47,15 +47,7 @@ public class Main {
 			e.printStackTrace();
 		}
 
-		// print the new and shiny mongoDB
-/*		if (mDB != null) {
-			
-			System.out.println("MongoDB: ------");
-			MongoDbPrinter printer = new MongoDbPrinter();
-			System.out.println(printer.printMongoDB(mDB));
-			MongoService ms = new MongoServiceimpl();
-			ms.setMongoDBDatabase(mDB);
-		}*/
+		
 		
 		
 		
@@ -84,7 +76,17 @@ public class Main {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}  
+		
+		// print the new and shiny mongoDB
+				if (mDB2 != null) {
+					
+					System.out.println("MongoDB: ------");
+					//MongoDbPrinter printer = new MongoDbPrinter();
+					//System.out.println(printer.printMongoDB(mDB));
+					MongoService ms = new MongoServiceimpl();
+					ms.setMongoDBDatabase(mDB2);
+				}
 		
 		
 	}

@@ -1,5 +1,6 @@
 package uk.ac.bham.mongoMap.mongo;
 
+import java.math.BigDecimal;
 import java.net.UnknownHostException;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,8 +20,10 @@ import uk.ac.bham.mongoMap.model.mongo.MongoDB;
 import uk.ac.bham.mongoMap.model.mongo.MongoObject;
 import uk.ac.bham.mongoMap.model.mongo.UniqueIndex;
 import uk.ac.bham.mongoMap.model.mongo.Value;
+import uk.ac.bham.mongoMap.model.sql.Datatype;
 
 public class MongoServiceimpl implements MongoService{
+	DB db;
 
 	@Override
 	public boolean setMongoDBDatabase(MongoDB mDB) {
@@ -35,7 +38,7 @@ public class MongoServiceimpl implements MongoService{
 		}
 		//open mongo database
 		String dbname= mDB.getName();
-		DB db = mongo.getDB(dbname);
+		 db = mongo.getDB(dbname);
 
 		for(Collection c : col)
 		{
@@ -51,7 +54,8 @@ public class MongoServiceimpl implements MongoService{
 
 				for (String key : list.getKeys()) {
 
-					collection.ensureIndex(new BasicDBObject(key, 1), new BasicDBObject("unique", true));
+					System.out.println("unique index "+key);
+				//	collection.ensureIndex(new BasicDBObject(key, 1), new BasicDBObject("unique", true));
 				}
 
 			}
@@ -61,8 +65,16 @@ public class MongoServiceimpl implements MongoService{
 			EList<Document> doc = c.getDocuments();
 			for(Document document :doc)
 			{
+				
 				BasicDBObject documentObject=buildDocument(document);
+				//documentObject.
+				try{
 				collection.insert(documentObject);
+				}catch(IllegalArgumentException e){
+					
+					System.out.println("Illegal Argument");
+					//e.printStackTrace();
+				}
 
 			}
 
@@ -87,7 +99,7 @@ public class MongoServiceimpl implements MongoService{
 		if(id!=null)
 		{
 			MongoObject m = id.getValue();
-			if(m.isDoc())
+			if(m instanceof Document)
 			{
 
 				BasicDBObject value = buildDocument((Document) m);
@@ -117,12 +129,17 @@ public class MongoServiceimpl implements MongoService{
 		for(Key key:keys)
 		{
 			String name= key.getName();
+			
 			MongoObject m=	key.getValue();
-			if(!m.isDoc())
+			if(m instanceof Value )
 			{
 				//if document
 				Value val = (Value) m;
 				Object value = val.getValue();
+				
+				value= checktype(value);
+				
+												
 				documentObject.put(name, value);
 			}
 			else
@@ -133,6 +150,26 @@ public class MongoServiceimpl implements MongoService{
 			}
 		}
 		return documentObject;
+	}
+
+	private Object checktype(Object value) {
+		// TODO Auto-generated method stub
+		DBCollection c= db.getCollection("testbigdb");
+		c.drop();
+		BasicDBObject temp =  new BasicDBObject();
+		temp.put("sam", value);
+		try{
+		c.insert(temp);
+		}catch(IllegalArgumentException e){
+			
+			//System.out.println("Illegal ");
+			BigDecimal tem=(BigDecimal) value;
+			String t=tem.toString();
+			//e.printStackTrace();
+			//Double te= new Double(t);
+			value= t;
+		}
+		return value;
 	}
 
 
