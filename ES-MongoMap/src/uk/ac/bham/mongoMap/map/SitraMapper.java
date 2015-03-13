@@ -6,7 +6,9 @@ import uk.ac.bham.mongoMap.model.mongo.Collection;
 import uk.ac.bham.mongoMap.model.mongo.Document;
 import uk.ac.bham.mongoMap.model.mongo.MongoDB;
 import uk.ac.bham.mongoMap.model.mongo.UniqueIndex;
+import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
+import uk.ac.bham.mongoMap.model.sql.ConstraintType;
 import uk.ac.bham.mongoMap.model.sql.Database;
 import uk.ac.bham.mongoMap.model.sql.Row;
 import uk.ac.bham.mongoMap.model.sql.Table;
@@ -37,9 +39,15 @@ public class SitraMapper {
 				for (Constraint constraint : table.getConstraints()) {
 					switch (constraint.getType()) {
 					case UNIQUE:
-						UniqueIndex index = (UniqueIndex) transformer
-								.transform(constraint);
-						coll.getUniqueIndices().add(index);
+						// add unique constraint only if it does not belong to a
+						// primary key constraint
+						// otherwise the MongoDB tries to add a unique index on
+						// columns which do not exist (_id is primary key)
+						if (!isPrimaryKeyUniqueConstraint(constraint)) {
+							UniqueIndex index = (UniqueIndex) transformer
+									.transform(constraint);
+							coll.getUniqueIndices().add(index);
+						}
 						break;
 					default:
 						break;
@@ -60,5 +68,20 @@ public class SitraMapper {
 		} catch (RuleNotFoundException e) {
 			throw new Exception("A rule could not have been found.", e);
 		}
+	}
+
+	private boolean isPrimaryKeyUniqueConstraint(Constraint unique) {
+		// we only need to check whether the first column belongs to a
+		// primary/composite key as a unique constraint is
+		// never defined on partial primary key columns unless the unique
+		// constraint belongs to the primary key constraint.
+		Column col = unique.getColumn().get(0);
+		for (Constraint constraint : col.getConstraint()) {
+			if (constraint.getType() == ConstraintType.PRIMARY_KEY
+					|| constraint.getType() == ConstraintType.COMPOSITE_PRIMARY_KEY) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
