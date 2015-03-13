@@ -62,6 +62,11 @@ public class SqlServiceTestingImpl implements SqlService {
 		pkey.setType(ConstraintType.PRIMARY_KEY);
 		pkey.getColumn().add(idCol);
 		
+		Constraint uniqueName2 = sqlFac.createConstraint();
+		uniqueName2.setName("unique_pkey");
+		uniqueName2.setType(ConstraintType.UNIQUE);
+		uniqueName2.getColumn().add(idCol);
+		
 		Constraint uniqueName = sqlFac.createConstraint();
 		uniqueName.setName("unique_name");
 		uniqueName.setType(ConstraintType.UNIQUE);
@@ -69,6 +74,7 @@ public class SqlServiceTestingImpl implements SqlService {
 
 		personsTable.getConstraints().add(pkey);
 		personsTable.getConstraints().add(uniqueName);
+		personsTable.getConstraints().add(uniqueName2);
 		
 		List<Row> rows = new ArrayList<Row>();
 
@@ -158,13 +164,20 @@ public class SqlServiceTestingImpl implements SqlService {
 		pkey.getColumn().add(personIdCol);
 		pkey.getColumn().add(streetCol);
 		
-		Constraint uniqueName = sqlFac.createConstraint();
-		uniqueName.setName("person_fkey");
-		uniqueName.setType(ConstraintType.FOREIGN_KEY);
-		uniqueName.getColumn().add(personIdCol);
+		Constraint pkeyUnique = sqlFac.createConstraint();
+		pkeyUnique.setName("PKEY_UNIQUE");
+		pkeyUnique.setType(ConstraintType.UNIQUE);
+		pkeyUnique.getColumn().add(personIdCol);
+		pkeyUnique.getColumn().add(streetCol);
+		
+		Constraint fkey = sqlFac.createConstraint();
+		fkey.setName("person_fkey");
+		fkey.setType(ConstraintType.FOREIGN_KEY);
+		fkey.getColumn().add(personIdCol);
 
 		table.getConstraints().add(pkey);
-		table.getConstraints().add(uniqueName);
+		table.getConstraints().add(fkey);
+		table.getConstraints().add(pkeyUnique);
 		
 		List<Row> rows = new ArrayList<Row>();
 
