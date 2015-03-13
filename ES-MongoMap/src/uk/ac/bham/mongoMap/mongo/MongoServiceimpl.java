@@ -73,7 +73,8 @@ public class MongoServiceimpl implements MongoService{
 				}catch(IllegalArgumentException e){
 					
 					System.out.println("Illegal Argument");
-					//e.printStackTrace();
+					
+					e.printStackTrace();
 				}
 
 			}
@@ -137,7 +138,7 @@ public class MongoServiceimpl implements MongoService{
 				Value val = (Value) m;
 				Object value = val.getValue();
 				
-				value= checktype(value);
+				//value= checktype(value);
 				
 												
 				documentObject.put(name, value);
@@ -164,6 +165,7 @@ public class MongoServiceimpl implements MongoService{
 			
 			//System.out.println("Illegal ");
 			BigDecimal tem=(BigDecimal) value;
+			
 			String t=tem.toString();
 			//e.printStackTrace();
 			//Double te= new Double(t);

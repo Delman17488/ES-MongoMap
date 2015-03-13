@@ -41,13 +41,13 @@ public class Main {
 
 		if (mDB != null) {
 			// print the new and shiny mongoDB
-			System.out.println("MongoDB: ------");
-			MongoDbPrinter printer = new MongoDbPrinter();
-			System.out.println(printer.printMongoDB(mDB));
+//			System.out.println("MongoDB: ------");
+//			MongoDbPrinter printer = new MongoDbPrinter();
+//			System.out.println(printer.printMongoDB(mDB));
 			
 			// persist the new and shiny mongoDB to a MongoDB database 
-			// MongoService ms = new MongoServiceimpl();
-			// ms.setMongoDBDatabase(mDB);
+			 MongoService ms = new MongoServiceimpl();
+			 ms.setMongoDBDatabase(mDB);
 		}
 
 	}
