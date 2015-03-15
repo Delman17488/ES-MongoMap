@@ -150,12 +150,7 @@ public class MongoServiceimpl implements MongoService{
 
 				//check if given object datatype is supported for mongoDB
 				//value= checktype(value);
-				if(value instanceof BigDecimal )
-				{
-					BigDecimal bd=(BigDecimal) value;
-					Double d=bd.doubleValue();
-					value=d;
-				}
+				
 				documentObject.put("_id", value);
 			}
 		}
@@ -182,12 +177,7 @@ public class MongoServiceimpl implements MongoService{
 				//if document
 				Value val = (Value) m;
 				Object value = val.getValue();
-				if(value instanceof BigDecimal )
-				{
-					BigDecimal bd=(BigDecimal) value;
-					Double d=bd.doubleValue();
-					value=d;
-				}
+				
 				//check if given object datatype is supported for mongoDB
 				//value= checktype(value);
 
