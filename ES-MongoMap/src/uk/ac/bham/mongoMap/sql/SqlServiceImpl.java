@@ -5,6 +5,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.SQLXML;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -49,10 +50,11 @@ public class SqlServiceImpl implements SqlService {
 				tableNamePattern = tableName;
 				table.setName(tableName);
 				ArrayList<String> listColumns = new ArrayList<String>();
+				ArrayList<Datatype> listDatatypes = new ArrayList<Datatype>();
 				
 				//Getting column names from Metadata
 				ResultSet columns = dbMetaData.getColumns(catalog,schemaPattern,tableNamePattern,columnNamePattern);
-				addColumns(columns,listColumns,table);
+				addColumns(columns,listColumns,table,listDatatypes);
 
 				//Getting primary keys (Primary and Composite keys) from Metadata
 				ResultSet primaryKeys = dbMetaData.getPrimaryKeys(catalog, schemaPattern, tableNamePattern);
@@ -67,9 +69,9 @@ public class SqlServiceImpl implements SqlService {
 				addUniqueConstraints(uniqueConstraints,listColumns, table);
 				
 				database.getTable().add(table);
+				
+				addRow(con,table, listDatatypes);
 			}
-			
-			addRows(con);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -160,14 +162,22 @@ public class SqlServiceImpl implements SqlService {
 		}
 	}
 	
-	private void addColumns(ResultSet columns, ArrayList<String> listColumns, Table table){
+	private void addColumns(ResultSet columns, ArrayList<String> listColumns, Table table,ArrayList<Datatype> listDatatypes){
 		try {
 			while(columns.next()){
-			    String columnName = columns.getString(4);
-			    int columnType = columns.getInt(5);
+			    String columnName = columns.getString("COLUMN_NAME");
+			    
+			    int columnType = columns.getInt("DATA_TYPE");//delete
+			    
+			    String columnTypeName = columns.getString("TYPE_NAME");
+			    
+			    System.out.println(columnType+" : "+columnTypeName);//delete
+			    
 			    Column column = sqlFac.createColumn();
 			    column.setName(columnName);
-				column.setType(Datatype.get(columnType));
+				column.setType(Datatype.get(columnTypeName));
+				
+				listDatatypes.add(Datatype.get(columnTypeName));
 				table.getColumns().add(column);
 				listColumns.add(columnName);
 			}
@@ -177,33 +187,89 @@ public class SqlServiceImpl implements SqlService {
 		}
 	}
 	
-	private void addRows(Connection con){
+	private void addRow(Connection con, Table table,ArrayList<Datatype> listDatatypes){
 		try{
-			for (Table tbNameTmp : database.getTable()) {
 				ResultSet rs = null;
 		        Statement stmt = null;
 				stmt = con.createStatement();
 				
 				//Selecting all rows from the current table
-	            rs = stmt.executeQuery("SELECT * FROM "+tbNameTmp.getName());
+	            rs = stmt.executeQuery("SELECT * FROM "+table.getName());
 	            ResultSetMetaData rsmd = rs.getMetaData();
 	            int colCount = rsmd.getColumnCount();
 	            while(rs.next()){
 	            	Row row = sqlFac.createRow();
 	            	for (int i = 1; i <= colCount; i++) {
 	            		Cell cell = sqlFac.createCell();
-	            		cell.setValue(rs.getObject(i));
-	            		cell.setColumn(tbNameTmp.getColumns().get(i-1));
-	            		row.getCells().add(cell);
+	            		setJavaObject(cell,rs, i,listDatatypes.get(i-1));
+	            		cell.setColumn(table.getColumns().get(i-1));
+	            		row.getCells().add(cell); 
 	                }
-	            	tbNameTmp.getRows().add(row);
+	            	table.getRows().add(row);
 	            }
-			}
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+	
+	private void setJavaObject(Cell cell, ResultSet rs, int columnIndex,Datatype dataType){
+		try {
+			
+			if(dataType == Datatype.BIT || dataType == Datatype.BOOLEAN){
+				cell.setValue(rs.getBoolean(columnIndex));
+				
+			}else if(dataType == Datatype.SET || dataType == Datatype.ENUM 
+					|| dataType == Datatype.CHAR || dataType == Datatype.VARCHAR 
+					|| dataType == Datatype.LONGVARCHAR || dataType == Datatype.LONGNVARCHAR 
+					|| dataType == Datatype.NVARCHAR || dataType == Datatype.NCHAR 
+					|| dataType == Datatype.TEXT || dataType == Datatype.LONGTEXT
+					|| dataType == Datatype.MEDIUMTEXT){
+				cell.setValue(rs.getString(columnIndex));
+				
+			}else if(dataType == Datatype.INT || dataType == Datatype.INTEGER || dataType == Datatype.TINYINT 
+					|| dataType == Datatype.SMALLINT || dataType == Datatype.MEDIUMINT ){
+				cell.setValue(rs.getInt(columnIndex));
+				
+			}else if(dataType == Datatype.BIGINT ){
+				cell.setValue(rs.getLong(columnIndex));
+				
+			}else if(dataType == Datatype.NUMERIC || dataType == Datatype.DECIMAL || dataType == Datatype.DOUBLE || dataType == Datatype.FLOAT || dataType == Datatype.REAL){
+				cell.setValue(rs.getDouble(columnIndex));
+				
+			}else if(dataType == Datatype.TIME || dataType == Datatype.TIMESTAMP || dataType == Datatype.DATETIME){
+				cell.setValue(rs.getTimestamp(columnIndex));
+				
+			}else if(dataType == Datatype.DATE || dataType == Datatype.YEAR ){
+				cell.setValue(rs.getDate(columnIndex));
+				
+			}else if(dataType == Datatype.JAVA_OBJECT || dataType == Datatype.OTHER){
+				cell.setValue(rs.getObject(columnIndex));
+				
+			}else if(dataType == Datatype.ARRAY){
+				cell.setValue(rs.getArray(columnIndex));
+				
+			}else if( dataType == Datatype.BINARY 
+					|| dataType == Datatype.VARBINARY 
+					|| dataType == Datatype.LONGVARBINARY || dataType == Datatype.BLOB
+					|| dataType == Datatype.MEDIUMBLOB ){
+				cell.setValue(rs.getBytes(columnIndex));
+				
+			}else if(dataType == Datatype.SQLXML){
+				SQLXML xmlVal= rs.getSQLXML(columnIndex);
+				cell.setValue(xmlVal.getString());
+				
+			}else{ 
+				cell.setValue(rs.getString(columnIndex));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		
+		
 	}
 	
 	@Override

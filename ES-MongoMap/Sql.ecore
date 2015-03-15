@@ -40,15 +40,14 @@
     <eLiterals name="DATE" value="91"/>
     <eLiterals name="FLOAT" value="6"/>
     <eLiterals name="TIMESTAMP" value="93"/>
-    <eLiterals name="TEXT" value="9997"/>
     <eLiterals name="DECIMAL" value="3"/>
-    <eLiterals name="DATETIME" value="9996"/>
+    <eLiterals name="DATETIME" value="93"/>
     <eLiterals name="VARCHAR" value="12"/>
     <eLiterals name="CHAR" value="1"/>
     <eLiterals name="TINYTEXT" value="9995"/>
-    <eLiterals name="BLOB" value="2004"/>
+    <eLiterals name="BLOB" value="-4"/>
     <eLiterals name="LONGTEXT" value="9994"/>
-    <eLiterals name="SMALLINT" value="5"/>
+    <eLiterals name="SMALLINT" value="5" literal="SMALLINT UNSIGNED"/>
     <eLiterals name="BIGINT" value="-5"/>
     <eLiterals name="ARRAY" value="2003"/>
     <eLiterals name="BINARY" value="-2"/>
@@ -74,7 +73,16 @@
     <eLiterals name="STRUCT" value="2002"/>
     <eLiterals name="TIME" value="92"/>
     <eLiterals name="VARBINARY" value="-3"/>
-    <eLiterals name="TINYINT" value="-6"/>
+    <eLiterals name="TINYINT" value="-6" literal="TINYINT UNSIGNED"/>
+    <eLiterals name="YEAR" value="91"/>
+    <eLiterals name="SET" value="1"/>
+    <eLiterals name="TEXT" value="-1"/>
+    <eLiterals name="MEDIUMINT" value="4"/>
+    <eLiterals name="ENUM" value="1"/>
+    <eLiterals name="LONGBLOB" value="9987"/>
+    <eLiterals name="MEDIUMBLOB" value="9986"/>
+    <eLiterals name="TINYBLOB" value="9984"/>
+    <eLiterals name="MEDIUMTEXT" value="9983"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ConstraintType">
     <eLiterals name="PRIMARY_KEY" value="1"/>

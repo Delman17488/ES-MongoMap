@@ -625,7 +625,6 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 		addEEnumLiteral(datatypeEEnum, Datatype.DATE);
 		addEEnumLiteral(datatypeEEnum, Datatype.FLOAT);
 		addEEnumLiteral(datatypeEEnum, Datatype.TIMESTAMP);
-		addEEnumLiteral(datatypeEEnum, Datatype.TEXT);
 		addEEnumLiteral(datatypeEEnum, Datatype.DECIMAL);
 		addEEnumLiteral(datatypeEEnum, Datatype.DATETIME);
 		addEEnumLiteral(datatypeEEnum, Datatype.VARCHAR);
@@ -660,6 +659,15 @@ public class SqlPackageImpl extends EPackageImpl implements SqlPackage {
 		addEEnumLiteral(datatypeEEnum, Datatype.TIME);
 		addEEnumLiteral(datatypeEEnum, Datatype.VARBINARY);
 		addEEnumLiteral(datatypeEEnum, Datatype.TINYINT);
+		addEEnumLiteral(datatypeEEnum, Datatype.YEAR);
+		addEEnumLiteral(datatypeEEnum, Datatype.SET);
+		addEEnumLiteral(datatypeEEnum, Datatype.TEXT);
+		addEEnumLiteral(datatypeEEnum, Datatype.MEDIUMINT);
+		addEEnumLiteral(datatypeEEnum, Datatype.ENUM);
+		addEEnumLiteral(datatypeEEnum, Datatype.LONGBLOB);
+		addEEnumLiteral(datatypeEEnum, Datatype.MEDIUMBLOB);
+		addEEnumLiteral(datatypeEEnum, Datatype.TINYBLOB);
+		addEEnumLiteral(datatypeEEnum, Datatype.MEDIUMTEXT);
 
 		initEEnum(constraintTypeEEnum, ConstraintType.class, "ConstraintType");
 		addEEnumLiteral(constraintTypeEEnum, ConstraintType.PRIMARY_KEY);

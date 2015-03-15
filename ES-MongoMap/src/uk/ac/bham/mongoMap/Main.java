@@ -26,8 +26,8 @@ public class Main {
 	public static void main(String[] args) {
 
 		// Grabbing SQL database and setting up SitraMapper 
-		Database sqlDb = getTestingDatabase();
-//		Database sqlDb = getSqlDatabase();
+//		Database sqlDb = getTestingDatabase();
+		Database sqlDb = getSqlDatabase();
 		SitraMapper sitraMapper = setupSitraMapper();
 		
 		// perform the transformation from SQL-DB to MongoDB
@@ -38,8 +38,9 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 
-		if (mDB != null) {
+	if (mDB != null) {
 			// print the new and shiny mongoDB
 //			System.out.println("MongoDB: ------");
 //			MongoDbPrinter printer = new MongoDbPrinter();
@@ -84,7 +85,7 @@ public class Main {
 		ConnectionJDBC conJDBC = new ConnectionJDBC();
 		String databaseName = "sakila";
 		String user = "root";
-		String password = "";
+		String password = "1esmelulita8";
 		String url = "jdbc:mysql://localhost/" + databaseName;
 		conJDBC.getConnectionJDBC(url, user, password);
 		SqlService sqlImp = new SqlServiceImpl();

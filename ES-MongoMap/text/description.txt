@@ -90,13 +90,12 @@ Package sql <uk.ac.bham.mongoMap.sql>
     Literal DATE = 91
     Literal FLOAT = 6
     Literal TIMESTAMP = 93
-    Literal TEXT = 9997
     Literal DECIMAL = 3
-    Literal DATETIME = 9996
+    Literal DATETIME = 93
     Literal VARCHAR = 12
     Literal CHAR = 1
     Literal TINYTEXT = 9995
-    Literal BLOB = 2004
+    Literal BLOB = -4
     Literal LONGTEXT = 9994
     Literal SMALLINT = 5
     Literal BIGINT = -5
@@ -125,6 +124,15 @@ Package sql <uk.ac.bham.mongoMap.sql>
     Literal TIME = 92
     Literal VARBINARY = -3
     Literal TINYINT = -6
+    Literal YEAR = 91
+    Literal SET = 1
+    Literal TEXT = -1
+    Literal MEDIUMINT = 4
+    Literal ENUM = 1
+    Literal LONGBLOB = 9987
+    Literal MEDIUMBLOB = 9986
+    Literal TINYBLOB = 9984
+    Literal MEDIUMTEXT = 9983
 
   Enum ConstraintType
     Literal PRIMARY_KEY = 1

@@ -89,16 +89,6 @@ public enum Datatype implements Enumerator {
 	TIMESTAMP(93, "TIMESTAMP", "TIMESTAMP"),
 
 	/**
-	 * The '<em><b>TEXT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #TEXT_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	TEXT(9997, "TEXT", "TEXT"),
-
-	/**
 	 * The '<em><b>DECIMAL</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -116,7 +106,7 @@ public enum Datatype implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	DATETIME(9996, "DATETIME", "DATETIME"),
+	DATETIME(93, "DATETIME", "DATETIME"),
 
 	/**
 	 * The '<em><b>VARCHAR</b></em>' literal object.
@@ -156,7 +146,7 @@ public enum Datatype implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BLOB(2004, "BLOB", "BLOB"),
+	BLOB(-4, "BLOB", "BLOB"),
 
 	/**
 	 * The '<em><b>LONGTEXT</b></em>' literal object.
@@ -176,7 +166,7 @@ public enum Datatype implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	SMALLINT(5, "SMALLINT", "SMALLINT"),
+	SMALLINT(5, "SMALLINT", "SMALLINT UNSIGNED"),
 
 	/**
 	 * The '<em><b>BIGINT</b></em>' literal object.
@@ -436,7 +426,79 @@ public enum Datatype implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TINYINT(-6, "TINYINT", "TINYINT");
+	TINYINT(-6, "TINYINT", "TINYINT UNSIGNED"), /**
+	 * The '<em><b>YEAR</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #YEAR_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	YEAR(91, "YEAR", "YEAR"), /**
+	 * The '<em><b>SET</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SET_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SET(1, "SET", "SET"), /**
+	 * The '<em><b>TEXT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TEXT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TEXT(-1, "TEXT", "TEXT"), /**
+	 * The '<em><b>MEDIUMINT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MEDIUMINT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MEDIUMINT(4, "MEDIUMINT", "MEDIUMINT"), /**
+	 * The '<em><b>ENUM</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ENUM_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ENUM(1, "ENUM", "ENUM"), /**
+	 * The '<em><b>LONGBLOB</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LONGBLOB_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LONGBLOB(9987, "LONGBLOB", "LONGBLOB"), /**
+	 * The '<em><b>MEDIUMBLOB</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MEDIUMBLOB_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MEDIUMBLOB(9986, "MEDIUMBLOB", "MEDIUMBLOB"), /**
+	 * The '<em><b>TINYBLOB</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #TINYBLOB_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	TINYBLOB(9984, "TINYBLOB", "TINYBLOB"), /**
+	 * The '<em><b>MEDIUMTEXT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MEDIUMTEXT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MEDIUMTEXT(9983, "MEDIUMTEXT", "MEDIUMTEXT");
 
 	/**
 	 * The '<em><b>INT</b></em>' literal value.
@@ -544,21 +606,6 @@ public enum Datatype implements Enumerator {
 	public static final int TIMESTAMP_VALUE = 93;
 
 	/**
-	 * The '<em><b>TEXT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>TEXT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #TEXT
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int TEXT_VALUE = 9997;
-
-	/**
 	 * The '<em><b>DECIMAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -586,7 +633,7 @@ public enum Datatype implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DATETIME_VALUE = 9996;
+	public static final int DATETIME_VALUE = 93;
 
 	/**
 	 * The '<em><b>VARCHAR</b></em>' literal value.
@@ -646,7 +693,7 @@ public enum Datatype implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BLOB_VALUE = 2004;
+	public static final int BLOB_VALUE = -4;
 
 	/**
 	 * The '<em><b>LONGTEXT</b></em>' literal value.
@@ -672,7 +719,7 @@ public enum Datatype implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SMALLINT
-	 * @model
+	 * @model literal="SMALLINT UNSIGNED"
 	 * @generated
 	 * @ordered
 	 */
@@ -1062,11 +1109,146 @@ public enum Datatype implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TINYINT
-	 * @model
+	 * @model literal="TINYINT UNSIGNED"
 	 * @generated
 	 * @ordered
 	 */
 	public static final int TINYINT_VALUE = -6;
+
+	/**
+	 * The '<em><b>YEAR</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>YEAR</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #YEAR
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int YEAR_VALUE = 91;
+
+	/**
+	 * The '<em><b>SET</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SET</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SET
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SET_VALUE = 1;
+
+	/**
+	 * The '<em><b>TEXT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TEXT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TEXT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TEXT_VALUE = -1;
+
+	/**
+	 * The '<em><b>MEDIUMINT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MEDIUMINT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MEDIUMINT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEDIUMINT_VALUE = 4;
+
+	/**
+	 * The '<em><b>ENUM</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ENUM</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ENUM
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ENUM_VALUE = 1;
+
+	/**
+	 * The '<em><b>LONGBLOB</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>LONGBLOB</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #LONGBLOB
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LONGBLOB_VALUE = 9987;
+
+	/**
+	 * The '<em><b>MEDIUMBLOB</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MEDIUMBLOB</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MEDIUMBLOB
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEDIUMBLOB_VALUE = 9986;
+
+	/**
+	 * The '<em><b>TINYBLOB</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>TINYBLOB</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #TINYBLOB
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int TINYBLOB_VALUE = 9984;
+
+	/**
+	 * The '<em><b>MEDIUMTEXT</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MEDIUMTEXT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MEDIUMTEXT
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MEDIUMTEXT_VALUE = 9983;
 
 	/**
 	 * An array of all the '<em><b>Datatype</b></em>' enumerators.
@@ -1083,7 +1265,6 @@ public enum Datatype implements Enumerator {
 			DATE,
 			FLOAT,
 			TIMESTAMP,
-			TEXT,
 			DECIMAL,
 			DATETIME,
 			VARCHAR,
@@ -1118,6 +1299,15 @@ public enum Datatype implements Enumerator {
 			TIME,
 			VARBINARY,
 			TINYINT,
+			YEAR,
+			SET,
+			TEXT,
+			MEDIUMINT,
+			ENUM,
+			LONGBLOB,
+			MEDIUMBLOB,
+			TINYBLOB,
+			MEDIUMTEXT,
 		};
 
 	/**
@@ -1175,9 +1365,7 @@ public enum Datatype implements Enumerator {
 			case DATE_VALUE: return DATE;
 			case FLOAT_VALUE: return FLOAT;
 			case TIMESTAMP_VALUE: return TIMESTAMP;
-			case TEXT_VALUE: return TEXT;
 			case DECIMAL_VALUE: return DECIMAL;
-			case DATETIME_VALUE: return DATETIME;
 			case VARCHAR_VALUE: return VARCHAR;
 			case CHAR_VALUE: return CHAR;
 			case TINYTEXT_VALUE: return TINYTEXT;
@@ -1194,7 +1382,6 @@ public enum Datatype implements Enumerator {
 			case INTEGER_VALUE: return INTEGER;
 			case JAVA_OBJECT_VALUE: return JAVA_OBJECT;
 			case LONGNVARCHAR_VALUE: return LONGNVARCHAR;
-			case LONGVARBINARY_VALUE: return LONGVARBINARY;
 			case LONGVARCHAR_VALUE: return LONGVARCHAR;
 			case NCHAR_VALUE: return NCHAR;
 			case NULL_VALUE: return NULL;
@@ -1208,6 +1395,10 @@ public enum Datatype implements Enumerator {
 			case TIME_VALUE: return TIME;
 			case VARBINARY_VALUE: return VARBINARY;
 			case TINYINT_VALUE: return TINYINT;
+			case LONGBLOB_VALUE: return LONGBLOB;
+			case MEDIUMBLOB_VALUE: return MEDIUMBLOB;
+			case TINYBLOB_VALUE: return TINYBLOB;
+			case MEDIUMTEXT_VALUE: return MEDIUMTEXT;
 		}
 		return null;
 	}
