@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.SQLXML;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -26,166 +27,186 @@ public class SqlServiceImpl implements SqlService {
 	SqlFactory sqlFac = SqlFactory.eINSTANCE;
 	Database database = null;
 	Connection con = null;
-	
+	HashMap<String, ArrayList<Datatype>> dataTypesTable;
+
 	private Thread producerThread;
-	
+
 	public SqlServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public SqlServiceImpl(Connection con,String dbName) {
+
+	public SqlServiceImpl(Connection con, String dbName) {
 		this.database = sqlFac.createDatabase();
 		this.database.setName(dbName);
 		this.con = con;
 	}
 
 	@Override
-	public Database getDatabase() {		
+	public Database getDatabase() {
 		DatabaseMetaData dbMetaData = null;
 		String catalog = null;
 		String schemaPattern = null;
 		String tableNamePattern = null;
 		String columnNamePattern = null;
 		String[] types = null;
-		
+		this.dataTypesTable = new HashMap<String, ArrayList<Datatype>>();
+
 		try {
 			dbMetaData = con.getMetaData();
-			//Getting table names from Metadata
-			ResultSet tables = dbMetaData.getTables(catalog, schemaPattern, tableNamePattern, types);
-			
-			while(tables.next()){
+			// Getting table names from Metadata
+			ResultSet tables = dbMetaData.getTables(catalog, schemaPattern,
+					tableNamePattern, types);
+
+			while (tables.next()) {
 				Table table = sqlFac.createTable();
 				String tableName = tables.getString(3);
 				tableNamePattern = tableName;
 				table.setName(tableName);
 				ArrayList<String> listColumns = new ArrayList<String>();
 				ArrayList<Datatype> listDatatypes = new ArrayList<Datatype>();
-				
-				//Getting column names from Metadata
-				ResultSet columns = dbMetaData.getColumns(catalog,schemaPattern,tableNamePattern,columnNamePattern);
-				addColumns(columns,listColumns,table,listDatatypes);
 
-				//Getting primary keys (Primary and Composite keys) from Metadata
-				ResultSet primaryKeys = dbMetaData.getPrimaryKeys(catalog, schemaPattern, tableNamePattern);
+				// Getting column names from Metadata
+				ResultSet columns = dbMetaData.getColumns(catalog,
+						schemaPattern, tableNamePattern, columnNamePattern);
+				addColumns(columns, listColumns, table, listDatatypes);
+
+				this.dataTypesTable.put(table.getName(), listDatatypes);
+
+				// Getting primary keys (Primary and Composite keys) from
+				// Metadata
+				ResultSet primaryKeys = dbMetaData.getPrimaryKeys(catalog,
+						schemaPattern, tableNamePattern);
 				addPrimaryKeys(primaryKeys, listColumns, table);
-				
-				//Getting foreign keys from Metadata
-				ResultSet foreignKeys = dbMetaData.getImportedKeys(catalog, schemaPattern, tableNamePattern);
+
+				// Getting foreign keys from Metadata
+				ResultSet foreignKeys = dbMetaData.getImportedKeys(catalog,
+						schemaPattern, tableNamePattern);
 				addForeignKeys(foreignKeys, listColumns, table);
-				
-				//Getting unique constraints from Metadata
-				ResultSet uniqueConstraints = dbMetaData.getIndexInfo(catalog, schemaPattern, tableNamePattern, true, true);
-				addUniqueConstraints(uniqueConstraints,listColumns, table);
-				
+
+				// Getting unique constraints from Metadata
+				ResultSet uniqueConstraints = dbMetaData.getIndexInfo(catalog,
+						schemaPattern, tableNamePattern, true, true);
+				addUniqueConstraints(uniqueConstraints, listColumns, table);
+
 				database.getTable().add(table);
-				
-				addRow(con,table, listDatatypes);
+
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return database;
 	}
-	
-	private int getIndexByTableName(ArrayList<String> listColumns,String columnName){
+
+	private int getIndexByTableName(ArrayList<String> listColumns,
+			String columnName) {
 		for (int i = 0; i < listColumns.size(); i++) {
-			if(listColumns.get(i).equals(columnName))
+			if (listColumns.get(i).equals(columnName))
 				return i;
 		}
-		
+
 		return -1;
 	}
-	
-	private void addUniqueConstraints(ResultSet uniqueConstraints,ArrayList<String> listColumns, Table table){
+
+	private void addUniqueConstraints(ResultSet uniqueConstraints,
+			ArrayList<String> listColumns, Table table) {
 		try {
-			while(uniqueConstraints.next()){
-				if(uniqueConstraints.getString("INDEX_NAME")!= null){
+			while (uniqueConstraints.next()) {
+				if (uniqueConstraints.getString("INDEX_NAME") != null) {
 					Constraint unique = sqlFac.createConstraint();
-					unique.setName(uniqueConstraints.getString("INDEX_NAME")); 
+					unique.setName(uniqueConstraints.getString("INDEX_NAME"));
 					unique.setType(ConstraintType.UNIQUE);
-					
-				    String columnNameUnique = uniqueConstraints.getString("COLUMN_NAME");
-					int indexColumn = getIndexByTableName(listColumns,columnNameUnique);
+
+					String columnNameUnique = uniqueConstraints
+							.getString("COLUMN_NAME");
+					int indexColumn = getIndexByTableName(listColumns,
+							columnNameUnique);
 					unique.getColumn().add(table.getColumns().get(indexColumn));
-					
+
 					table.getConstraints().add(unique);
-					System.out.println("Unique constraint table:"+table.getName()+" column:"+columnNameUnique);
+					System.out.println("Unique constraint table:"
+							+ table.getName() + " column:" + columnNameUnique);
 				}
-				
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	private void addPrimaryKeys(ResultSet primaryKeys,ArrayList<String> listColumns, Table table){
+
+	private void addPrimaryKeys(ResultSet primaryKeys,
+			ArrayList<String> listColumns, Table table) {
 		try {
-			while(primaryKeys.next()){
+			while (primaryKeys.next()) {
 				Constraint primaryKey = sqlFac.createConstraint();
-				primaryKey.setName(primaryKeys.getString("PK_NAME")); 
-				
-			    String columnNamePrimary = primaryKeys.getString("COLUMN_NAME");
-				int indexColumn = getIndexByTableName(listColumns,columnNamePrimary);
-			    primaryKey.getColumn().add(table.getColumns().get(indexColumn));
-			    
-			    table.getConstraints().add(primaryKey);
+				primaryKey.setName(primaryKeys.getString("PK_NAME"));
+
+				String columnNamePrimary = primaryKeys.getString("COLUMN_NAME");
+				int indexColumn = getIndexByTableName(listColumns,
+						columnNamePrimary);
+				primaryKey.getColumn().add(table.getColumns().get(indexColumn));
+
+				table.getConstraints().add(primaryKey);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		if(table.getConstraints().size() > 1){
+
+		if (table.getConstraints().size() > 1) {
 			for (Constraint constraint : table.getConstraints()) {
 				constraint.setType(ConstraintType.COMPOSITE_PRIMARY_KEY);
 			}
-		}else{
+		} else {
 			for (Constraint constraint : table.getConstraints()) {
 				constraint.setType(ConstraintType.PRIMARY_KEY);
 			}
 		}
 	}
 
-	
-	private void addForeignKeys(ResultSet foreignKeys,ArrayList<String> listColumns, Table table){
+	private void addForeignKeys(ResultSet foreignKeys,
+			ArrayList<String> listColumns, Table table) {
 		try {
-			while(foreignKeys.next()){
+			while (foreignKeys.next()) {
 				Constraint foreignKey = sqlFac.createConstraint();
 				foreignKey.setName(foreignKeys.getString("FK_NAME"));
 				foreignKey.setType(ConstraintType.FOREIGN_KEY);
-				
-			    String columnNameForeign = foreignKeys.getString("FKCOLUMN_NAME");
-				int indexColumn = getIndexByTableName(listColumns,columnNameForeign);
+
+				String columnNameForeign = foreignKeys
+						.getString("FKCOLUMN_NAME");
+				int indexColumn = getIndexByTableName(listColumns,
+						columnNameForeign);
 				foreignKey.getColumn().add(table.getColumns().get(indexColumn));
-				
-			    table.getConstraints().add(foreignKey);
-			    
-			    System.out.println("Foreign key table:"+table.getName()+" column:"+columnNameForeign);
+
+				table.getConstraints().add(foreignKey);
+
+				System.out.println("Foreign key table:" + table.getName()
+						+ " column:" + columnNameForeign);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
-	private void addColumns(ResultSet columns, ArrayList<String> listColumns, Table table,ArrayList<Datatype> listDatatypes){
+
+	private void addColumns(ResultSet columns, ArrayList<String> listColumns,
+			Table table, ArrayList<Datatype> listDatatypes) {
 		try {
-			while(columns.next()){
-			    String columnName = columns.getString("COLUMN_NAME");
-			    
-			    int columnType = columns.getInt("DATA_TYPE");//delete
-			    
-			    String columnTypeName = columns.getString("TYPE_NAME");
-			    
-			    System.out.println(columnType+" : "+columnTypeName);//delete
-			    
-			    Column column = sqlFac.createColumn();
-			    column.setName(columnName);
+			while (columns.next()) {
+				String columnName = columns.getString("COLUMN_NAME");
+
+				int columnType = columns.getInt("DATA_TYPE");// delete
+
+				String columnTypeName = columns.getString("TYPE_NAME");
+
+				System.out.println(columnType + " : " + columnTypeName);// delete
+
+				Column column = sqlFac.createColumn();
+				column.setName(columnName);
 				column.setType(Datatype.get(columnTypeName));
-				
+
 				listDatatypes.add(Datatype.get(columnTypeName));
 				table.getColumns().add(column);
 				listColumns.add(columnName);
@@ -195,128 +216,188 @@ public class SqlServiceImpl implements SqlService {
 			e.printStackTrace();
 		}
 	}
-	
-	private void addRow(Connection con, Table table,ArrayList<Datatype> listDatatypes){
-		try{
-				ResultSet rs = null;
-		        Statement stmt = null;
-				stmt = con.createStatement();
-				
-				//Selecting all rows from the current table
-	            rs = stmt.executeQuery("SELECT * FROM "+table.getName());
-	            ResultSetMetaData rsmd = rs.getMetaData();
-	            int colCount = rsmd.getColumnCount();
-	            while(rs.next()){
-	            	Row row = sqlFac.createRow();
-	            	for (int i = 1; i <= colCount; i++) {
-	            		Cell cell = sqlFac.createCell();
-	            		setJavaObject(cell,rs, i,listDatatypes.get(i-1));
-	            		cell.setColumn(table.getColumns().get(i-1));
-	            		row.getCells().add(cell); 
-	                }
-	            	table.getRows().add(row);
-	            }
-		}catch (SQLException e) {
+
+/*	private void addRow(Connection con, Table table,
+			ArrayList<Datatype> listDatatypes) {
+		try {
+			ResultSet rs = null;
+			Statement stmt = null;
+			stmt = con.createStatement();
+
+			// Selecting all rows from the current table
+			rs = stmt.executeQuery("SELECT * FROM " + table.getName());
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int colCount = rsmd.getColumnCount();
+			while (rs.next()) {
+				Row row = sqlFac.createRow();
+				for (int i = 1; i <= colCount; i++) {
+					Cell cell = sqlFac.createCell();
+					setJavaObject(cell, rs, i, listDatatypes.get(i - 1));
+					cell.setColumn(table.getColumns().get(i - 1));
+					row.getCells().add(cell);
+				}
+				table.getRows().add(row);
+			}
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-	}
-	
-	private void setJavaObject(Cell cell, ResultSet rs, int columnIndex,Datatype dataType){
+	}*/
+
+	private void setJavaObject(Cell cell, ResultSet rs, int columnIndex,
+			Datatype dataType) {
 		try {
-			
-			if(dataType == Datatype.BIT || dataType == Datatype.BOOLEAN){
+
+			if (dataType == Datatype.BIT || dataType == Datatype.BOOLEAN) {
 				cell.setValue(rs.getBoolean(columnIndex));
-				
-			}else if(dataType == Datatype.SET || dataType == Datatype.ENUM 
-					|| dataType == Datatype.CHAR || dataType == Datatype.VARCHAR 
-					|| dataType == Datatype.LONGVARCHAR || dataType == Datatype.LONGNVARCHAR 
-					|| dataType == Datatype.NVARCHAR || dataType == Datatype.NCHAR 
-					|| dataType == Datatype.TEXT || dataType == Datatype.LONGTEXT
-					|| dataType == Datatype.MEDIUMTEXT){
+
+			} else if (dataType == Datatype.SET || dataType == Datatype.ENUM
+					|| dataType == Datatype.CHAR
+					|| dataType == Datatype.VARCHAR
+					|| dataType == Datatype.LONGVARCHAR
+					|| dataType == Datatype.LONGNVARCHAR
+					|| dataType == Datatype.NVARCHAR
+					|| dataType == Datatype.NCHAR || dataType == Datatype.TEXT
+					|| dataType == Datatype.LONGTEXT
+					|| dataType == Datatype.MEDIUMTEXT) {
 				cell.setValue(rs.getString(columnIndex));
-				
-			}else if(dataType == Datatype.INT || dataType == Datatype.INTEGER || dataType == Datatype.TINYINT 
-					|| dataType == Datatype.SMALLINT || dataType == Datatype.MEDIUMINT ){
+
+			} else if (dataType == Datatype.INT || dataType == Datatype.INTEGER
+					|| dataType == Datatype.TINYINT
+					|| dataType == Datatype.SMALLINT
+					|| dataType == Datatype.MEDIUMINT) {
 				cell.setValue(rs.getInt(columnIndex));
-				
-			}else if(dataType == Datatype.BIGINT ){
+
+			} else if (dataType == Datatype.BIGINT) {
 				cell.setValue(rs.getLong(columnIndex));
-				
-			}else if(dataType == Datatype.NUMERIC || dataType == Datatype.DECIMAL || dataType == Datatype.DOUBLE || dataType == Datatype.FLOAT || dataType == Datatype.REAL){
+
+			} else if (dataType == Datatype.NUMERIC
+					|| dataType == Datatype.DECIMAL
+					|| dataType == Datatype.DOUBLE
+					|| dataType == Datatype.FLOAT || dataType == Datatype.REAL) {
 				cell.setValue(rs.getDouble(columnIndex));
-				
-			}else if(dataType == Datatype.TIME || dataType == Datatype.TIMESTAMP || dataType == Datatype.DATETIME){
+
+			} else if (dataType == Datatype.TIME
+					|| dataType == Datatype.TIMESTAMP
+					|| dataType == Datatype.DATETIME) {
 				cell.setValue(rs.getTimestamp(columnIndex));
-				
-			}else if(dataType == Datatype.DATE || dataType == Datatype.YEAR ){
+
+			} else if (dataType == Datatype.DATE || dataType == Datatype.YEAR) {
 				cell.setValue(rs.getDate(columnIndex));
-				
-			}else if(dataType == Datatype.JAVA_OBJECT || dataType == Datatype.OTHER){
+
+			} else if (dataType == Datatype.JAVA_OBJECT
+					|| dataType == Datatype.OTHER) {
 				cell.setValue(rs.getObject(columnIndex));
-				
-			}else if(dataType == Datatype.ARRAY){
+
+			} else if (dataType == Datatype.ARRAY) {
 				cell.setValue(rs.getArray(columnIndex));
-				
-			}else if( dataType == Datatype.BINARY 
-					|| dataType == Datatype.VARBINARY 
-					|| dataType == Datatype.LONGVARBINARY || dataType == Datatype.BLOB
-					|| dataType == Datatype.MEDIUMBLOB ){
+
+			} else if (dataType == Datatype.BINARY
+					|| dataType == Datatype.VARBINARY
+					|| dataType == Datatype.LONGVARBINARY
+					|| dataType == Datatype.BLOB
+					|| dataType == Datatype.MEDIUMBLOB) {
 				cell.setValue(rs.getBytes(columnIndex));
-				
-			}else if(dataType == Datatype.SQLXML){
-				SQLXML xmlVal= rs.getSQLXML(columnIndex);
+
+			} else if (dataType == Datatype.SQLXML) {
+				SQLXML xmlVal = rs.getSQLXML(columnIndex);
 				cell.setValue(xmlVal.getString());
-				
-			}else{ 
+
+			} else {
 				cell.setValue(rs.getString(columnIndex));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
+
 	}
-	
+
 	@Override
 	public Database getDatabase(String dbName) {
 		return this.database;
 	}
 
 	@Override
-	public Queue<Packet<Row>> getRowQueue(Table t, int size) {
-		// TODO Auto-generated method stub
-		return null;
+	public Queue<Packet<Row>> getRowQueue(Table table, int size) {
+		Producer producer = new Producer(size, con,
+				this.dataTypesTable.get(table.getName()), table);
+		this.producerThread = new Thread(producer);
+		this.producerThread.start();
+
+		return producer.getQueue();
 	}
 
 	private class Producer implements Runnable {
 
-		public Queue<Packet<Row>> queue;
+		private Queue<Packet<Row>> queue;
 		private int queueSize;
+		private Connection con;
+		private ArrayList<Datatype> listDatatypes;
+		private Table table;
 
-		public Producer(int size) {
+		public Producer(int size, Connection con,
+				ArrayList<Datatype> listDatatypes, Table table) {
 			queue = new LinkedList<Packet<Row>>();
 			queueSize = size;
+			this.listDatatypes = listDatatypes;
+			this.table = table;
+			this.con = con;
+		}
+
+		public Queue<Packet<Row>> getQueue() {
+			return queue;
 		}
 
 		public void produce() {
-			while (true) {
-				synchronized (queue) {
-					while (queue.size() >= queueSize) {
-						try {
+
+			try {
+				Statement stmt = null;
+				stmt = con.createStatement();
+
+				// Selecting all rows from the current table
+				ResultSet rs = stmt.executeQuery("SELECT * FROM "
+						+ table.getName());
+
+				ResultSetMetaData rsmd;
+
+				rsmd = rs.getMetaData();
+
+				int colCount = rsmd.getColumnCount();
+
+				while (rs.next()) {
+					synchronized (queue) {
+						while (queue.size() >= queueSize) {
+
 							queue.wait();
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
+
 						}
 					}
+
+					Row row = sqlFac.createRow();
+					for (int i = 1; i <= colCount; i++) {
+						Cell cell = sqlFac.createCell();
+						setJavaObject(cell, rs, i, listDatatypes.get(i - 1));
+						cell.setColumn(table.getColumns().get(i - 1));
+						row.getCells().add(cell);
+					}
+					Packet<Row> packet = new Packet<Row>(row);
+					if (rs.isLast())
+						packet.setLastPacket(true);
+					synchronized (queue) {
+						queue.offer(packet);
+						queue.notify();
+					}
 				}
-				synchronized (queue) {
-					queue.offer(null);
-					queue.notify();
-				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+
 		}
 
 		@Override
