@@ -9,8 +9,6 @@ import uk.ac.bham.mongoMap.model.mongo.MongoDB;
 
 public interface MongoService {
 	
-	public void connectToMongoDB() throws UnknownHostException;
-	
 	public boolean setMongoDBDatabase(MongoDB mDB);
 	
 	public BlockingQueue<Document> getCollectionQueue(Collection table);

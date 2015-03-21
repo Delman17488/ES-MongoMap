@@ -28,6 +28,16 @@ public class MongoServiceimpl implements MongoService {
 	
 	private DB db;
 	private Mongo mongo = null;
+	
+	public MongoServiceimpl(String ip, int port){
+		// connect to mongoDB
+		try {
+			mongo = new Mongo(ip, port);
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public boolean setMongoDBDatabase(MongoDB mDB) {
@@ -193,17 +203,6 @@ public class MongoServiceimpl implements MongoService {
 	public BlockingQueue<Document> getCollectionQueue(Collection table) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void connectToMongoDB() throws UnknownHostException {
-		// connect to mongoDB
-		try {
-			mongo = new Mongo("192.168.56.200", 27017);
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }

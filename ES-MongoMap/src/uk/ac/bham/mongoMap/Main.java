@@ -34,13 +34,16 @@ public class Main {
 		long startTime = System.currentTimeMillis();
 		// Grabbing SQL database and setting up SitraMapper 
 //		Database sqlDb = getTestingDatabase();
-		Database sqlDb = getSqlDatabase();
+		Properties properties =  getProperties();
+		SqlService sqlService= getSqlService(properties);
+		MongoService mongoService = getMongoService(properties);
+
 		SitraMapper sitraMapper = setupSitraMapper();
 		
 		// perform the transformation from SQL-DB to MongoDB
 		MongoDB mDB = null;
 		try {
-			mDB = (MongoDB) sitraMapper.performTransformation(sqlDb);
+			mDB = (MongoDB) sitraMapper.performTransformation(sqlService,mongoService);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,9 +56,11 @@ public class Main {
 //			MongoDbPrinter printer = new MongoDbPrinter();
 //			System.out.println(printer.printMongoDB(mDB));
 			
+			
+		
 			// persist the new and shiny mongoDB to a MongoDB database 
-			 MongoService ms = new MongoServiceimpl();
-			 ms.setMongoDBDatabase(mDB);
+			 
+			mongoService.setMongoDBDatabase(mDB);
 		}
 		System.out.println("Transformation finished in " + (System.currentTimeMillis() - startTime) + " milliseconds");
 		System.exit(0);
@@ -83,19 +88,11 @@ public class Main {
 	 * Getting data from MySQL
 	 * @return {@link Database}
 	 */
-	private static Database getSqlDatabase() {
+	private static SqlService getSqlService(Properties props) {
 		ConnectionJDBC conJDBC = new ConnectionJDBC();
-		
-		Properties props = new Properties();
-		InputStream in = Main.class.getResourceAsStream(PROPERTIES_FILE_NAME);
-        if (in == null) {
-            System.err.println("Error: Failed to find the \"database.properties\" file.");
-            System.exit(1);
-        }
         try {
-			props.load(in);
 			// load the JDBC driver
-	        String drivers = props.getProperty("jdbc.drivers");
+	        String drivers = props.getProperty("sql.jdbc.drivers");
 	        if (drivers == null) {
 	            System.err.println("Error: No JDBC driver specified in the"
 	                    + "\"jdbc.driver\" attribute of the property file");
@@ -103,28 +100,48 @@ public class Main {
 	        }
 	        Class.forName(drivers);
 	        
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-        String database = props.getProperty("database.url");
-        String databaseName = props.getProperty("database.name");
+        String database = props.getProperty("sql.database.url");
+        String databaseName = props.getProperty("sql.database.name");
         if (database == null) {
             System.err.println("Error: No database url specified in the"
                     + "\"database.url\" attribute of the property file");
             System.exit(1);
         }
-        String username = props.getProperty("database.user");
-        String password = props.getProperty("database.password");        
+        String username = props.getProperty("sql.database.user");
+        String password = props.getProperty("sql.database.password");        
         
 		conJDBC.getConnectionJDBC(database, username, password);
 		
-		SqlService sqlImp = new SqlServiceImpl(conJDBC.getConnection(),databaseName);
-		return sqlImp.getDatabase();
+		return new SqlServiceImpl(conJDBC.getConnection(),databaseName);
+	}
+	
+	private static MongoService getMongoService(Properties props){
+		String ip = props.getProperty("mongo.database.ip");
+		int port = Integer.parseInt(props.getProperty("mongo.database.port"));
+		
+		return new MongoServiceimpl(ip,port);
+	}
+	
+	private static Properties getProperties(){
+		Properties props = new Properties();
+		InputStream in = Main.class.getResourceAsStream(PROPERTIES_FILE_NAME);
+		
+		if(in == null){
+            System.err.println("Error: Failed to find the \"database.properties\" file.");
+            System.exit(1);
+        }
+		try{
+				props.load(in);
+		}catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+		}
 
+		return props;
 	}
 }
