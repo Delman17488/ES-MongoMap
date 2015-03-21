@@ -4,11 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Scanner;
-=======
 import java.util.Properties;
->>>>>>> branch 'trunk' of https://github.com/Delman17488/ES-MongoMap.git
 
 import uk.ac.bham.mongoMap.map.SitraMapper;
 import uk.ac.bham.mongoMap.map.rules.CellToKeyVal;
@@ -113,16 +110,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-		ConnectionJDBC conJDBC = new ConnectionJDBC();
-		String databaseName = "employees";
-		String user = "root";
-		String password = "mongomap";
-		String url = "jdbc:mysql://192.168.56.200/" + databaseName;
-		conJDBC.getConnectionJDBC(url, user, password);
-		SqlService sqlImp = new SqlServiceImpl();
-		return sqlImp.getDatabase(conJDBC.getConnection(), databaseName);
-=======
 
         String database = props.getProperty("database.url");
         String databaseName = props.getProperty("database.name");
@@ -138,7 +125,6 @@ public class Main {
 		
 		SqlService sqlImp = new SqlServiceImpl(conJDBC.getConnection(),databaseName);
 		return sqlImp.getDatabase();
->>>>>>> branch 'trunk' of https://github.com/Delman17488/ES-MongoMap.git
 
 	}
 }
