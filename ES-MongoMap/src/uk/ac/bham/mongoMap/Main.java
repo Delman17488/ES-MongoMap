@@ -2,6 +2,7 @@ package uk.ac.bham.mongoMap;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import uk.ac.bham.mongoMap.map.SitraMapper;
 import uk.ac.bham.mongoMap.map.rules.CellToKeyVal;
@@ -24,7 +25,10 @@ import utils.MongoDbPrinter;
 public class Main {
 
 	public static void main(String[] args) {
-
+		System.out.println("Press any key if you are ready for profiling:");
+		Scanner input = new Scanner(System.in);
+		input.nextLine();
+		long startTime = System.currentTimeMillis();
 		// Grabbing SQL database and setting up SitraMapper 
 //		Database sqlDb = getTestingDatabase();
 		Database sqlDb = getSqlDatabase();
@@ -50,7 +54,8 @@ public class Main {
 			 MongoService ms = new MongoServiceimpl();
 			 ms.setMongoDBDatabase(mDB);
 		}
-
+		System.out.println("Transformation finished in " + (System.currentTimeMillis() - startTime) + " milliseconds");
+		System.exit(0);
 	}
 
 	private static SitraMapper setupSitraMapper() {
@@ -83,10 +88,10 @@ public class Main {
 			e.printStackTrace();
 		}
 		ConnectionJDBC conJDBC = new ConnectionJDBC();
-		String databaseName = "sakila";
+		String databaseName = "employees";
 		String user = "root";
-		String password = "";
-		String url = "jdbc:mysql://localhost/" + databaseName;
+		String password = "mongomap";
+		String url = "jdbc:mysql://192.168.56.200/" + databaseName;
 		conJDBC.getConnectionJDBC(url, user, password);
 		SqlService sqlImp = new SqlServiceImpl();
 		return sqlImp.getDatabase(conJDBC.getConnection(), databaseName);

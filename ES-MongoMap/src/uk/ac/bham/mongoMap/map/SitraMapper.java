@@ -12,6 +12,8 @@ import uk.ac.bham.mongoMap.model.sql.ConstraintType;
 import uk.ac.bham.mongoMap.model.sql.Database;
 import uk.ac.bham.mongoMap.model.sql.Row;
 import uk.ac.bham.mongoMap.model.sql.Table;
+import uk.ac.bham.mongoMap.mongo.MongoService;
+import uk.ac.bham.mongoMap.sql.SqlService;
 import uk.ac.bham.sitra.Rule;
 import uk.ac.bham.sitra.RuleNotFoundException;
 import uk.ac.bham.sitra.SimpleTransformerImpl;
@@ -25,8 +27,10 @@ public class SitraMapper {
 		transformer = new SimpleTransformerImpl(rules);
 	}
 
-	public MongoDB performTransformation(Database db) throws Exception {
+	public MongoDB performTransformation(SqlService sqlService, MongoService mongoService) throws Exception {
 		try {
+			Database db = sqlService.getDatabase();
+			
 			// transform SQL-DB to MongoDB
 			MongoDB mongoDB = (MongoDB) transformer.transform(db);
 

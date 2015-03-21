@@ -1,11 +1,18 @@
 package uk.ac.bham.mongoMap.mongo;
 
+import java.net.UnknownHostException;
+import java.util.concurrent.BlockingQueue;
+
+import uk.ac.bham.mongoMap.model.mongo.Collection;
+import uk.ac.bham.mongoMap.model.mongo.Document;
 import uk.ac.bham.mongoMap.model.mongo.MongoDB;
-import uk.ac.bham.mongoMap.model.sql.Database;
 
 public interface MongoService {
 	
+	public void connectToMongoDB() throws UnknownHostException;
+	
 	public boolean setMongoDBDatabase(MongoDB mDB);
-
+	
+	public BlockingQueue<Document> getCollectionQueue(Collection table);
 
 }
