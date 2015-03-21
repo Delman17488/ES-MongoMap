@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.SQLXML;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 import uk.ac.bham.mongoMap.map.Packet;
@@ -25,6 +26,8 @@ public class SqlServiceImpl implements SqlService {
 	SqlFactory sqlFac = SqlFactory.eINSTANCE;
 	Database database = null;
 	Connection con = null;
+	
+	private Thread producerThread;
 	
 	public SqlServiceImpl() {
 		// TODO Auto-generated constructor stub
@@ -287,5 +290,40 @@ public class SqlServiceImpl implements SqlService {
 		return null;
 	}
 
+	private class Producer implements Runnable {
+
+		public Queue<Packet<Row>> queue;
+		private int queueSize;
+
+		public Producer(int size) {
+			queue = new LinkedList<Packet<Row>>();
+			queueSize = size;
+		}
+
+		public void produce() {
+			while (true) {
+				synchronized (queue) {
+					while (queue.size() >= queueSize) {
+						try {
+							queue.wait();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+				synchronized (queue) {
+					queue.offer(null);
+					queue.notify();
+				}
+			}
+		}
+
+		@Override
+		public void run() {
+			produce();
+		}
+
+	}
 
 }

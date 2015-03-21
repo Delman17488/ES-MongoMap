@@ -1,6 +1,7 @@
 package uk.ac.bham.mongoMap.map;
 
 import java.util.List;
+import java.util.Queue;
 
 import uk.ac.bham.mongoMap.model.mongo.Collection;
 import uk.ac.bham.mongoMap.model.mongo.Document;
@@ -87,5 +88,85 @@ public class SitraMapper {
 			}
 		}
 		return false;
+	}
+	
+	private class ConsumerAndProducer implements Runnable {
+
+		private Queue<Packet<Row>> src;
+		private Queue<Packet<Document>> trg;
+		
+		private int queueSize;
+
+		public ConsumerAndProducer(Queue<Packet<Row>> src, Queue<Packet<Document>> trg, int size) {
+			this.src = src;
+			this.trg = trg;
+			queueSize = size;
+		}
+
+		public void consumeAndProduce() {
+			Packet<Row> t;
+
+			while (true) {
+				t = consume();
+				produce(null);
+				System.out.println("CP: Task moved");
+			}
+		}
+
+		public void produce(Packet<Document> t) {
+			synchronized (trg) {
+				while (trg.size() >= queueSize) {
+					try {
+						System.out.println("CP: Queue voll");
+						trg.wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			synchronized (trg) {
+				trg.offer(t);
+				trg.notify();
+			}
+		}
+
+		public Packet<Row> consume() {
+			Packet<Row> t = null;
+			synchronized (src) {
+				while (src.size() == 0) {
+					try {
+						System.out.println("CP: Queue leer");
+						src.wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			try {
+				Thread.sleep(1000);
+				synchronized (src) {
+					t = src.poll();
+					src.notify();
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return t;
+		}
+
+		@Override
+		public void run() {
+			consumeAndProduce();
+		}
+
 	}
 }
