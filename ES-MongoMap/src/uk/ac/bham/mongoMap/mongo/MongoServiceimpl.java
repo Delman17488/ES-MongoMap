@@ -1,6 +1,7 @@
 package uk.ac.bham.mongoMap.mongo;
 
 import java.net.UnknownHostException;
+import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 
 import javax.swing.JDialog;
@@ -10,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import org.eclipse.emf.common.util.EList;
 
+import uk.ac.bham.mongoMap.map.Packet;
 import uk.ac.bham.mongoMap.model.mongo.Collection;
 import uk.ac.bham.mongoMap.model.mongo.Document;
 import uk.ac.bham.mongoMap.model.mongo.Id;
@@ -200,7 +202,7 @@ public class MongoServiceimpl implements MongoService {
 	}
 
 	@Override
-	public BlockingQueue<Document> getCollectionQueue(Collection table) {
+	public Queue<Packet<Document>> getDocumentQueue(Collection c, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,22 +1,22 @@
 package uk.ac.bham.mongoMap.sql;
 
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Queue;
 
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
+import uk.ac.bham.mongoMap.map.Packet;
 import uk.ac.bham.mongoMap.model.sql.Cell;
 import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
 import uk.ac.bham.mongoMap.model.sql.ConstraintType;
 import uk.ac.bham.mongoMap.model.sql.Database;
-import uk.ac.bham.mongoMap.model.sql.Datatye;
 import uk.ac.bham.mongoMap.model.sql.Datatype;
 import uk.ac.bham.mongoMap.model.sql.Row;
 import uk.ac.bham.mongoMap.model.sql.SqlFactory;
@@ -435,6 +435,12 @@ public class SqlServiceTestingImpl implements SqlService {
 		}
 
 		table.getRows().addAll(rows);
+	}
+
+	@Override
+	public Queue<Packet<Row>> getRowQueue(Table t, int size) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

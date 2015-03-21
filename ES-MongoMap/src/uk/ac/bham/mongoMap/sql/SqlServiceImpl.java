@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.sql.SQLXML;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Queue;
 
+import uk.ac.bham.mongoMap.map.Packet;
 import uk.ac.bham.mongoMap.model.sql.Cell;
 import uk.ac.bham.mongoMap.model.sql.Column;
 import uk.ac.bham.mongoMap.model.sql.Constraint;
@@ -278,5 +280,12 @@ public class SqlServiceImpl implements SqlService {
 	public Database getDatabase(String dbName) {
 		return this.database;
 	}
+
+	@Override
+	public Queue<Packet<Row>> getRowQueue(Table t, int size) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
