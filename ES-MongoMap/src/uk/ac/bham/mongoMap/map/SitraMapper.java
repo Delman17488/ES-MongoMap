@@ -121,7 +121,9 @@ public class SitraMapper {
 		}
 
 		public void consumeAndProduce() {
-			while (true) {
+			boolean lastPackage = false;
+			int i = 0;
+			while (!lastPackage) {
 				try {
 					Packet<Row> pRow = consume();
 
@@ -129,7 +131,10 @@ public class SitraMapper {
 							.getPayload());
 					Packet<Document> pDoc = new Packet<Document>(doc);
 					pDoc.setLastPacket(pRow.isLastPacket());
+					lastPackage = pRow.isLastPacket();
 
+					System.out.println("i = "+i);
+					i++;
 					produce(pDoc);
 				} catch (RuleNotFoundException e) {
 					// TODO Auto-generated catch block
