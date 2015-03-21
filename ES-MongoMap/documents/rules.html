@@ -22,7 +22,59 @@
 
 <body class="article">
 
-<h1>MongoMap Rules</h1>
+	<h1>Enterprise Project</h1>
+ <p class="MsoNormal"><a href="#5.B">5.B: Composite Key</a><br>
+
+
+<h2>Introduction:</h2>
+<p> 
+In the early age of computing, retrieving information required relatively sophisticated computer knowledge, or even the services of specialists who knew how to write programs to fetch specific information—a time-consuming and expensive task. By the 1960s, the vast amount of data stored in the world’s new mainframe computers—many of them IBM System/360 machines—had become a problem. Mainframe computations were expensive, often costing hundreds of US dollars per minute. A significant part of that cost was the complexity surrounding database management. However, in 1970, Edgar F. Codd, an Oxford-educated mathematician working at the IBM San Jose Research Lab, published his paper (A Relational Model of Data for Large Shared Data Banks), which is called a revolutionary idea by Computer scientists, to show how information stored in large databases could be accessed without knowing how the information was structured or where it resided in the database. What Codd did was open the door to a new world of data independence, relational database. Also a standard computer language for working with relational databases (SQL) created from Codd’s idea. Users wouldn’t have to be specialists, nor would they need to know where the information was or how the computer retrieved it. They could now concentrate more on their businesses and less on their computers [1][5].
+</p>
+
+<p>
+A relational database is a collection of data items organized as a set of formally-described tables from which data can be accessed or reassembled in many different ways without having to reorganize the database tables. A relational database is a set of tables containing data fitted into predefined categories. Each table, which is sometimes called a relation, contains one or more data categories in columns. Each row contains a unique instance of data for the categories defined by the columns. The standard user and application program interface to a relational database is the structured query language (SQL). SQL statements are used both for interactive queries for information from a relational database and for gathering data for reports [4].
+</p>
+
+
+<h2>SQL versus NoSQL</h2>
+<p>
+As mentioned before, SQL is the standard language to access relational databases. The NoSQL, which also called Not only SQL, refers to non-relational databases. Non-relational database provides a mechanism for storage and retrieval of data that is modelled in means other than the tabular relations used in relational databases. When we say, SQL to NSQL we mean relational databases, such as Oracle, MySQL, and SQL Server, to non-relational databases, such as MongoDB, CouchDB and BigTable. The key difference between SQL and NoSQL is the way data is stored. Relational data is tabular by nature – and hence stored in Tables with rows and columns. Tables can be related to one another and cooperate in data storage, as well as easy retrieval. Non-relational data, on the other hand, is just not meant to fit in tables of rows and columns, but rather grouped together in chunks. Non-relational data is often stored as Collections, like in documents, key-value pairs or graphs [3][6][7].
+</p>
+
+<p>
+Relational databases maintain integrity through ACID (Atomic, Consistence, Isolated, and Durable) properties. The goal is to support isolated indivisible transactions whose changes are persisted and leave the data in a consistent state. NoSQL databases, on the other hand, make you choose between any two priorities per the CAP (Consistency, Availability, and Partition Tolerance) theorem, since all three are difficult to achieve in a distributed node-based system. Another difference is mapping. XML files or complex objects need normalization to be stored in relational databases. For example, developers using object oriented programming languages are often dealing one or more data entities (complex structures with nested data, lists or arrays) to fuel the application user interface. When it comes time to talk to the underlying database, the data entities often need to be broken down for normalization and lean storage across multiple related tables. In case on non-relational storage, there is no need to normalize the data; complex data entities can be stowed away as is in a single unit. Objects used in applications are often serialized into JSon and stored as JSon documents in NoSQL databases. However, most programming platforms have come up with an easy solution: an ORM (Object Relational Mapper) layer. This acts as the mapping layer between the tabular relational data source and the object oriented data entities developers deal with [3].
+</p>
+
+<p>
+In this project, MongoDB is used as a non-relational databases. It is easy to learn and get started, it is schema independent (look SQL to NoSQL part), and also it is widely used and very popular which means a lot of supports can be found easily.
+</p>
+
+<h2>SQL to NoSQL</h2>
+<p>
+Relational databases are masters at data normalization and lean storage paired with solid performance. However, today’s computing devices are so powerful and they are becoming more and more ubiquitous. Consequently, the number of users that connect and use the internet or use applications simultaneously, will increase. Furthermore, the amount of machine-generated data is also increasing tremendously through the proliferation of connected devices providing digital telemetry. Enterprises are also relying on Big Data to drive their mission-critical applications. Across the board, organizations are turning to NoSQL technologies and infrastructures to deal with the continuous influx of semi or unstructured data and it is uniquely suited for these new classes of data emerging today [3][8].
+</p>
+
+<p>
+Another important advantage is NoSQL has dynamic schema. Different documents within a collection can have different schemas. So, it is possible in MongoDB for one document to have five fields and the other document to have seven fields. The fields can be easily added, removed and modified anytime. Also, there is no constraint on data types of the fields. Thus, at one instance a field can hold int type data and at the next instance it may hold an array.
+</p>
+
+<p>
+For further explanation and advantages of NoSQL, look [2].
+</p>
+
+
+<h2> MetaModels</h2>
+<p>
+Figure 1 and Figure 2 show the SQL and MongoDB metamodels, consequently. The Sitra Mapper is used to map the SQL mosel to MongoDB model.
+</p>
+
+<h2>Lesson Learned</h2>
+<p>
+First of all, this project has made by a group of MSc students that had different majors. This means, this kind of project encourages team working and provide a chance for students to collaborate with other students that have different major. Also, we have had a weekly meeting, which gave us opportunity to see other’s work about the same topic that was made by another group of students. Moreover, during these meetings many topics have been tough and many questions has been asked and answered, and also we had to study and learn many topics in order to finish the project. For some of us, these topics were totally new, but in general we learned some new topics, including non-relational databases (MongoDB), Modelling (EMF), and Model Transformation Frameworks (Sitra).  
+</p>
+
+<h2>MongoMap Transformation Rules</h2>
+<p>At the begining of the project we decided to do the transformation using 9 rules, but then we did some changes and some rules were deleted (see Discussion part). The 9 rules are:</p>
 
 <h2>Rule 1: Database to MongoDB db</h2>
 <p>
@@ -104,6 +156,10 @@ The Unique-Constraint object will be mapped to an UniqueIndex object. The relati
 	<img src="constraint-to-uniqueindex.png"/>
 	<figcaption>Mapping of Unique-Constraint instance (left) to UniqueIndex instance (right)</figcaption>
 </figure>
+
+<h2>Discussion</h2>
+
+<h2>Implementation</h2>
 
 </body>
 

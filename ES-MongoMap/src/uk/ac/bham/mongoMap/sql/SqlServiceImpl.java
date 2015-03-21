@@ -22,13 +22,20 @@ import uk.ac.bham.mongoMap.model.sql.Table;
 public class SqlServiceImpl implements SqlService {
 	SqlFactory sqlFac = SqlFactory.eINSTANCE;
 	Database database = null;
+	Connection con = null;
 	
 	public SqlServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public SqlServiceImpl(Connection con,String dbName) {
+		this.database = sqlFac.createDatabase();
+		this.database.setName(dbName);
+		this.con = con;
+	}
 
 	@Override
-	public Database getDatabase(Connection con, String dbName) {		
+	public Database getDatabase() {		
 		DatabaseMetaData dbMetaData = null;
 		String catalog = null;
 		String schemaPattern = null;
@@ -38,9 +45,6 @@ public class SqlServiceImpl implements SqlService {
 		
 		try {
 			dbMetaData = con.getMetaData();
-			database = sqlFac.createDatabase();
-			database.setName(dbName);
-			
 			//Getting table names from Metadata
 			ResultSet tables = dbMetaData.getTables(catalog, schemaPattern, tableNamePattern, types);
 			
@@ -268,8 +272,6 @@ public class SqlServiceImpl implements SqlService {
 			e.printStackTrace();
 		}
 			
-		
-		
 	}
 	
 	@Override

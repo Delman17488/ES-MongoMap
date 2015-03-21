@@ -7,6 +7,6 @@ import uk.ac.bham.mongoMap.model.sql.Database;
 public interface SqlService {
 	
 	public Database getDatabase(String dbName);
-	public Database getDatabase(Connection con, String dbName);
+	public Database getDatabase();
 
 }

@@ -1,8 +1,14 @@
 package uk.ac.bham.mongoMap;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Scanner;
+=======
+import java.util.Properties;
+>>>>>>> branch 'trunk' of https://github.com/Delman17488/ES-MongoMap.git
 
 import uk.ac.bham.mongoMap.map.SitraMapper;
 import uk.ac.bham.mongoMap.map.rules.CellToKeyVal;
@@ -23,7 +29,7 @@ import uk.ac.bham.sitra.Rule;
 import utils.MongoDbPrinter;
 
 public class Main {
-
+	public static final String PROPERTIES_FILE_NAME = "database.properties";
 	public static void main(String[] args) {
 		System.out.println("Press any key if you are ready for profiling:");
 		Scanner input = new Scanner(System.in);
@@ -81,12 +87,33 @@ public class Main {
 	 * @return {@link Database}
 	 */
 	private static Database getSqlDatabase() {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
+		ConnectionJDBC conJDBC = new ConnectionJDBC();
+		
+		Properties props = new Properties();
+		InputStream in = Main.class.getResourceAsStream(PROPERTIES_FILE_NAME);
+        if (in == null) {
+            System.err.println("Error: Failed to find the \"database.properties\" file.");
+            System.exit(1);
+        }
+        try {
+			props.load(in);
+			// load the JDBC driver
+	        String drivers = props.getProperty("jdbc.drivers");
+	        if (drivers == null) {
+	            System.err.println("Error: No JDBC driver specified in the"
+	                    + "\"jdbc.driver\" attribute of the property file");
+	            System.exit(1);
+	        }
+	        Class.forName(drivers);
+	        
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		ConnectionJDBC conJDBC = new ConnectionJDBC();
 		String databaseName = "employees";
 		String user = "root";
@@ -95,6 +122,23 @@ public class Main {
 		conJDBC.getConnectionJDBC(url, user, password);
 		SqlService sqlImp = new SqlServiceImpl();
 		return sqlImp.getDatabase(conJDBC.getConnection(), databaseName);
+=======
+
+        String database = props.getProperty("database.url");
+        String databaseName = props.getProperty("database.name");
+        if (database == null) {
+            System.err.println("Error: No database url specified in the"
+                    + "\"database.url\" attribute of the property file");
+            System.exit(1);
+        }
+        String username = props.getProperty("database.user");
+        String password = props.getProperty("database.password");        
+        
+		conJDBC.getConnectionJDBC(database, username, password);
+		
+		SqlService sqlImp = new SqlServiceImpl(conJDBC.getConnection(),databaseName);
+		return sqlImp.getDatabase();
+>>>>>>> branch 'trunk' of https://github.com/Delman17488/ES-MongoMap.git
 
 	}
 }
