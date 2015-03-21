@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 import uk.ac.bham.mongoMap.map.Packet;
 import uk.ac.bham.mongoMap.model.sql.Cell;
@@ -217,33 +219,23 @@ public class SqlServiceImpl implements SqlService {
 		}
 	}
 
-/*	private void addRow(Connection con, Table table,
-			ArrayList<Datatype> listDatatypes) {
-		try {
-			ResultSet rs = null;
-			Statement stmt = null;
-			stmt = con.createStatement();
-
-			// Selecting all rows from the current table
-			rs = stmt.executeQuery("SELECT * FROM " + table.getName());
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int colCount = rsmd.getColumnCount();
-			while (rs.next()) {
-				Row row = sqlFac.createRow();
-				for (int i = 1; i <= colCount; i++) {
-					Cell cell = sqlFac.createCell();
-					setJavaObject(cell, rs, i, listDatatypes.get(i - 1));
-					cell.setColumn(table.getColumns().get(i - 1));
-					row.getCells().add(cell);
-				}
-				table.getRows().add(row);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}*/
+	/*
+	 * private void addRow(Connection con, Table table, ArrayList<Datatype>
+	 * listDatatypes) { try { ResultSet rs = null; Statement stmt = null; stmt =
+	 * con.createStatement();
+	 * 
+	 * // Selecting all rows from the current table rs =
+	 * stmt.executeQuery("SELECT * FROM " + table.getName()); ResultSetMetaData
+	 * rsmd = rs.getMetaData(); int colCount = rsmd.getColumnCount(); while
+	 * (rs.next()) { Row row = sqlFac.createRow(); for (int i = 1; i <=
+	 * colCount; i++) { Cell cell = sqlFac.createCell(); setJavaObject(cell, rs,
+	 * i, listDatatypes.get(i - 1)); cell.setColumn(table.getColumns().get(i -
+	 * 1)); row.getCells().add(cell); } table.getRows().add(row); } } catch
+	 * (SQLException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 
 	private void setJavaObject(Cell cell, ResultSet rs, int columnIndex,
 			Datatype dataType) {
@@ -320,7 +312,7 @@ public class SqlServiceImpl implements SqlService {
 	}
 
 	@Override
-	public Queue<Packet<Row>> getRowQueue(Table table, int size) {
+	public BlockingQueue<Packet<Row>> getRowQueue(Table table, int size) {
 		if (this.producerThread != null && this.producerThread.isAlive()) {
 			try {
 				this.producerThread.join();
@@ -329,7 +321,7 @@ public class SqlServiceImpl implements SqlService {
 				e.printStackTrace();
 			}
 		}
-		
+
 		Producer producer = new Producer(size, con,
 				this.dataTypesTable.get(table.getName()), table);
 		this.producerThread = new Thread(producer);
@@ -340,7 +332,7 @@ public class SqlServiceImpl implements SqlService {
 
 	private class Producer implements Runnable {
 
-		private Queue<Packet<Row>> queue;
+		private BlockingQueue<Packet<Row>> queue;
 		private int queueSize;
 		private Connection con;
 		private ArrayList<Datatype> listDatatypes;
@@ -348,14 +340,14 @@ public class SqlServiceImpl implements SqlService {
 
 		public Producer(int size, Connection con,
 				ArrayList<Datatype> listDatatypes, Table table) {
-			queue = new LinkedList<Packet<Row>>();
+			queue = new ArrayBlockingQueue<Packet<Row>>(size);
 			queueSize = size;
 			this.listDatatypes = listDatatypes;
 			this.table = table;
 			this.con = con;
 		}
 
-		public Queue<Packet<Row>> getQueue() {
+		public BlockingQueue<Packet<Row>> getQueue() {
 			return queue;
 		}
 
@@ -376,14 +368,6 @@ public class SqlServiceImpl implements SqlService {
 				int colCount = rsmd.getColumnCount();
 
 				while (rs.next()) {
-					synchronized (queue) {
-						while (queue.size() >= queueSize) {
-
-							queue.wait();
-
-						}
-					}
-
 					Row row = sqlFac.createRow();
 					for (int i = 1; i <= colCount; i++) {
 						Cell cell = sqlFac.createCell();
@@ -394,10 +378,7 @@ public class SqlServiceImpl implements SqlService {
 					Packet<Row> packet = new Packet<Row>(row);
 					if (rs.isLast())
 						packet.setLastPacket(true);
-					synchronized (queue) {
-						queue.offer(packet);
-						queue.notify();
-					}
+					queue.put(packet);
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

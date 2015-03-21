@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
 
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
@@ -438,7 +438,7 @@ public class SqlServiceTestingImpl implements SqlService {
 	}
 
 	@Override
-	public Queue<Packet<Row>> getRowQueue(Table t, int size) {
+	public BlockingQueue<Packet<Row>> getRowQueue(Table t, int size) {
 		// TODO Auto-generated method stub
 		return null;
 	}

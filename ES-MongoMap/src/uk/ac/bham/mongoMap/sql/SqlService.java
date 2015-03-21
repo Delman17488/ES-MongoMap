@@ -1,6 +1,6 @@
 package uk.ac.bham.mongoMap.sql;
 
-import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
 
 import uk.ac.bham.mongoMap.map.Packet;
 import uk.ac.bham.mongoMap.model.sql.Database;
@@ -13,6 +13,6 @@ public interface SqlService {
 	
 	public Database getDatabase(String dbName);
 	
-	public Queue<Packet<Row>> getRowQueue(Table t, int size);
+	public BlockingQueue<Packet<Row>> getRowQueue(Table t, int size);
 
 }

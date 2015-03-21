@@ -12,6 +12,6 @@ public interface MongoService {
 	
 	public boolean setMongoDBDatabase(MongoDB mDB);
 	
-	public Queue<Packet<Document>> getDocumentQueue(Collection c, int size);
+	public BlockingQueue<Packet<Document>> getDocumentQueue(Collection c, int size);
 
 }

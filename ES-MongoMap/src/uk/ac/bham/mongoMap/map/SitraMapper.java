@@ -4,6 +4,7 @@ import java.util.AbstractMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.concurrent.BlockingQueue;
 import java.util.Queue;
 import java.util.Set;
 
@@ -67,23 +68,29 @@ public class SitraMapper {
 
 				// add collection to mongoDB
 				mongoDB.getCollections().add(coll);
-				
-				map.add(new AbstractMap.SimpleEntry<Table, Collection>(table, coll));
+
+				map.add(new AbstractMap.SimpleEntry<Table, Collection>(table,
+						coll));
 			}
-			
+
 			mongoService.setMongoDBDatabase(mongoDB);
-			
-			int size = 1000;
+
+			int size = 500;
 			for (Entry<Table, Collection> entry : map) {
-				Queue<Packet<Row>> src = sqlService.getRowQueue(entry.getKey(), size);
-				Queue<Packet<Document>> trg = mongoService.getDocumentQueue(entry.getValue(), size);
-				ConsumerAndProducer cap = new ConsumerAndProducer(src, trg, size);
-				
+				BlockingQueue<Packet<Row>> src = sqlService.getRowQueue(entry.getKey(),
+						size);
+				BlockingQueue<Packet<Document>> trg = mongoService.getDocumentQueue(
+						entry.getValue(), size);
+				ConsumerAndProducer cap = new ConsumerAndProducer(src, trg,
+						size);
+
 				Thread consumerAndProducer = new Thread(cap);
 				consumerAndProducer.start();
 				consumerAndProducer.join();
+				System.out.println("Table done: " + entry.getKey().getName());
+				// execute garbage collection
+				System.gc();
 			}
-			
 
 			return mongoDB;
 		} catch (RuleNotFoundException e) {
@@ -108,13 +115,13 @@ public class SitraMapper {
 
 	private class ConsumerAndProducer implements Runnable {
 
-		private Queue<Packet<Row>> src;
-		private Queue<Packet<Document>> trg;
+		private BlockingQueue<Packet<Row>> src;
+		private BlockingQueue<Packet<Document>> trg;
 
 		private int queueSize;
 
-		public ConsumerAndProducer(Queue<Packet<Row>> src,
-				Queue<Packet<Document>> trg, int size) {
+		public ConsumerAndProducer(BlockingQueue<Packet<Row>> src,
+				BlockingQueue<Packet<Document>> trg, int size) {
 			this.src = src;
 			this.trg = trg;
 			queueSize = size;
@@ -133,7 +140,7 @@ public class SitraMapper {
 					pDoc.setLastPacket(pRow.isLastPacket());
 					lastPackage = pRow.isLastPacket();
 
-					System.out.println("i = "+i);
+					System.out.println("i = " + i);
 					i++;
 					produce(pDoc);
 				} catch (RuleNotFoundException e) {
@@ -144,37 +151,21 @@ public class SitraMapper {
 		}
 
 		public void produce(Packet<Document> pDoc) {
-			synchronized (trg) {
-				while (trg.size() >= queueSize) {
-					try {
-						trg.wait();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-			synchronized (trg) {
-				trg.offer(pDoc);
-				trg.notify();
+			try {
+				trg.put(pDoc);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 
 		public Packet<Row> consume() {
 			Packet<Row> pRow = null;
-			synchronized (src) {
-				while (src.size() == 0) {
-					try {
-						src.wait();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-			synchronized (src) {
-				pRow = src.poll();
-				src.notify();
+			try {
+				pRow = src.take();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			return pRow;
 		}
