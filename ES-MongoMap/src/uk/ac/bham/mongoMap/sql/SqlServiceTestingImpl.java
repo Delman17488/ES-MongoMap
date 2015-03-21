@@ -208,7 +208,7 @@ public class SqlServiceTestingImpl implements SqlService {
 	}
 
 	@Override
-	public Database getDatabase(Connection con, String dbName) {
+	public Database getDatabase() {
 		// TODO Auto-generated method stub
 		return null;
 	}
