@@ -1,7 +1,11 @@
 package uk.ac.bham.mongoMap.map;
 
+import java.util.AbstractMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Queue;
+import java.util.Set;
 
 import uk.ac.bham.mongoMap.model.mongo.Collection;
 import uk.ac.bham.mongoMap.model.mongo.Document;
@@ -23,15 +27,17 @@ import uk.ac.bham.sitra.Transformer;
 public class SitraMapper {
 
 	private Transformer transformer;
+	private Set<Entry<Table, Collection>> map = new HashSet<Entry<Table, Collection>>();
 
 	public SitraMapper(List<Class<? extends Rule<?, ?>>> rules) {
 		transformer = new SimpleTransformerImpl(rules);
 	}
 
-	public MongoDB performTransformation(SqlService sqlService, MongoService mongoService) throws Exception {
+	public MongoDB performTransformation(SqlService sqlService,
+			MongoService mongoService) throws Exception {
 		try {
 			Database db = sqlService.getDatabase();
-			
+
 			// transform SQL-DB to MongoDB
 			MongoDB mongoDB = (MongoDB) transformer.transform(db);
 
@@ -59,15 +65,25 @@ public class SitraMapper {
 					}
 				}
 
-				// map rows to documents
-				for (Row row : table.getRows()) {
-					Document doc = (Document) transformer.transform(row);
-					coll.getDocuments().add(doc);
-				}
-
 				// add collection to mongoDB
 				mongoDB.getCollections().add(coll);
+				
+				map.add(new AbstractMap.SimpleEntry<Table, Collection>(table, coll));
 			}
+			
+			mongoService.setMongoDBDatabase(mongoDB);
+			
+			int size = 1000;
+			for (Entry<Table, Collection> entry : map) {
+				Queue<Packet<Row>> src = sqlService.getRowQueue(entry.getKey(), size);
+				Queue<Packet<Document>> trg = mongoService.getDocumentQueue(entry.getValue(), size);
+				ConsumerAndProducer cap = new ConsumerAndProducer(src, trg, size);
+				
+				Thread consumerAndProducer = new Thread(cap);
+				consumerAndProducer.start();
+				consumerAndProducer.join();
+			}
+			
 
 			return mongoDB;
 		} catch (RuleNotFoundException e) {
@@ -89,35 +105,43 @@ public class SitraMapper {
 		}
 		return false;
 	}
-	
+
 	private class ConsumerAndProducer implements Runnable {
 
 		private Queue<Packet<Row>> src;
 		private Queue<Packet<Document>> trg;
-		
+
 		private int queueSize;
 
-		public ConsumerAndProducer(Queue<Packet<Row>> src, Queue<Packet<Document>> trg, int size) {
+		public ConsumerAndProducer(Queue<Packet<Row>> src,
+				Queue<Packet<Document>> trg, int size) {
 			this.src = src;
 			this.trg = trg;
 			queueSize = size;
 		}
 
 		public void consumeAndProduce() {
-			Packet<Row> t;
-
 			while (true) {
-				t = consume();
-				produce(null);
-				System.out.println("CP: Task moved");
+				try {
+					Packet<Row> pRow = consume();
+
+					Document doc = (Document) transformer.transform(pRow
+							.getPayload());
+					Packet<Document> pDoc = new Packet<Document>(doc);
+					pDoc.setLastPacket(pRow.isLastPacket());
+
+					produce(pDoc);
+				} catch (RuleNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 
-		public void produce(Packet<Document> t) {
+		public void produce(Packet<Document> pDoc) {
 			synchronized (trg) {
 				while (trg.size() >= queueSize) {
 					try {
-						System.out.println("CP: Queue voll");
 						trg.wait();
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
@@ -125,24 +149,17 @@ public class SitraMapper {
 					}
 				}
 			}
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			synchronized (trg) {
-				trg.offer(t);
+				trg.offer(pDoc);
 				trg.notify();
 			}
 		}
 
 		public Packet<Row> consume() {
-			Packet<Row> t = null;
+			Packet<Row> pRow = null;
 			synchronized (src) {
 				while (src.size() == 0) {
 					try {
-						System.out.println("CP: Queue leer");
 						src.wait();
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
@@ -150,17 +167,11 @@ public class SitraMapper {
 					}
 				}
 			}
-			try {
-				Thread.sleep(1000);
-				synchronized (src) {
-					t = src.poll();
-					src.notify();
-				}
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			synchronized (src) {
+				pRow = src.poll();
+				src.notify();
 			}
-			return t;
+			return pRow;
 		}
 
 		@Override

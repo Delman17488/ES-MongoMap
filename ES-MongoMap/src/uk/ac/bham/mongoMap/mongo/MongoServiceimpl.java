@@ -206,6 +206,15 @@ public class MongoServiceimpl implements MongoService {
 
 	@Override
 	public Queue<Packet<Document>> getDocumentQueue(Collection c, int size) {
+		if (this.consumer != null && this.consumer.isAlive()) {
+			try {
+				this.consumer.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		String colname = c.getName();
 		DBCollection collection = db.getCollection(colname);
 		collection.drop();

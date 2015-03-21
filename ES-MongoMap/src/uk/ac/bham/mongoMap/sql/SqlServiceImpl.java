@@ -321,6 +321,15 @@ public class SqlServiceImpl implements SqlService {
 
 	@Override
 	public Queue<Packet<Row>> getRowQueue(Table table, int size) {
+		if (this.producerThread != null && this.producerThread.isAlive()) {
+			try {
+				this.producerThread.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		Producer producer = new Producer(size, con,
 				this.dataTypesTable.get(table.getName()), table);
 		this.producerThread = new Thread(producer);

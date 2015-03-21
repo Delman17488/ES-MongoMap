@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Properties;
+import java.util.Scanner;
 
 import uk.ac.bham.mongoMap.map.SitraMapper;
 import uk.ac.bham.mongoMap.map.rules.CellToKeyVal;
@@ -23,17 +23,18 @@ import uk.ac.bham.mongoMap.sql.SqlService;
 import uk.ac.bham.mongoMap.sql.SqlServiceImpl;
 import uk.ac.bham.mongoMap.sql.SqlServiceTestingImpl;
 import uk.ac.bham.sitra.Rule;
-import utils.MongoDbPrinter;
 
 public class Main {
+	
 	public static final String PROPERTIES_FILE_NAME = "database.properties";
+	
 	public static void main(String[] args) {
 		System.out.println("Press any key if you are ready for profiling:");
 		Scanner input = new Scanner(System.in);
 		input.nextLine();
+		
 		long startTime = System.currentTimeMillis();
-		// Grabbing SQL database and setting up SitraMapper 
-//		Database sqlDb = getTestingDatabase();
+
 		Properties properties =  getProperties();
 		SqlService sqlService= getSqlService(properties);
 		MongoService mongoService = getMongoService(properties);
@@ -50,7 +51,7 @@ public class Main {
 		}
 		
 
-	if (mDB != null) {
+//	if (mDB != null) {
 			// print the new and shiny mongoDB
 //			System.out.println("MongoDB: ------");
 //			MongoDbPrinter printer = new MongoDbPrinter();
@@ -60,8 +61,8 @@ public class Main {
 		
 			// persist the new and shiny mongoDB to a MongoDB database 
 			 
-			mongoService.setMongoDBDatabase(mDB);
-		}
+//			mongoService.setMongoDBDatabase(mDB);
+//		}
 		System.out.println("Transformation finished in " + (System.currentTimeMillis() - startTime) + " milliseconds");
 		System.exit(0);
 	}
