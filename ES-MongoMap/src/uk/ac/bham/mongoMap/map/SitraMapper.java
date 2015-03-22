@@ -8,6 +8,10 @@ import java.util.concurrent.BlockingQueue;
 import java.util.Queue;
 import java.util.Set;
 
+import uk.ac.bham.mongoMap.map.rules.DatabaseToMongoDB;
+import uk.ac.bham.mongoMap.map.rules.RowToDocument;
+import uk.ac.bham.mongoMap.map.rules.TableToCollection;
+import uk.ac.bham.mongoMap.map.rules.UniqueToUniqueIndex;
 import uk.ac.bham.mongoMap.model.mongo.Collection;
 import uk.ac.bham.mongoMap.model.mongo.Document;
 import uk.ac.bham.mongoMap.model.mongo.MongoDB;
@@ -31,7 +35,10 @@ public class SitraMapper {
 	private Set<Entry<Table, Collection>> map = new HashSet<Entry<Table, Collection>>();
 
 	public SitraMapper(List<Class<? extends Rule<?, ?>>> rules) {
-		transformer = new SimpleTransformerImpl(rules);
+		transformer = new SimpleTransformerImpl(null);
+		for (Class<? extends Rule<?, ?>> class1 : rules) {
+			transformer.addRuleType(class1);
+		}
 	}
 
 	public MongoDB performTransformation(SqlService sqlService,
@@ -40,11 +47,11 @@ public class SitraMapper {
 			Database db = sqlService.getDatabase();
 
 			// transform SQL-DB to MongoDB
-			MongoDB mongoDB = (MongoDB) transformer.transform(db);
+			MongoDB mongoDB = (MongoDB) transformer.transform(DatabaseToMongoDB.class, db);
 
 			for (Table table : db.getTable()) {
 				// transform table to collection
-				Collection coll = (Collection) transformer.transform(table);
+				Collection coll = (Collection) transformer.transform(TableToCollection.class, table);
 
 				// map unique constraints to unique indices and add them to the
 				// collection
@@ -57,7 +64,7 @@ public class SitraMapper {
 						// columns which do not exist (_id is primary key)
 						if (!isPrimaryKeyUniqueConstraint(constraint)) {
 							UniqueIndex index = (UniqueIndex) transformer
-									.transform(constraint);
+									.transform(UniqueToUniqueIndex.class, constraint);
 							coll.getUniqueIndices().add(index);
 						}
 						break;
@@ -77,10 +84,10 @@ public class SitraMapper {
 
 			int size = 500;
 			for (Entry<Table, Collection> entry : map) {
-				BlockingQueue<Packet<Row>> src = sqlService.getRowQueue(entry.getKey(),
-						size);
-				BlockingQueue<Packet<Document>> trg = mongoService.getDocumentQueue(
-						entry.getValue(), size);
+				BlockingQueue<Packet<Row>> src = sqlService.getRowQueue(
+						entry.getKey(), size);
+				BlockingQueue<Packet<Document>> trg = mongoService
+						.getDocumentQueue(entry.getValue(), size);
 				ConsumerAndProducer cap = new ConsumerAndProducer(src, trg,
 						size);
 
@@ -134,8 +141,8 @@ public class SitraMapper {
 				try {
 					Packet<Row> pRow = consume();
 
-					Document doc = (Document) transformer.transform(pRow
-							.getPayload());
+					Document doc = (Document) transformer.transform(
+							RowToDocument.class, pRow.getPayload());
 					Packet<Document> pDoc = new Packet<Document>(doc);
 					pDoc.setLastPacket(pRow.isLastPacket());
 					lastPackage = pRow.isLastPacket();

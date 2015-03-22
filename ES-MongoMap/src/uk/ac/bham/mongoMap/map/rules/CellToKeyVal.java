@@ -8,7 +8,9 @@ import uk.ac.bham.sitra.Rule;
 import uk.ac.bham.sitra.Transformer;
 
 public class CellToKeyVal implements Rule<Cell, Key> {
-
+	
+	private int id = 1;
+	
 	@Override
 	public boolean check(Cell source) {
 		// TODO Auto-generated method stub
@@ -38,5 +40,26 @@ public class CellToKeyVal implements Rule<Cell, Key> {
 		
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CellToKeyVal other = (CellToKeyVal) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
 
 }

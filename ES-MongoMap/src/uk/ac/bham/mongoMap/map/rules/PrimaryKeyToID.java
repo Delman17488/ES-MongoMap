@@ -14,6 +14,8 @@ import uk.ac.bham.sitra.Transformer;
 
 public class PrimaryKeyToID implements Rule<List<Cell>, Id> {
 
+	private int id = 3;
+	
 	public PrimaryKeyToID() {
 		// TODO Auto-generated constructor stub
 	}
@@ -60,6 +62,28 @@ public class PrimaryKeyToID implements Rule<List<Cell>, Id> {
 	public void setProperties(Id target, List<Cell> source, Transformer t) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PrimaryKeyToID other = (PrimaryKeyToID) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }

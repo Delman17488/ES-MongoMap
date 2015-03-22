@@ -20,6 +20,8 @@ import uk.ac.bham.sitra.Transformer;
 
 public class RowToDocument implements Rule<Row, Document> {
 
+	private int id = 4;
+	
 	public RowToDocument() {
 		// TODO Auto-generated constructor stub
 	}
@@ -54,7 +56,7 @@ public class RowToDocument implements Rule<Row, Document> {
 			}
 			if (!isID) {
 				try {
-					Key key = (Key) t.transform(cell);
+					Key key = (Key) t.transform(CellToKeyVal.class, cell);
 					doc.getKeys().add(key);
 				} catch (RuleNotFoundException e) {
 					// TODO Auto-generated catch block
@@ -81,5 +83,27 @@ public class RowToDocument implements Rule<Row, Document> {
 	public void setProperties(Document target, Row source, Transformer t) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RowToDocument other = (RowToDocument) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 }

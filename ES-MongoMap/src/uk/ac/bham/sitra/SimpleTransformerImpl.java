@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.WeakHashMap;
+
 import uk.ac.bham.sitra.tracing.ITrace;
 
 /**
@@ -35,13 +37,13 @@ public class SimpleTransformerImpl implements Transformer {
 		this.trace = trace;
 	}
 	
-	Map<Class<? extends Rule<?, ?>>, Map<Object, Object>> mappings = new HashMap<Class<? extends Rule<?, ?>>, Map<Object, Object>>();
+	Map<Class<? extends Rule<?, ?>>, Map<Object, Object>> mappings = new WeakHashMap<Class<? extends Rule<?, ?>>, Map<Object, Object>>();
 	
 	@SuppressWarnings("unchecked")
 	<S, T> Map<S, T> getRuleMappings(Class<? extends Rule<S, T>> rule) {
 		Map<S, T> ruleMappings = (Map<S, T>) mappings.get(rule);
 		if (ruleMappings == null) {
-			ruleMappings = new HashMap<S, T>();
+			ruleMappings = new WeakHashMap<S, T>();
 			mappings.put(rule, (Map<Object, Object>) ruleMappings);
 		}
 		return ruleMappings;

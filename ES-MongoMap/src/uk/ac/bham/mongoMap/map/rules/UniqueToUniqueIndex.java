@@ -10,6 +10,8 @@ import uk.ac.bham.sitra.Transformer;
 
 public class UniqueToUniqueIndex implements Rule<Constraint, UniqueIndex> {
 
+	private int id = 6;
+	
 	public UniqueToUniqueIndex() {
 		// TODO Auto-generated constructor stub
 	}
@@ -39,6 +41,28 @@ public class UniqueToUniqueIndex implements Rule<Constraint, UniqueIndex> {
 			Transformer t) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UniqueToUniqueIndex other = (UniqueToUniqueIndex) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }
