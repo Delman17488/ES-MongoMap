@@ -11,8 +11,6 @@ public interface SqlService {
 
 	public Database getDatabase();
 	
-	public Database getDatabase(String dbName);
-	
 	public BlockingQueue<Packet<Row>> getRowQueue(Table t, int size);
 
 }

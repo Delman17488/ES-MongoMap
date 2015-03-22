@@ -10,7 +10,7 @@ import uk.ac.bham.mongoMap.model.mongo.MongoDB;
 
 public interface MongoService {
 	
-	public boolean setMongoDBDatabase(MongoDB mDB);
+	public void setMongoDBDatabase(MongoDB mDB);
 	
 	public BlockingQueue<Packet<Document>> getDocumentQueue(Collection c, int size);
 
