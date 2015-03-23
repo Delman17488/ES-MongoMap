@@ -29,7 +29,7 @@ public class SqlServiceTestingImpl implements SqlService {
 	}
 	
 	@Override
-	public Database getDatabase(String dbName) {
+	public Database getDatabase() {
 		SqlFactory sqlFac = SqlFactory.eINSTANCE;
 
 		Database db = sqlFac.createDatabase();
@@ -207,12 +207,6 @@ public class SqlServiceTestingImpl implements SqlService {
 		table.getRows().addAll(rows);
 	}
 
-	@Override
-	public Database getDatabase() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	private void createTableWithNoPkey(Database db) {
 		SqlFactory sqlFac = SqlFactory.eINSTANCE;
 		Table table = sqlFac.createTable();

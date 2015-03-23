@@ -307,11 +307,6 @@ public class SqlServiceImpl implements SqlService {
 	}
 
 	@Override
-	public Database getDatabase(String dbName) {
-		return this.database;
-	}
-
-	@Override
 	public BlockingQueue<Packet<Row>> getRowQueue(Table table, int size) {
 		if (this.producerThread != null && this.producerThread.isAlive()) {
 			try {
