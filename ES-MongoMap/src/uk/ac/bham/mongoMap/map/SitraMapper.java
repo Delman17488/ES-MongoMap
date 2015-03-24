@@ -82,14 +82,13 @@ public class SitraMapper {
 
 			mongoService.setMongoDBDatabase(mongoDB);
 
-			int size = 500;
+			int size = 500; // TODO move to properties file
 			for (Entry<Table, Collection> entry : map) {
 				BlockingQueue<Packet<Row>> src = sqlService.getRowQueue(
 						entry.getKey(), size);
 				BlockingQueue<Packet<Document>> trg = mongoService
 						.getDocumentQueue(entry.getValue(), size);
-				ConsumerAndProducer cap = new ConsumerAndProducer(src, trg,
-						size);
+				ConsumerAndProducer cap = new ConsumerAndProducer(src, trg);
 
 				Thread consumerAndProducer = new Thread(cap);
 				consumerAndProducer.start();
@@ -125,13 +124,10 @@ public class SitraMapper {
 		private BlockingQueue<Packet<Row>> src;
 		private BlockingQueue<Packet<Document>> trg;
 
-		private int queueSize;
-
 		public ConsumerAndProducer(BlockingQueue<Packet<Row>> src,
-				BlockingQueue<Packet<Document>> trg, int size) {
+				BlockingQueue<Packet<Document>> trg) {
 			this.src = src;
 			this.trg = trg;
-			queueSize = size;
 		}
 
 		public void consumeAndProduce() {
