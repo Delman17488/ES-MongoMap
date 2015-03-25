@@ -3,6 +3,7 @@ package uk.ac.bham.mongoMap;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -70,7 +71,12 @@ public class Main {
 
 	private static Database getTestingDatabase() {
 		SqlService sqlService = new SqlServiceTestingImpl();
-		return sqlService.getDatabase();
+		try {
+			return sqlService.getDatabase();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**

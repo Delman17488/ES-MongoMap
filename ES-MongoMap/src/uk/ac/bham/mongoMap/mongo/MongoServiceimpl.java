@@ -149,7 +149,6 @@ public class MongoServiceimpl implements MongoService {
 
 			for (String key : list.getKeys()) {
 
-				System.out.println("unique index " + key);
 				collection.ensureIndex(new BasicDBObject(key, 1),
 						new BasicDBObject("unique", true));
 			}

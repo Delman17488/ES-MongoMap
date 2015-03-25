@@ -42,7 +42,7 @@ public class SqlServiceImpl implements SqlService {
 	}
 
 	@Override
-	public Database getDatabase() {
+	public Database getDatabase() throws SQLException{
 		DatabaseMetaData dbMetaData = null;
 		String catalog = null;
 		String schemaPattern = null;
@@ -93,8 +93,8 @@ public class SqlServiceImpl implements SqlService {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SQLException(
+					"Error: Extracting metadata from SQL database.", e);
 		}
 		return database;
 	}
@@ -110,7 +110,7 @@ public class SqlServiceImpl implements SqlService {
 	}
 
 	private void addUniqueConstraints(ResultSet uniqueConstraints,
-			ArrayList<String> listColumns, Table table) {
+			ArrayList<String> listColumns, Table table) throws SQLException {
 		try {
 			while (uniqueConstraints.next()) {
 				if (uniqueConstraints.getString("INDEX_NAME") != null) {
@@ -129,13 +129,13 @@ public class SqlServiceImpl implements SqlService {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SQLException(
+					"Error: Adding unique constraints into SQL instance.", e);
 		}
 	}
 
 	private void addPrimaryKeys(ResultSet primaryKeys,
-			ArrayList<String> listColumns, Table table) {
+			ArrayList<String> listColumns, Table table) throws SQLException {
 		try {
 			while (primaryKeys.next()) {
 				Constraint primaryKey = sqlFac.createConstraint();
@@ -149,8 +149,8 @@ public class SqlServiceImpl implements SqlService {
 				table.getConstraints().add(primaryKey);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SQLException(
+					"Error: Adding primary keys into SQL instance.", e);
 		}
 
 		if (table.getConstraints().size() > 1) {
@@ -165,7 +165,7 @@ public class SqlServiceImpl implements SqlService {
 	}
 
 	private void addForeignKeys(ResultSet foreignKeys,
-			ArrayList<String> listColumns, Table table) {
+			ArrayList<String> listColumns, Table table) throws SQLException {
 		try {
 			while (foreignKeys.next()) {
 				Constraint foreignKey = sqlFac.createConstraint();
@@ -181,13 +181,13 @@ public class SqlServiceImpl implements SqlService {
 				table.getConstraints().add(foreignKey);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SQLException(
+					"Error: Adding foreign keys into SQL instance.", e);
 		}
 	}
 
 	private void addColumns(ResultSet columns, ArrayList<String> listColumns,
-			Table table, ArrayList<Datatype> listDatatypes) {
+			Table table, ArrayList<Datatype> listDatatypes) throws SQLException {
 		try {
 			while (columns.next()) {
 				String columnName = columns.getString("COLUMN_NAME");
@@ -203,8 +203,8 @@ public class SqlServiceImpl implements SqlService {
 				listColumns.add(columnName);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SQLException(
+					"Error: Adding columns into SQL instance.", e);
 		}
 	}
 
@@ -227,7 +227,7 @@ public class SqlServiceImpl implements SqlService {
 	 */
 
 	private void setJavaObject(Cell cell, ResultSet rs, int columnIndex,
-			Datatype dataType) {
+			Datatype dataType) throws SQLException {
 		try {
 
 			if (dataType == Datatype.BIT || dataType == Datatype.BOOLEAN) {
@@ -289,8 +289,8 @@ public class SqlServiceImpl implements SqlService {
 				cell.setValue(rs.getString(columnIndex));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new SQLException(
+					"Error: Adding values to cells in SQL instance.", e);
 		}
 
 	}
