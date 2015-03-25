@@ -9,8 +9,6 @@ import java.sql.SQLXML;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -127,8 +125,6 @@ public class SqlServiceImpl implements SqlService {
 					unique.getColumn().add(table.getColumns().get(indexColumn));
 
 					table.getConstraints().add(unique);
-					System.out.println("Unique constraint table:"
-							+ table.getName() + " column:" + columnNameUnique);
 				}
 
 			}
@@ -183,9 +179,6 @@ public class SqlServiceImpl implements SqlService {
 				foreignKey.getColumn().add(table.getColumns().get(indexColumn));
 
 				table.getConstraints().add(foreignKey);
-
-				System.out.println("Foreign key table:" + table.getName()
-						+ " column:" + columnNameForeign);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -199,11 +192,7 @@ public class SqlServiceImpl implements SqlService {
 			while (columns.next()) {
 				String columnName = columns.getString("COLUMN_NAME");
 
-				int columnType = columns.getInt("DATA_TYPE");// delete
-
 				String columnTypeName = columns.getString("TYPE_NAME");
-
-				System.out.println(columnType + " : " + columnTypeName);// delete
 
 				Column column = sqlFac.createColumn();
 				column.setName(columnName);
