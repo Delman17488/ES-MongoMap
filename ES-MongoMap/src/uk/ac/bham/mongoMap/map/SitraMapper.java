@@ -44,11 +44,14 @@ public class SitraMapper {
 	public MongoDB performTransformation(SqlService sqlService,
 			MongoService mongoService) throws Exception {
 		try {
+			System.out.println("Creating schema...");
 			Database db = sqlService.getDatabase();
 
 			// transform SQL-DB to MongoDB
 			MongoDB mongoDB = (MongoDB) transformer.transform(DatabaseToMongoDB.class, db);
-
+			
+			System.out.println("MongoDB schema created");
+			
 			for (Table table : db.getTable()) {
 				// transform table to collection
 				Collection coll = (Collection) transformer.transform(TableToCollection.class, table);
@@ -84,6 +87,7 @@ public class SitraMapper {
 
 			int size = 500; // TODO move to properties file
 			for (Entry<Table, Collection> entry : map) {
+				System.out.println("Starting to map table : " + entry.getKey().getName());
 				BlockingQueue<Packet<Row>> src = sqlService.getRowQueue(
 						entry.getKey(), size);
 				BlockingQueue<Packet<Document>> trg = mongoService
@@ -93,7 +97,7 @@ public class SitraMapper {
 				Thread consumerAndProducer = new Thread(cap);
 				consumerAndProducer.start();
 				consumerAndProducer.join();
-				System.out.println("Table done: " + entry.getKey().getName());
+				System.out.println("Mapping done for table : " + entry.getKey().getName());
 				// execute garbage collection
 				System.gc();
 			}
@@ -143,7 +147,6 @@ public class SitraMapper {
 					pDoc.setLastPacket(pRow.isLastPacket());
 					lastPackage = pRow.isLastPacket();
 
-					System.out.println("i = " + i);
 					i++;
 					produce(pDoc);
 				} catch (RuleNotFoundException e) {
@@ -151,6 +154,7 @@ public class SitraMapper {
 					e.printStackTrace();
 				}
 			}
+			System.out.println(i + " rows mapped");
 		}
 
 		public void produce(Packet<Document> pDoc) {
