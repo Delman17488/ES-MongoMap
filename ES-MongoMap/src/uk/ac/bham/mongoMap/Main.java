@@ -96,9 +96,12 @@ public class Main {
 		}
 		Class.forName(drivers);
 
-		String database = props.getProperty("sql.database.url");
+		String databaseUrl = null;
 		String databaseName = props.getProperty("sql.database.name");
-		if (database == null) {
+		if (databaseName != null)
+			databaseUrl = props.getProperty("sql.database.url") + databaseName;
+
+		if (databaseUrl == null) {
 			System.err.println("Error: No database url specified in the"
 					+ "\"database.url\" attribute of the property file");
 			System.exit(1);
@@ -106,12 +109,13 @@ public class Main {
 		String username = props.getProperty("sql.database.user");
 		String password = props.getProperty("sql.database.password");
 
-		conJDBC.getConnectionJDBC(database, username, password);
+		conJDBC.getConnectionJDBC(databaseUrl, username, password);
 
 		return new SqlServiceImpl(conJDBC.getConnection(), databaseName);
 	}
 
-	private static MongoService getMongoService(Properties props) {
+	private static MongoService getMongoService(Properties props)
+			throws Exception {
 		String ip = props.getProperty("mongo.database.ip");
 		int port = Integer.parseInt(props.getProperty("mongo.database.port"));
 

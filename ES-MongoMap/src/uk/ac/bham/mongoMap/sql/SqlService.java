@@ -12,6 +12,7 @@ public interface SqlService {
 
 	public Database getDatabase() throws SQLException;
 	
-	public BlockingQueue<Packet<Row>> getRowQueue(Table t, int size);
+	public BlockingQueue<Packet<Row>> getRowQueue(Table t, int size)
+			throws Exception;
 
 }

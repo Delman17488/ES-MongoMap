@@ -1,6 +1,5 @@
 package uk.ac.bham.mongoMap.mongo;
 
-import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 
 import uk.ac.bham.mongoMap.map.Packet;
@@ -12,6 +11,6 @@ public interface MongoService {
 	
 	public void setMongoDBDatabase(MongoDB mDB);
 	
-	public BlockingQueue<Packet<Document>> getDocumentQueue(Collection c, int size);
+	public BlockingQueue<Packet<Document>> getDocumentQueue(Collection c, int size) throws Exception;
 
 }

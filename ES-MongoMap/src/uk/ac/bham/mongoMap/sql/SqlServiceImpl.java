@@ -36,13 +36,14 @@ public class SqlServiceImpl implements SqlService {
 	}
 
 	public SqlServiceImpl(Connection con, String dbName) {
+		//Creating an instance of SQL database
 		this.database = sqlFac.createDatabase();
 		this.database.setName(dbName);
 		this.con = con;
 	}
 
 	@Override
-	public Database getDatabase() throws SQLException{
+	public Database getDatabase() throws SQLException {
 		DatabaseMetaData dbMetaData = null;
 		String catalog = null;
 		String schemaPattern = null;
@@ -52,42 +53,54 @@ public class SqlServiceImpl implements SqlService {
 		this.dataTypesTable = new HashMap<String, ArrayList<Datatype>>();
 
 		try {
+			//Getting metadata object
 			dbMetaData = con.getMetaData();
 			// Getting table names from Metadata
 			ResultSet tables = dbMetaData.getTables(catalog, schemaPattern,
 					tableNamePattern, types);
-
+			
+			//Getting over all tables to obtain their columns, primary keys,
+			//foreign keys, and unique constraints 
 			while (tables.next()) {
 				Table table = sqlFac.createTable();
 				String tableName = tables.getString(3);
 				tableNamePattern = tableName;
 				table.setName(tableName);
+				//List of columns that the current table has
 				ArrayList<String> listColumns = new ArrayList<String>();
+				//List of datatypes that the current table has. 
+				//This list is used to get the correct datatype from the resultset of rows  
 				ArrayList<Datatype> listDatatypes = new ArrayList<Datatype>();
 
 				// Getting column names from Metadata
 				ResultSet columns = dbMetaData.getColumns(catalog,
 						schemaPattern, tableNamePattern, columnNamePattern);
+				//Adding columns to the current table
 				addColumns(columns, listColumns, table, listDatatypes);
-
+				
+				//Adding list of data types of the current table
 				this.dataTypesTable.put(table.getName(), listDatatypes);
 
 				// Getting primary keys (Primary and Composite keys) from
 				// Metadata
 				ResultSet primaryKeys = dbMetaData.getPrimaryKeys(catalog,
 						schemaPattern, tableNamePattern);
+				//Adding primary keys to the current table
 				addPrimaryKeys(primaryKeys, listColumns, table);
 
 				// Getting foreign keys from Metadata
 				ResultSet foreignKeys = dbMetaData.getImportedKeys(catalog,
 						schemaPattern, tableNamePattern);
+				//Adding foreign keys to the current table
 				addForeignKeys(foreignKeys, listColumns, table);
 
 				// Getting unique constraints from Metadata
 				ResultSet uniqueConstraints = dbMetaData.getIndexInfo(catalog,
 						schemaPattern, tableNamePattern, true, true);
+				//Adding unique constraints to the current table
 				addUniqueConstraints(uniqueConstraints, listColumns, table);
-
+				
+				//Adding table to the database instance
 				database.getTable().add(table);
 
 			}
@@ -99,7 +112,8 @@ public class SqlServiceImpl implements SqlService {
 		return database;
 	}
 
-	private int getIndexByTableName(ArrayList<String> listColumns,
+	//Getting the index or position of a particular column in the list
+	private int getIndexByColumnName(ArrayList<String> listColumns,
 			String columnName) {
 		for (int i = 0; i < listColumns.size(); i++) {
 			if (listColumns.get(i).equals(columnName))
@@ -120,10 +134,12 @@ public class SqlServiceImpl implements SqlService {
 
 					String columnNameUnique = uniqueConstraints
 							.getString("COLUMN_NAME");
-					int indexColumn = getIndexByTableName(listColumns,
+					int indexColumn = getIndexByColumnName(listColumns,
 							columnNameUnique);
+					//Adding the column to list of columns that the constraint has
 					unique.getColumn().add(table.getColumns().get(indexColumn));
-
+					
+					//Adding the new constraint to list of constraints that table has
 					table.getConstraints().add(unique);
 				}
 
@@ -142,8 +158,9 @@ public class SqlServiceImpl implements SqlService {
 				primaryKey.setName(primaryKeys.getString("PK_NAME"));
 
 				String columnNamePrimary = primaryKeys.getString("COLUMN_NAME");
-				int indexColumn = getIndexByTableName(listColumns,
+				int indexColumn = getIndexByColumnName(listColumns,
 						columnNamePrimary);
+				//Adding the column to list of columns that the primary key constraint has
 				primaryKey.getColumn().add(table.getColumns().get(indexColumn));
 
 				table.getConstraints().add(primaryKey);
@@ -154,10 +171,14 @@ public class SqlServiceImpl implements SqlService {
 		}
 
 		if (table.getConstraints().size() > 1) {
+			//if there is more than 1 primary keys. The constraint type is set as
+			//COMPOSITE_PRIMARY_KEY
 			for (Constraint constraint : table.getConstraints()) {
 				constraint.setType(ConstraintType.COMPOSITE_PRIMARY_KEY);
 			}
 		} else {
+			//if there is only one primary key. The constraint type is set as
+			//PRIMARY_KEY
 			for (Constraint constraint : table.getConstraints()) {
 				constraint.setType(ConstraintType.PRIMARY_KEY);
 			}
@@ -174,8 +195,9 @@ public class SqlServiceImpl implements SqlService {
 
 				String columnNameForeign = foreignKeys
 						.getString("FKCOLUMN_NAME");
-				int indexColumn = getIndexByTableName(listColumns,
+				int indexColumn = getIndexByColumnName(listColumns,
 						columnNameForeign);
+				//Adding the column to list of columns that the foreign key constraint has
 				foreignKey.getColumn().add(table.getColumns().get(indexColumn));
 
 				table.getConstraints().add(foreignKey);
@@ -203,29 +225,13 @@ public class SqlServiceImpl implements SqlService {
 				listColumns.add(columnName);
 			}
 		} catch (SQLException e) {
-			throw new SQLException(
-					"Error: Adding columns into SQL instance.", e);
+			throw new SQLException("Error: Adding columns into SQL instance.",
+					e);
 		}
 	}
-
-	/*
-	 * private void addRow(Connection con, Table table, ArrayList<Datatype>
-	 * listDatatypes) { try { ResultSet rs = null; Statement stmt = null; stmt =
-	 * con.createStatement();
-	 * 
-	 * // Selecting all rows from the current table rs =
-	 * stmt.executeQuery("SELECT * FROM " + table.getName()); ResultSetMetaData
-	 * rsmd = rs.getMetaData(); int colCount = rsmd.getColumnCount(); while
-	 * (rs.next()) { Row row = sqlFac.createRow(); for (int i = 1; i <=
-	 * colCount; i++) { Cell cell = sqlFac.createCell(); setJavaObject(cell, rs,
-	 * i, listDatatypes.get(i - 1)); cell.setColumn(table.getColumns().get(i -
-	 * 1)); row.getCells().add(cell); } table.getRows().add(row); } } catch
-	 * (SQLException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
-
+	
+	//This method is used to get the value of a cell in a row with his correct datatype
+	//instead of using resultset.getObject()
 	private void setJavaObject(Cell cell, ResultSet rs, int columnIndex,
 			Datatype dataType) throws SQLException {
 		try {
@@ -296,18 +302,28 @@ public class SqlServiceImpl implements SqlService {
 	}
 
 	@Override
-	public BlockingQueue<Packet<Row>> getRowQueue(Table table, int size) {
+	public BlockingQueue<Packet<Row>> getRowQueue(Table table, int size)
+			throws Exception {
+		/*
+		 * This implementation of the interface just allows to insert rows
+		 * to one table at a time. Therefore, if this method is called
+		 * twice the method blocks until the thread finished.
+		 */
 		if (this.producerThread != null && this.producerThread.isAlive()) {
 			try {
 				this.producerThread.join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new Exception(
+						"Error: Producer thread has been interrupted.", e);
 			}
 		}
 
+		/*
+		 * Start thread which get rows from database to insert into Sitra mapper for
+		 * inserting them to MongoDB.
+		 */
 		Producer producer = new Producer(size, con,
-				this.dataTypesTable.get(table.getName()), table);
+		this.dataTypesTable.get(table.getName()), table);
 		this.producerThread = new Thread(producer);
 		this.producerThread.start();
 
@@ -324,8 +340,8 @@ public class SqlServiceImpl implements SqlService {
 
 		public Producer(int size, Connection con,
 				ArrayList<Datatype> listDatatypes, Table table) {
-			queue = new ArrayBlockingQueue<Packet<Row>>(size);
 			queueSize = size;
+			queue = new ArrayBlockingQueue<Packet<Row>>(queueSize);
 			this.listDatatypes = listDatatypes;
 			this.table = table;
 			this.con = con;
@@ -335,7 +351,7 @@ public class SqlServiceImpl implements SqlService {
 			return queue;
 		}
 
-		public void produce() {
+		public void produce() throws Exception {
 
 			try {
 				Statement stmt = null;
@@ -365,18 +381,22 @@ public class SqlServiceImpl implements SqlService {
 					queue.put(packet);
 				}
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new Exception(
+						"Error: Putting package from queue failed.", e);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				throw new Exception(
+						"Error: Extracting rows from database failed.", e1);
 			}
 
 		}
 
 		@Override
 		public void run() {
-			produce();
+			try {
+				produce();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 	}

@@ -1,7 +1,6 @@
 package uk.ac.bham.mongoMap.mongo;
 
 import java.net.UnknownHostException;
-import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -29,13 +28,13 @@ public class MongoServiceimpl implements MongoService {
 
 	private Thread consumer;
 
-	public MongoServiceimpl(String ip, int port) {
+	public MongoServiceimpl(String ip, int port) throws Exception {
 		// connect to mongoDB
 		try {
 			mongoConnection = new Mongo(ip, port);
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new Exception(
+					"Error: Unknown host while trying to connect to MongoDB.", e);
 		}
 	}
 
@@ -101,43 +100,26 @@ public class MongoServiceimpl implements MongoService {
 		return documentObject;
 	}
 
-	private Object checktype(Object value) {
-		DBCollection c = db.getCollection("testbigdb");
-		c.drop();
-		BasicDBObject temp = new BasicDBObject();
-		temp.put("sam", value);
-		try {
-			c.insert(temp);
-		} catch (IllegalArgumentException e) {
-
-			// change to string if non compatible
-			String tempstring = value.toString();
-			value = tempstring;
-
-		}
-		return value;
-	}
-
 	@Override
 	public BlockingQueue<Packet<Document>> getDocumentQueue(Collection c,
-			int size) {
+			int size) throws Exception {
 		/*
 		 * This implementation of the interface just allows to insert documents
-		 * to one collection at a time. Therefore, if this method is called twice
-		 * the method blocks until the thread finished.
+		 * to one collection at a time. Therefore, if this method is called
+		 * twice the method blocks until the thread finished.
 		 */
 		if (this.consumer != null && this.consumer.isAlive()) {
 			try {
 				this.consumer.join();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				throw new Exception(
+						"Error: Consumer thread has been interrupted.", e);
 			}
 		}
 
 		/*
-		 * Drop collection before inserting documents.
-		 * This way we avoid unwanted duplicates and id violation
-		 * errors.
+		 * Drop collection before inserting documents. This way we avoid
+		 * unwanted duplicates and id violation errors.
 		 */
 		String colname = c.getName();
 		DBCollection collection = db.getCollection(colname);
@@ -146,18 +128,15 @@ public class MongoServiceimpl implements MongoService {
 
 		// Add indices to the collection.
 		for (UniqueIndex list : c.getUniqueIndices()) {
-
 			for (String key : list.getKeys()) {
-
 				collection.ensureIndex(new BasicDBObject(key, 1),
 						new BasicDBObject("unique", true));
 			}
-
 		}
 
 		/*
-		 * Start thread which receives documents from the Sitra mapper
-		 * for inserting them to MongoDB.
+		 * Start thread which receives documents from the Sitra mapper for
+		 * inserting them to MongoDB.
 		 */
 		DocumentConsumer consumer = new DocumentConsumer(collection, size);
 		this.consumer = new Thread(consumer);
@@ -180,7 +159,7 @@ public class MongoServiceimpl implements MongoService {
 			while (!lastPacket) {
 				try {
 					Packet<Document> packet;
-					
+
 					// get document packet
 					packet = queue.take();
 
