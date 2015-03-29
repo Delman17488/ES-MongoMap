@@ -83,7 +83,7 @@ public class Main {
 	 * In SqlServiceTestingImpl class, the source database is created manually.
 	 * 
 	 * At first, this was used for testing our software,but then 
-	 * 	MySQL database samples(Sakila & Employee) are used as the source database. 
+	 * MySQL database samples(Sakila & Employee) are used as the source database. 
 	 * 
 	 * This method returns the manually created database
 	 * @throws SQLException 

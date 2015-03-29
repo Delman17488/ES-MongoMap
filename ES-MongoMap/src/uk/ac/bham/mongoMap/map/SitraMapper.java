@@ -35,7 +35,11 @@ public class SitraMapper {
 	private Set<Entry<Table, Collection>> map = new HashSet<Entry<Table, Collection>>();
 
 	public SitraMapper(List<Class<? extends Rule<?, ?>>> rules) {
+		
+		// Create a Transformer object
 		transformer = new SimpleTransformerImpl(null);
+		
+		// Add rule classes to the transformer object
 		for (Class<? extends Rule<?, ?>> class1 : rules) {
 			transformer.addRuleType(class1);
 		}
@@ -54,7 +58,6 @@ public class SitraMapper {
 			
 			System.out.println("MongoDB schema created");
 			
-			// create the target schema
 			for (Table table : db.getTable()) {
 				// transform table to collection
 				Collection coll = (Collection) transformer.transform(TableToCollection.class, table);
@@ -88,7 +91,7 @@ public class SitraMapper {
 
 			mongoService.setMongoDBDatabase(mongoDB);
 
-			int size = 500; // move to properties file
+			int size = 500;  
 			for (Entry<Table, Collection> entry : map) {
 				System.out.println("Starting to map table : " + entry.getKey().getName());
 				BlockingQueue<Packet<Row>> src = sqlService.getRowQueue(
@@ -137,7 +140,7 @@ public class SitraMapper {
 			this.trg = trg;
 		}
 
-		public void consumeAndProduce() {
+		public void consumeAndProduce() throws Exception {
 			boolean lastPackage = false;
 			int i = 0;
 			while (!lastPackage) {
@@ -153,36 +156,38 @@ public class SitraMapper {
 					i++;
 					produce(pDoc);
 				} catch (RuleNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new Exception("A rule could not have been found.", e);
 				}
 			}
 			System.out.println(i + " rows mapped");
 		}
 
-		public void produce(Packet<Document> pDoc) {
+		public void produce(Packet<Document> pDoc) throws Exception {
 			try {
 				trg.put(pDoc);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new Exception("Error: Failed to put a document in produce method", e);
 			}
 		}
 
-		public Packet<Row> consume() {
+		public Packet<Row> consume() throws Exception {
 			Packet<Row> pRow = null;
 			try {
 				pRow = src.take();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new Exception("Error: Failed to take a document in produce method", e);
+
 			}
 			return pRow;
 		}
 
 		@Override
 		public void run() {
-			consumeAndProduce();
+			try {
+				consumeAndProduce();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
