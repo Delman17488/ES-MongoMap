@@ -45,6 +45,8 @@ public class SitraMapper {
 			MongoService mongoService) throws Exception {
 		try {
 			System.out.println("Creating schema...");
+			
+			// Load the source database (SQL-DB)
 			Database db = sqlService.getDatabase();
 
 			// transform SQL-DB to MongoDB
@@ -52,6 +54,7 @@ public class SitraMapper {
 			
 			System.out.println("MongoDB schema created");
 			
+			// create the target schema
 			for (Table table : db.getTable()) {
 				// transform table to collection
 				Collection coll = (Collection) transformer.transform(TableToCollection.class, table);
@@ -85,7 +88,7 @@ public class SitraMapper {
 
 			mongoService.setMongoDBDatabase(mongoDB);
 
-			int size = 500; // TODO move to properties file
+			int size = 500; // move to properties file
 			for (Entry<Table, Collection> entry : map) {
 				System.out.println("Starting to map table : " + entry.getKey().getName());
 				BlockingQueue<Packet<Row>> src = sqlService.getRowQueue(
